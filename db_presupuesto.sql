@@ -50,44 +50,111 @@ create table proveedor(
     fecha_proveedor timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 )engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
-/* =====  ===== */
+/* ===== CREANDO TABLA DE CLIENTE ===== */
 
+create table cliente(
+    id_cliente int(11) not null primary key auto_increment,
+    nombre_cliente varchar(200) not null,
+    telefono_cliente varchar(12) not null,
+    correo_cliente varchar(150) not null,
+    contacto_em_cliente varchar(12),
+    fecha_cliente timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+)engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
+/* ===== CREANDO TABLA DE PROYECTO ===== */
 
-/* =====  ===== */
+create table proyecto(
+    id_proyecto int(11) not null primary key auto_increment,
+    id_cliente int(11) not null,
+    nombre_proyecto varchar(200) not null,
+    ubicacion_proyecto varchar(200) not null,
+    fecha_proyecto datetime not null,
+    descri_proyecto text not null,
+    foreign key(id_cliente) references cliente(id_cliente) on update cascade on delete cascade
+)engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
+/* ===== CREANDO TABLA DE MATERIAL ===== */
 
+create table material(
+    id_material int(11) not null primary key auto_increment,
+    id_proveedor int(11) not null,
+    nombre_material varchar(200) not null,
+    tipo_material varchar(150) not null,
+    cantidad_material int(11) not null,
+    precio_material float not null,
+    marca_material varchar(150) not null,
+    fecha_material timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+    foreign key(id_proveedor) references proveedor(id_proveedor) on update cascade on delete cascade
+)engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
-/* =====  ===== */
+/* ===== CREANDO TABLA DE TRABAJADOR ===== */
 
+create table trabajador(
+    id_trabajador int(11) not null primary key auto_increment,
+    nombre_trabajador varchar(200) not null,
+    especialidad_trabajador varchar(150) not null,
+    dni_trabajador char(8) not null,
+    telefono_trabajador varchar(12) not null,
+    funcion_trabajador varchar(150) not null,
+    tiempo_trab_trabajador int(11) not null,
+    sueldo_men_trabajador float not null,
+    sueldo_sem_trabajador float not null,
+    sueldo_dia_trabajador float not null,
+    sueldo_proyecto float not null,
+    fecha_trabajador timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+)engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
+/* ===== CREANDO TABLA PRESUPUESTO MATERIALES ===== */
 
-/* =====  ===== */
+create table pres_materiales(
+    id_pres_mat int(11) not null primary key auto_increment,
+    id_proyecto int(11) not null,
+    id_material int(11) not null,
+    cantidad_utilizada int(11) not null,
+    costo_total float not null,
+    fecha_pres_materiales timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+    foreign key(id_proyecto) references proyecto(id_proyecto) on update cascade on delete cascade,
+    foreign key(id_material) references material(id_material) on update cascade on delete cascade
+)engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
+/* ===== CREANDO TABLA PRESUPUESTO TRABAJADORES ===== */
 
+create table pres_trabajadores(
+    id_pres_trab int(11) not null primary key auto_increment,
+    id_proyecto int(11) not null,
+    id_trabajador int(11) not null,
+    tiempo_trabajo int(11) not null,
+    costo_total_trab float not null,
+    fecha_pres_traba timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+    foreign key(id_proyecto) references proyecto(id_proyecto) on update cascade on delete cascade,
+    foreign key(id_trabajador) references trabajador(id_trabajador) on update cascade on delete cascade
+)engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
-/* =====  ===== */
+/* ===== CREANDO TABLA DE EQUIPOS Y MAQUINARIAS ===== */
 
+create table equipo_maqui(
+    id_em int(11) not null primary key auto_increment,
+    nombre_em varchar(200) not null,
+    tipo_em varchar(100) not null,
+    cantidad_em int(11) not null,
+    modelo_em varchar(30) not null,
+    ultimo_uso_em datetime not null,
+    id_trabajador int(11) not null,
+    foreign key(id_trabajador) references trabajador(id_trabajador) on update cascade on delete cascade
+)engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
+/* ===== CREANDO TABLA DE PRESUPUESTO FINAL ===== */
 
-/* =====  ===== */
+create table presupuesto(
+    id_presu int(11) not null primary auto_increment,
+    id_pres_mat int(11) not null,
+    id_pres_trab int(11) not null
+    costo_total_trabajadores float not null,
+    costo_total_materiales float not null,
+    costo_licencia float not null,
+    costo_final float not null,
+    fecha_presupuesto timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+    foreign key(id_pres_mat) references pres_materiales(id_pres_mat) on update cascade on delete cascade,
+    foreign key(id_pres_trab) references pres_trabajadores(id_pres_trab) on update cascade on delete cascade
+)engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
-
-
-/* =====  ===== */
-
-
-
-/* =====  ===== */
-
-
-
-/* =====  ===== */
-
-
-
-/* =====  ===== */
-
-
-
-/* =====  ===== */
