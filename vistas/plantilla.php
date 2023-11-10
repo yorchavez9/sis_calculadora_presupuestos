@@ -7,14 +7,13 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>P HOUSE E.I.R.L.</title>
     <!-- base:css -->
-    <link rel="stylesheet" href="vistas/estilos/vendors/mdi/css/materialdesignicons.min.css">
+    <!-- <link rel="stylesheet" href="vistas/estilos/vendors/mdi/css/materialdesignicons.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.3.67/css/materialdesignicons.min.css">
     
     <link rel="stylesheet" href="vistas/estilos/vendors/feather/feather.css">
@@ -26,9 +25,13 @@ session_start();
     <link rel="stylesheet" href="vistas/estilos/css/horizontal-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="vistas/estilos/images/favicon.png" />
+    <!-- alert --> 
+    <link rel="stylesheet" href="vistas/alert/dist/sweetalert2.min.css">
+    <script src="vistas/alert/dist/sweetalert2.min.js"></script>
 </head>
 
 <body>
+
 
 <!-- =================================
 CONTENIDO DEL CUERPO

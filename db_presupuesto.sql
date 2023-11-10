@@ -12,7 +12,7 @@ create table usuario(
     usuario varchar(200) not null,
     password varchar(200) not null,
     perfil varchar(100) not null,
-    estado int(11) not null,
+    estado int(11) not null default 1,
     ultimo_login datetime not null,
     fecha timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
@@ -146,9 +146,9 @@ create table equipo_maqui(
 /* ===== CREANDO TABLA DE PRESUPUESTO FINAL ===== */
 
 create table presupuesto(
-    id_presu int(11) not null primary auto_increment,
+    id_presu int(11) not null primary key auto_increment,
     id_pres_mat int(11) not null,
-    id_pres_trab int(11) not null
+    id_pres_trab int(11) not null,
     costo_total_trabajadores float not null,
     costo_total_materiales float not null,
     costo_licencia float not null,

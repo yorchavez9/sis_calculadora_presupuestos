@@ -21,7 +21,21 @@
                     </li>
                 </ul>
                 <div class="form-inline">
-                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal-4" data-whatever="@fat">Iniciar Sessión</button>
+                    <?php
+                    $item = null;
+                    $valor = null;
+
+                    $contarUsuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+                    if(count($contarUsuarios)<= 0){
+                    ?>
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#registro_usuario" data-whatever="@fat">Registrarse</button>
+                    <?php
+                    }else{
+                    ?>
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#iniciar_sesion" data-whatever="@fat">Iniciar Sesión</button>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -92,7 +106,7 @@
             </div>
         </section>
         <!-- ================ LISTA DE PROYECTOS ==================== -->
-        <section class="py-5">
+        <section class="py-5" id="proyectos">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 mx-auto">
@@ -176,11 +190,14 @@
 LOGIN
 ======================== -->
 
+<!-- =====================================
+MODAL INICIAR SESION
+===================================== -->
 
 <div class="col-md-6 col-xl-4 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal fade" id="iniciar_sesion" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -190,18 +207,21 @@ LOGIN
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="pt-2">
+                            <form class="pt-2" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="Usuario">Usuario</label>
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Usuario">
+                                    <input type="email" class="form-control form-control-lg" name="ingUsuario"  placeholder="Usuario">
                                 </div>
                                 <div class="form-group">
                                     <label for="Usuario">Constraseña</label>
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Constraseña">
+                                    <input type="password" class="form-control form-control-lg" name="ingPassword"  placeholder="Constraseña">
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Ingresar</button>
                                 </div>
+
+                                
+
                             </form>
                         </div>
                        
@@ -212,10 +232,14 @@ LOGIN
     </div>
 </div>
 
+
+<!-- =====================================
+MODAL REGISTRAR USUARIOS
+===================================== -->
 <div class="col-md-6 col-xl-4 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal fade" id="registro_usuario" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -225,21 +249,52 @@ LOGIN
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="pt-2">
+                            <form class="pt-2" method="post" enctype="multipart/form-data">
+
+                                <!-- ENTRADA DE NOMBRE -->
                                 <div class="form-group">
-                                    <label for="Usuario">Usuario</label>
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Usuario">
+                                    <label for="Usuario">Nombre</label>
+                                    <input type="text" class="form-control" name="nuevoNombre" placeholder="Ingresar nombre">
                                 </div>
+
+                                <!-- ENTRADA DE USUARIO -->
+                                <div class="form-group">
+                                    <label for="Usuario">Usuario o correo</label>
+                                    <input type="text" class="form-control" name="nuevoUsuario" placeholder="Ingresar usuario o correo">
+                                </div>
+
+                                <!-- ENTRADA DE CONTRASEÑA -->
                                 <div class="form-group">
                                     <label for="Usuario">Constraseña</label>
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Constraseña">
+                                    <input type="password" class="form-control" name="nuevoPassword" placeholder="Ingresar constraseña">
                                 </div>
+
+                                <!-- ENTRADA DE PERFIL -->
+                                <div class="form-group">
+                                    <label for="Usuario">Constraseña</label>
+                                    <select class="form-control form-control-lg" name="nuevoPerfil">
+                                        <option value="">Seleccionar perfil</option>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Especial">Especial</option>
+                                    </select>
+                                </div>
+
+                                <!-- BOTON PARA GUARDAR -->
                                 <div class="mt-3">
                                     <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Registrar</button>
                                 </div>
+
+
+                                <!-- ===============================
+                                REGISTRAMOS
+                                =============================== -->
+                                <?php
+                                    $crearUsuario = new ControladorUsuarios();
+                                    $crearUsuario->ctrCrearUsuario();
+                                ?>
+
                             </form>
                         </div>
-                       
                     </div>
                 </div>
             </div>
