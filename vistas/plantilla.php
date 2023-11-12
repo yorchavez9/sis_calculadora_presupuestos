@@ -14,6 +14,8 @@ session_start();
     <title>P HOUSE E.I.R.L.</title>
     <!-- base:css -->
     <!-- <link rel="stylesheet" href="vistas/estilos/vendors/mdi/css/materialdesignicons.min.css"> -->
+
+    <!-- iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.3.67/css/materialdesignicons.min.css">
     
     <link rel="stylesheet" href="vistas/estilos/vendors/feather/feather.css">

@@ -8,17 +8,6 @@
                 <div class="col-sm-12 pr-0">
                   <div class="d-lg-flex">
                     <h3 class="text-dark font-weight-bold mb-0 mr-5">Bienvenido al Sistema</h3>
-                  <ul class="dashboard-link-btn-wrap mt-lg-0 mt-sm-2">
-                    <li>
-                      <a href="#" class="text-primary"><span><i class="mdi mdi-cube-outline"></i></span>Actividades</a>
-                    </li>
-                    <li>
-                      <a href="#"><span><i class="mdi mdi-signal"></i></span>Estdisticas</a>
-                    </li>
-                    <li>
-                        <a href="#"><span><i class="mdi mdi-file-document-outline"></i></span>Summary</a>
-                      </li>
-                  </ul>
                   </div>
                 </div>
               </div>

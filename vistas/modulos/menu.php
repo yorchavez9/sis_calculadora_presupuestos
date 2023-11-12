@@ -156,55 +156,77 @@
       <nav class="bottom-navbar">
         <div class="container">
           <ul class="nav page-navigation">
+
+            <!-- ===================================
+            MENU DE NAVEGACIÓN
+            =================================== -->
+
+            <!-- Incicio -->
             <li class="nav-item">
               <a class="nav-link" href="index.html">
-                <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/home.svg" alt="" class="nav-icon-title">
+                <i class="mdi mdi-home mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Inicio</span>
               </a>
             </li>
+
+            <!-- Usuarios -->
             <li class="nav-item">
               <a class="nav-link" href="pages/widgets/widgets.html">
-                <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/widget.svg" alt="" class="nav-icon-title">
+                <i class="mdi mdi-account mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Usuarios</span>
               </a>
             </li>
+
+            <!-- Nuevo presupuesto -->
             <li class="nav-item">
               <a class="nav-link" href="pages/widgets/widgets.html">
-                <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/widget.svg" alt="" class="nav-icon-title">
+                <i class="mdi mdi-file-powerpoint mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Nuevo Presupuesto</span>
               </a>
             </li>
+
+            <!-- Materiales -->
             <li class="nav-item mega-menu">
               <a href="#" class="nav-link">
-                  <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/ui.svg" alt="" class="nav-icon-title">
+                <i class="mdi mdi-cube-unfolded mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Materiales</span>
                 <i class="menu-arrow"></i>
               </a>
             </li> 
+            
+            <!-- Trabajadores -->
             <li class="nav-item">
               <a href="#" class="nav-link">
-                  <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/form.svg" alt="" class="nav-icon-title">
+                <i class="mdi mdi-account-switch mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Trabajadores</span>
                 <i class="menu-arrow"></i></a>
             </li>
+
+
+            <!-- Equipos y maquinarias -->
             <li class="nav-item mega-menu">
               <a href="#" class="nav-link">
-                  <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/data.svg" alt="" class="nav-icon-title">
+                <i class="mdi mdi-car mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Equipos y maquinarias</span>
                 <i class="menu-arrow"></i></a>
             </li>
+
+            <!-- Clientes -->
             <li class="nav-item mega-menu">
               <a href="#" class="nav-link">
-                  <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/pages.svg" alt="" class="nav-icon-title">
+                <i class="mdi mdi-account-multiple-outline mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Clientes</span>
                 <i class="menu-arrow"></i></a>
             </li>
+
+            <!-- Ver todos los presupuestos -->
             <li class="nav-item">
               <a href="#" class="nav-link">
-                  <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/web.svg" alt="" class="nav-icon-title">
+                <i class="mdi mdi-eye mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Ver todos los presupuestos</span>
                 <i class="menu-arrow"></i></a>
             </li>
+
           </ul>
         </div>
       </nav>
