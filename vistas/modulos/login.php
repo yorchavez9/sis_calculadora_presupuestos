@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-lg navbar-dark bg-dark landing">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="https://demo.bootstrapdash.com/dashflat/template/images/logo.svg" alt="lead-ui-kit logo"></a>
+            <a class="navbar-brand" href="#"><img width="110" src="vistas/estilos/images/logo/logo-house.png" alt="lead-ui-kit logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#leadUIMainNav" aria-controls="leadUIMainNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="mdi mdi-menu"></i>
             </button>
@@ -43,7 +43,7 @@
     <div class="landing-sass-header-content bg-dark">
         <div class="container">
             <h1 class="text-center font-weight-bold pt-5 pb-30px mb-0 text-white">Proyectos de calidad <br>Cambiando vidas</h1>
-            <div class="text-center mb-5 "><button class="btn btn-light mr-3">Get started</button><button class="btn btn-outline-light">Demo video</button></div>
+            <div class="text-center mb-5 "><button class="btn btn-light mr-3">Ver mas...</button><button class="btn btn-outline-light">Contactos</button></div>
         </div>
     </div>
     <div class="text-center landing-sass-header-img-wrapper"><img src="vistas/estilos/images/dash/dash_3.png" alt="header-img" class="img-fluid" width="707px"></div>
@@ -63,19 +63,19 @@
                     <div class="row">
                         <div class="col-sm-6 mb-5 d-flex align-items-center justify-content-center">
                             <span class="h1 mb-0 mr-2 text-primary font-weight-bold">320</span>
-                            <span>Proyectos <br> Revenu</span>
+                            <span>Proyectos</span>
                         </div>
                         <div class="col-sm-6 mb-5 d-flex align-items-center justify-content-center">
                             <span class="h1 mb-0 mr-2 text-primary font-weight-bold">100</span>
-                            <span>Trabajadores <br> Satisfaction</span>
+                            <span>Trabajadores</span>
                         </div>
                         <div class="col-sm-6 mb-5 d-flex align-items-center justify-content-center">
                             <span class="h1 mb-0 mr-2 text-primary font-weight-bold">199</span>
-                            <span>Clientes <br> Clients</span>
+                            <span>Clientes</span>
                         </div>
                         <div class="col-sm-6 mb-5 d-flex align-items-center justify-content-center">
                             <span class="h1 mb-0 mr-2 text-primary font-weight-bold">240</span>
-                            <span>Máquinas <br> & Features</span>
+                            <span>Máquinas</span>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                             <div class="card-body">
                                 <h3 class="font-weight-bold">Misión</h3>
                                 <p class="text-gray mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cupiditate soluta? Animi dolore voluptatem dignissimos vel.</p>
-                                <a href="#!" class="font-weight-bold">READ MORE</a>
+                                <a href="#!" class="font-weight-bold">Leer mas...</a>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                             <div class="card-body">
                                 <h3 class="font-weight-bold">Visión</h3>
                                 <p class="text-gray mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cupiditate soluta? Animi dolore voluptatem dignissimos vel.</p>
-                                <a href="#!" class="font-weight-bold">READ MORE</a>
+                                <a href="#!" class="font-weight-bold">Leer mas..</a>
                             </div>
                         </div>
                     </div>
@@ -208,19 +208,40 @@ MODAL INICIAR SESION
                         </div>
                         <div class="modal-body">
                             <form class="pt-2" method="post" enctype="multipart/form-data">
+
+                                <!-- ====================================
+                                INGRESANDO USUARIO
+                                ==================================== -->
                                 <div class="form-group">
                                     <label for="Usuario">Usuario</label>
-                                    <input type="email" class="form-control form-control-lg" name="ingUsuario"  placeholder="Usuario">
+                                    <input type="text" class="form-control form-control-lg" name="ingUsuario"  placeholder="Usuario">
                                 </div>
+
+                                <!-- ====================================
+                                INGRESANDO CONTRASEÑA
+                                ==================================== -->
                                 <div class="form-group">
                                     <label for="Usuario">Constraseña</label>
                                     <input type="password" class="form-control form-control-lg" name="ingPassword"  placeholder="Constraseña">
                                 </div>
+
+                                <!-- ====================================
+                                BOTON DE INGRESAR
+                                ==================================== -->
                                 <div class="mt-3">
                                     <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Ingresar</button>
                                 </div>
 
-                                
+                                <!-- ====================================
+                                CONTROLADOR INGRESO USUARIO
+                                ==================================== -->
+
+                                <?php
+
+                                    $login = new ControladorUsuarios();
+                                    $login->ctrIngresoUsuario();
+                                    
+                                ?>
 
                             </form>
                         </div>

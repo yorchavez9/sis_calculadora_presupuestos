@@ -40,13 +40,39 @@ CONTENIDO DEL CUERPO
     <?php
     
     if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
-        echo "Bienvenido al sistema";
+
+        echo '<div class="container-scroller">';
+        
+        /* =====================================
+        MENU
+        ===================================== */
+        include "modulos/menu.php";
+
+        /* =====================================
+        CONTENIDO
+        ===================================== */
+
+        if(isset($_GET["ruta"])){
+            if($_GET["ruta"] == "inicio" ||
+               $_GET["ruta"] == "usuarios" ||
+               $_GET["ruta"] == "salir"){
+
+                include "modulos/".$_GET["ruta"].".php";
+            }else{
+                include "modulos/404.php";
+            }
+        }else{
+            include "modulos/inicio.php";
+        }
+
     }else{
         include "modulos/login.php";
     }
 
+    echo '</div>'
     ?>
 
+    
 
     <!-- container-scroller -->
 
