@@ -8,5 +8,5 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("loader-container").style.display = "none";
         // Muestra el contenido principal
         document.getElementById("main-content").style.display = "block";
-    }, 3000);
+    }, 2000);
 });

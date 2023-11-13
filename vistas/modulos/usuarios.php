@@ -1,192 +1,108 @@
 <?php
-if($_SESSION["perfil"]== "Especial"){
-    echo '<script>
+if ($_SESSION["perfil"] == "Especial") {
+  echo '<script>
         window.location = "inicio"
     </script>';
 }
 ?>
 
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Data table</h4>
-              <div class="row">
-                <div class="col-12">
-                  <div class="table-responsive">
-                    <table id="order-listing" class="table">
-                      <thead>
-                        <tr>
-                            <th>Order #</th>
-                            <th>Purchased On</th>
-                            <th>Customer</th>
-                            <th>Ship to</th>
-                            <th>Base Price</th>
-                            <th>Purchased Price</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2012/08/03</td>
-                            <td>Edinburgh</td>
-                            <td>New York</td>
-                            <td>$1500</td>
-                            <td>$3200</td>
-                            <td>
-                              <label class="badge badge-info">On hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2015/04/01</td>
-                            <td>Doe</td>
-                            <td>Brazil</td>
-                            <td>$4500</td>
-                            <td>$7500</td>
-                            <td>
-                              <label class="badge badge-danger">Pending</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2010/11/21</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>2016/01/12</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>2017/12/28</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>2000/10/30</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-info">On-hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>2011/03/11</td>
-                            <td>Cris</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>2015/06/25</td>
-                            <td>Tim</td>
-                            <td>Italy</td>
-                            <td>$6300</td>
-                            <td>$2100</td>
-                            <td>
-                              <label class="badge badge-info">On-hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>2016/11/12</td>
-                            <td>John</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>2003/12/26</td>
-                            <td>Tom</td>
-                            <td>Germany</td>
-                            <td>$1100</td>
-                            <td>$2300</td>
-                            <td>
-                              <label class="badge badge-danger">Pending</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+<!-- partial -->
+<div class="container-fluid page-body-wrapper">
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="card">
+        <div class="card-body">
+          <div class="mb-3">
+            <h4><b>Administrar Usuarios</b></h4>
+          </div>
+          <div class="mb-3">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlUsuarios" data-whatever="@getbootstrap">Nuevo usuario</button>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="table-responsive">
+                <table id="order-listing" class="table">
+                  <thead>
+                    <tr>
+                      <th>Order #</th>
+                      <th>Purchased On</th>
+                      <th>Customer</th>
+                      <th>Ship to</th>
+                      <th>Base Price</th>
+                      <th>Purchased Price</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>2012/08/03</td>
+                      <td>Edinburgh</td>
+                      <td>New York</td>
+                      <td>$1500</td>
+                      <td>$3200</td>
+                      <td>
+                        <label class="badge badge-info">On hold</label>
+                      </td>
+                      <td>
+                        <button class="btn btn-outline-primary">View</button>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
-          <div class="w-100 clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart-outline text-danger"></i></span>
-          </div>
-        </footer>
-        <!-- partial -->
       </div>
-      <!-- main-panel ends -->
     </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <?php
+    include "vistas/modulos/footer.php";
+    ?>
+    <!-- partial -->
+  </div>
+  <!-- main-panel ends -->
+</div>
+
+
+<!-- ===========================================
+    MODAL NUEVO USAURIO
+    =========================================== -->
+
+      <div class="modal fade" id="mdlUsuarios" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">New message</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Recipient:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success">Send message</button>
+              <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<!-- ===========================================
+    MODAL EDITAR USAURIO
+    =========================================== -->

@@ -15,7 +15,7 @@ session_start();
 
     <!-- Loader -->
     <link rel="stylesheet" href="vistas/estilos/loader/loader.css">
-    
+    <link rel="shortcut icon" href="vistas/estilos/images/favicon.png" />
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.3.67/css/materialdesignicons.min.css">
 
@@ -26,11 +26,11 @@ session_start();
   
     <link rel="stylesheet" href="vistas/estilos/css/horizontal-layout-light/style.css">
   
-    <link rel="shortcut icon" href="vistas/estilos/images/favicon.png" />
+    
   
     <link rel="stylesheet" href="vistas/alert/dist/sweetalert2.min.css">
     <script src="vistas/alert/dist/sweetalert2.min.js"></script>
-    
+   
 </head>
 
 <body>
@@ -100,7 +100,7 @@ session_start();
     <script src="vistas/estilos/js/todolist.js"></script>
    
 
-    <script src="vistas/estilos/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vistas/estilos/vendors/datatables.net/jquery.dataTabless.js"></script>
     <script src="vistas/estilos/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
   
     <script src="vistas/estilos/js/data-table.js"></script>
