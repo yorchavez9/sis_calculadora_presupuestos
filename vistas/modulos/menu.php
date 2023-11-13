@@ -163,23 +163,34 @@
 
             <!-- Incicio -->
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="inicio">
                 <i class="mdi mdi-home mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Inicio</span>
               </a>
             </li>
 
+            <?php
+            if($_SESSION["perfil"] == "Administrador"){
+              ?>
+
             <!-- Usuarios -->
             <li class="nav-item">
-              <a class="nav-link" href="pages/widgets/widgets.html">
+              <a class="nav-link" href="usuarios">
                 <i class="mdi mdi-account mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Usuarios</span>
               </a>
             </li>
+              <?php
+            }
+            ?>
+
+            <?php
+            if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Especial"){
+              ?>
 
             <!-- Nuevo presupuesto -->
             <li class="nav-item">
-              <a class="nav-link" href="pages/widgets/widgets.html">
+              <a class="nav-link" href="presupuetos">
                 <i class="mdi mdi-file-powerpoint mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Nuevo Presupuesto</span>
               </a>
@@ -187,7 +198,7 @@
 
             <!-- Materiales -->
             <li class="nav-item mega-menu">
-              <a href="#" class="nav-link">
+              <a href="materiales" class="nav-link">
                 <i class="mdi mdi-cube-unfolded mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Materiales</span>
                 <i class="menu-arrow"></i>
@@ -196,7 +207,7 @@
             
             <!-- Trabajadores -->
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="trabajadores" class="nav-link">
                 <i class="mdi mdi-account-switch mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Trabajadores</span>
                 <i class="menu-arrow"></i></a>
@@ -205,7 +216,7 @@
 
             <!-- Equipos y maquinarias -->
             <li class="nav-item mega-menu">
-              <a href="#" class="nav-link">
+              <a href="equipos_maquinarias" class="nav-link">
                 <i class="mdi mdi-car mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Equipos y maquinarias</span>
                 <i class="menu-arrow"></i></a>
@@ -213,7 +224,7 @@
 
             <!-- Clientes -->
             <li class="nav-item mega-menu">
-              <a href="#" class="nav-link">
+              <a href="clientes" class="nav-link">
                 <i class="mdi mdi-account-multiple-outline mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Clientes</span>
                 <i class="menu-arrow"></i></a>
@@ -221,12 +232,15 @@
 
             <!-- Ver todos los presupuestos -->
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="ver_presupuestos" class="nav-link">
                 <i class="mdi mdi-eye mdi-24px mr-1 text-primary"></i>
                 <span class="menu-title">Ver todos los presupuestos</span>
                 <i class="menu-arrow"></i></a>
             </li>
-
+              <?php
+            }
+            ?>
+            
           </ul>
         </div>
       </nav>
