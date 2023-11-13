@@ -24,13 +24,13 @@ session_start();
     
     <link rel="stylesheet" href="vistas/estilos/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   
-    <link rel="stylesheet" href="vistas/estilos/css/horizontal-layout-light/style.css">
+    <link rel="stylesheet" href="vistas/estilos/css/horizontal-layout-light/estilos.css">
   
     
   
     <link rel="stylesheet" href="vistas/alert/dist/sweetalert2.min.css">
     <script src="vistas/alert/dist/sweetalert2.min.js"></script>
-   
+    <script src="vistas/estilos/jquery/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -85,6 +85,9 @@ session_start();
     echo '</div>'
     ?>
 
+    <!-- script de validaciones -->
+
+    <script src="vistas/js/usuarios.js"></script>
 
 
     <!-- container-scroller -->

@@ -99,23 +99,42 @@ class ControladorUsuarios{
                 
                 $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
 
-                if($respuesta == "ok"){
-                    echo '<script>
-                        Swal.fire({
-                            title: "¡El usuario ha sido gardado correctamente!",
-                            showConfirmButton: true,
-                            confirmButtonText: "Cerrar"
-                        }).then(function(result){
-                            if(result.value){
-                                window.location = "login";
-                            }
-                        });    
-                    </script>';
-                }
+                $item = null;
+                    $valor = null;
+
+                    $contarUsuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+                    if(count($contarUsuarios) > 0){
+                        if($respuesta == "ok"){
+                            echo '<script>
+                                Swal.fire({
+                                    title: "¡El usuario ha sido gardado correctamente!",
+                                    showConfirmButton: true,
+                                    confirmButtonText: "Cerrar"
+                                }).then(function(result){
+                                    if(result.value){
+                                        window.location = "usuarios";
+                                    }
+                                });    
+                            </script>';
+                        }else{
+                            echo '<script>
+                                Swal.fire({
+                                    title: "¡El usuario ha sido gardado correctamente!",
+                                    showConfirmButton: true,
+                                    confirmButtonText: "Cerrar"
+                                }).then(function(result){
+                                    if(result.value){
+                                        window.location = "login";
+                                    }
+                                });    
+                            </script>';
+                        }
+                    }
+                
             }
 
         }else{
-           echo "No existe la variable";
+           /* echo "No existe la variable"; */
         }
 
     }
@@ -134,8 +153,35 @@ class ControladorUsuarios{
     }
 
     /* ===========================================
-    REGISTRO DE USUARIOS
+    BORRAR DE USUARIOS
     =========================================== */
+
+    static public function ctrBorrarUsuario(){
+
+        if(isset($_GET["idUsuario"])){
+            $tabla = "usuario";
+            $datos = $_GET["idUsuario"];
+
+            $respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
+            echo $respuesta;
+            if($respuesta == "ok"){
+                echo '<script>
+                        Swal.fire({
+                            type: "success",
+                            title: "El usuario ha sido borrado correctamente",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false,
+                        }).then(function(result){
+                            if(result.value){
+                                window.location = "usuarios"
+                            }
+                        })
+                        </script>';
+            }
+        }
+
+    }
 
     /* ===========================================
     REGISTRO DE USUARIOS

@@ -87,19 +87,23 @@ class ModeloUsuarios{
     }
 
     /* ===========================================
-    MOSTRAR USUARIOS
+    BORRAR USUARIOS
     =========================================== */
 
-    /* ===========================================
-    MOSTRAR USUARIOS
-    =========================================== */
+    static public function mdlBorrarUsuario($tabla, $datos){
 
-    /* ===========================================
-    MOSTRAR USUARIOS
-    =========================================== */
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt->bindParam(":id",$datos, PDO::PARAM_INT);
 
-    /* ===========================================
-    MOSTRAR USUARIOS
-    =========================================== */
+        if($stmt->execute()){
+            return "ok";
+        }else{
+            return "error";
+        }
+
+        $stmt=null;
+
+    }
+
 
 }
