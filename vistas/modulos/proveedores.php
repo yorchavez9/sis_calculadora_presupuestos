@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION["perfil"] == "Especial") {
+if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador") {
   echo '<script>
         window.location = "inicio"
     </script>';
@@ -13,10 +13,10 @@ if ($_SESSION["perfil"] == "Especial") {
       <div class="card">
         <div class="card-body">
           <div class="mb-3">
-            <h4><b>Administrar Usuarios</b></h4>
+            <h4><b>Administrar proveedores</b></h4>
           </div>
           <div class="mb-3">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlUsuarios" data-whatever="@getbootstrap">Nuevo usuario</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlUsuarios" data-whatever="@getbootstrap">Nuevo proveedor</button>
           </div>
           <div class="row">
             <div class="col-12">
@@ -26,10 +26,9 @@ if ($_SESSION["perfil"] == "Especial") {
                     <tr>
                       <th>#</th>
                       <th>Nombre</th>
-                      <th>Usuario</th>
-                      <th>Perfil</th>
-                      <th>Estado</th>
-                      <th>Último Login</th>
+                      <th>Dirección</th>
+                      <th>Contacto</th>
+                      <th>Fecha</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>

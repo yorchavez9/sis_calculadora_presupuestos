@@ -63,6 +63,7 @@ session_start();
                 $_GET["ruta"] == "inicio" ||
                 $_GET["ruta"] == "usuarios" ||
                 $_GET["ruta"] == "presupuetos" ||
+                $_GET["ruta"] == "proveedores" ||
                 $_GET["ruta"] == "materiales" ||
                 $_GET["ruta"] == "trabajadores" ||
                 $_GET["ruta"] == "equipos_maquinarias" ||

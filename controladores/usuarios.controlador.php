@@ -164,7 +164,7 @@ class ControladorUsuarios{
 
                 $tabla = "usuario";
 
-                if($_POST["editarUsuario"] != ""){
+                if($_POST["editarPassword"] != ""){
                     if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])){
                         $encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
                     }else{
@@ -195,6 +195,7 @@ class ControladorUsuarios{
                                "usuario"=> $_POST["editarUsuario"],
                                "password"=> $encriptar,
                                "perfil"=> $_POST["editarPerfil"]);
+                
 
                 $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
 
