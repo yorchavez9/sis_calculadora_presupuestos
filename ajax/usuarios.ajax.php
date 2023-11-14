@@ -52,6 +52,31 @@ class AjaxUsuarios{
 
 
 
+
+
+}
+
+/* ========================================
+EDITAR USAURIO
+======================================== */
+
+if(isset($_POST["idusuario"])){
+
+    $editar = new AjaxUsuarios();
+    $editar->idUsuario = $_POST["idUsuario"];
+    $editar->ajaxEditarUsuario();
+
+}
+
+/* ========================================
+ACTIVAR USAURIO
+======================================== */
+
+if(isset($_POST["activarUsuario"])){
+    $activarUsuario = new AjaxUsuarios();
+    $activarUsuario->activarUsuario = $_POST["activarUsuario"];
+    $activarUsuario->activarId = $_POST["activarId"];
+    $activarUsuario->ajaxActivarUsuario();
 }
 
 ?>

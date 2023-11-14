@@ -109,7 +109,7 @@ if ($_SESSION["perfil"] == "Especial") {
           <!-- Entrada de usuario -->
           <div class="form-group">
             <label for="message-text">Usuario:</label>
-            <input type="text" class="form-control" name="nuevoUsuario" placeholder="Usuario">
+            <input type="text" class="form-control" name="nuevoUsuario" id="nuevoUsuario" placeholder="Usuario">
           </div>
 
           <!-- Entrada de contraseña -->
@@ -120,7 +120,7 @@ if ($_SESSION["perfil"] == "Especial") {
 
           <!-- Entrada de perfil -->
           <div class="form-group">
-            <label for="message-text">Contraseña:</label>
+            <label for="message-text">Perfil:</label>
             <select class="form-control" name="nuevoPerfil" id="">
               <option value="">Selecionar perfil</option>
               <option value="Administrador">Administrador</option>
@@ -168,26 +168,27 @@ if ($_SESSION["perfil"] == "Especial") {
           <!-- Entrada de nombre -->
           <div class="form-group">
             <label for="recipient-name">Nombre:</label>
-            <input type="text" class="form-control" name="nuevoNombre" placeholder="Nombre">
+            <input type="text" class="form-control" name="editarNombre" id="editarNombre">
           </div>
 
           <!-- Entrada de usuario -->
           <div class="form-group">
             <label for="message-text">Usuario:</label>
-            <input type="text" class="form-control" name="nuevoUsuario" placeholder="Usuario">
+            <input type="text" class="form-control" name="editarUsuario" id="editarUsuario">
           </div>
 
           <!-- Entrada de contraseña -->
           <div class="form-group">
             <label for="message-text">Contraseña:</label>
-            <input type="password" class="form-control" name="nuevoPassword" placeholder="Usuario">
+            <input type="password" class="form-control" name="editarPassword" id="editarPassword">
+            <input type="text" id="passwordActual" name="passwordActual">
           </div>
 
           <!-- Entrada de perfil -->
           <div class="form-group">
-            <label for="message-text">Contraseña:</label>
-            <select class="form-control" name="nuevoPerfil" id="">
-              <option value="">Selecionar perfil</option>
+            <label for="message-text">Perfil:</label>
+            <select class="form-control" name="editarPerfil">
+              <option value="" id="editarPerfil"></option>
               <option value="Administrador">Administrador</option>
               <option value="Especial">Especial</option>
             </select>
@@ -196,7 +197,7 @@ if ($_SESSION["perfil"] == "Especial") {
           <!-- Botones de guardar y cerrar -->
           <div class="row col-md-auto">
             <button type="button" class="btn btn-light mr-5" data-dismiss="modal" style="margin-left: auto;">Cerrar</button>
-            <button type="submit" class="btn btn-primary" style="margin-right: auto;">Guardar</button>
+            <button type="submit" class="btn btn-primary" style="margin-right: auto;">Modificar usuario</button>
           </div>
 
           <!-- Guardamos los datos del usuario -->

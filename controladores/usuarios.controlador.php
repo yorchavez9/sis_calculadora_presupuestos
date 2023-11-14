@@ -107,7 +107,7 @@ class ControladorUsuarios{
                         if($respuesta == "ok"){
                             echo '<script>
                                 Swal.fire({
-                                    title: "¡El usuario ha sido gardado correctamente!",
+                                    title: "¡El usuario ha sido guardado correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
                                 }).then(function(result){
@@ -152,6 +152,90 @@ class ControladorUsuarios{
 
     }
 
+
+    /* ===========================================
+    EDITAR DE USUARIOS
+    =========================================== */
+
+    static public function ctrEditarUsuario(){
+
+        if(isset($_POST["editarUsuario"])){
+            if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/', $_POST["editarNombre"])){
+
+                $tabla = "usuario";
+
+                if($_POST["editarUsuario"] != ""){
+                    if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])){
+                        $encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                    }else{
+
+                        echo '<script>
+                                Swal.fire({
+                                    type: "error",
+                                    title: "¡La contraseña no puede ir vacio o llevar caracteres especiales!",
+                                    showConfirmButton: true,
+                                    confirmButtonText: "Cerrar",
+                                }).then(function(result){
+                                    if(result.value){
+                                        window.location = "usuarios"
+                                    }
+                                })
+                                </script>';
+
+                        return;
+
+                    }
+                }else{
+
+                    $encriptar = $_POST["passwordActual"];
+
+                }
+
+                $datos = array("nombre"=> $_POST["editarNombre"],
+                               "usuario"=> $_POST["editarUsuario"],
+                               "password"=> $encriptar,
+                               "perfil"=> $_POST["editarPerfil"]);
+
+                $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
+
+                if($respuesta == "ok"){
+
+                    echo '<script>
+                            Swal.fire({
+                                type: "success",
+                                title: "¡El usuario ha sido editado correctamente!",
+                                showConfirmButton: true,
+                                confirmButtonText: "Cerrar"
+                            }).then(function(result){
+                                if(result.value){
+                                    window.location = "usuarios";
+                                }
+                            });    
+                        </script>';
+
+                }
+
+            }else{
+
+
+                echo '<script>
+                        Swal.fire({
+                            type: "error",
+                            title: "¡El usuario no puede ir vacio o llevar caracteres especiales!",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar"
+                        }).then(function(result){
+                            if(result.value){
+                                window.location = "usuarios";
+                            }
+                        });    
+                    </script>';
+
+            }
+        }
+
+    }
+
     /* ===========================================
     BORRAR DE USUARIOS
     =========================================== */
@@ -183,15 +267,4 @@ class ControladorUsuarios{
 
     }
 
-    /* ===========================================
-    REGISTRO DE USUARIOS
-    =========================================== */
-
-    /* ===========================================
-    REGISTRO DE USUARIOS
-    =========================================== */
-
-    /* ===========================================
-    REGISTRO DE USUARIOS
-    =========================================== */
 }

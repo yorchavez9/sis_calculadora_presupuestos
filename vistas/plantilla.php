@@ -87,7 +87,7 @@ session_start();
 
     <!-- script de validaciones -->
 
-    <script src="vistas/js/usuarios.js"></script>
+    <script src="vistas/js/js.usuarios.js"></script>
 
 
     <!-- container-scroller -->
