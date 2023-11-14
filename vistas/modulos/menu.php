@@ -190,7 +190,7 @@
 
             <!-- Nuevo presupuesto -->
             <li class="nav-item">
-              <a class="nav-link" href="presupuetos">
+              <a class="nav-link" href="presupuestos">
                 <i class="mdi mdi-file-powerpoint mdi-24px text-primary"></i>
                 <span class="menu-title">Presupuesto</span>
               </a>

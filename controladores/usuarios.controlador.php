@@ -107,6 +107,7 @@ class ControladorUsuarios{
                         if($respuesta == "ok"){
                             echo '<script>
                                 Swal.fire({
+                                    icon: "success",
                                     title: "¡El usuario ha sido guardado correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
@@ -119,6 +120,7 @@ class ControladorUsuarios{
                         }else{
                             echo '<script>
                                 Swal.fire({
+                                    icon: "success",
                                     title: "¡El usuario ha sido gardado correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
@@ -160,7 +162,7 @@ class ControladorUsuarios{
     static public function ctrEditarUsuario(){
 
         if(isset($_POST["editarUsuario"])){
-            if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/', $_POST["editarNombre"])){
+            if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ._ ]+$/', $_POST["editarNombre"])){
 
                 $tabla = "usuario";
 
@@ -171,6 +173,7 @@ class ControladorUsuarios{
 
                         echo '<script>
                                 Swal.fire({
+                                    icon: "error",
                                     type: "error",
                                     title: "¡La contraseña no puede ir vacio o llevar caracteres especiales!",
                                     showConfirmButton: true,
@@ -203,6 +206,7 @@ class ControladorUsuarios{
 
                     echo '<script>
                             Swal.fire({
+                                icon: "success",
                                 type: "success",
                                 title: "¡El usuario ha sido editado correctamente!",
                                 showConfirmButton: true,
@@ -221,6 +225,7 @@ class ControladorUsuarios{
 
                 echo '<script>
                         Swal.fire({
+                            icon: "error",
                             type: "error",
                             title: "¡El usuario no puede ir vacio o llevar caracteres especiales!",
                             showConfirmButton: true,
@@ -252,6 +257,7 @@ class ControladorUsuarios{
             if($respuesta == "ok"){
                 echo '<script>
                         Swal.fire({
+                            icon: "success",
                             type: "success",
                             title: "El usuario ha sido borrado correctamente",
                             showConfirmButton: true,

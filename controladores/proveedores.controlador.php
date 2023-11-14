@@ -4,268 +4,160 @@ class ControladorProveedores{
 
 
     /* ===========================================
-    INGRESO DE USUARIO
+    REGISTRO DE PROVEEDOR
     =========================================== */
 
-    static public function ctrIngresoUsuario(){
+    static public function ctrCrearProveedor()
+    {
 
-		if(isset($_POST["ingUsuario"])){
+        if (isset($_POST["nuevoNombre"])) {
 
-			if($_POST["ingUsuario"]){
-				
-			   	$encriptar = crypt($_POST["ingPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["nuevoNombre"])) {
 
-				$tabla = "usuario";
+                $tabla = "proveedor";
 
-				$item = "usuario";
-				$valor = $_POST["ingUsuario"];
+                $datos = array(
+                    "nombre_proveedor" => $_POST["nuevoNombre"],
+                    "telefono_proveedor" => $_POST["nuevoTelefono"],
+                    "correo_proveedor" => $_POST["nuevoCorreo"],
+                    "direccion_proveedor" => $_POST["nuevoDireccion"]
+                );
 
-				$respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+                $respuesta = ModeloProveedores::mdlIngresarProveedor($tabla, $datos);
 
-				if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $encriptar){
-						
-					if($respuesta["estado"] == 1){
-
-						$_SESSION["iniciarSesion"] = "ok";
-						$_SESSION["id"] = $respuesta["id"];
-						$_SESSION["nombre"] = $respuesta["nombre"];
-						$_SESSION["usuario"] = $respuesta["usuario"];
-						$_SESSION["perfil"] = $respuesta["perfil"];
-
-						/*=============================================
-						REGISTRAR FECHA PARA SABER EL ÚLTIMO LOGIN
-						=============================================*/
-
-						date_default_timezone_set('America/Lima');
-
-						$fecha = date('Y-m-d');
-						$hora = date('H:i:s');
-
-						$fechaActual = $fecha.' '.$hora;
-
-						$item1 = "ultimo_login";
-						$valor1 = $fechaActual;
-
-						$item2 = "id";
-						$valor2 = $respuesta["id"];
-
-						$ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
-
-						if($ultimoLogin == "ok"){
-
-							echo '<script>
-
-								window.location = "inicio";
-
-							</script>';
-
-						}				
-						
-					}else{
-
-						echo '<br>
-							<div class="alert alert-danger">El usuario aún no está activado</div>';
-
-					}		
-
-				}else{
-
-					echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
-
-				}
-
-			}	
-
-		}
-
-	}
-
-    /* ===========================================
-    REGISTRO DE USUARIOS
-    =========================================== */
-
-    static public function ctrCrearUsuario(){
-
-        if(isset($_POST["nuevoUsuario"])){
-           
-            if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
-
-                $tabla = "usuario";
-                $encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-                $datos = array("nombre"=> $_POST["nuevoNombre"],
-                               "usuario"=> $_POST["nuevoUsuario"],
-                               "password"=> $encriptar,
-                               "perfil"=> $_POST["nuevoPerfil"]);
-                
-                $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-
-                $item = null;
-                    $valor = null;
-
-                    $contarUsuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
-                    if(count($contarUsuarios) > 0){
-                        if($respuesta == "ok"){
-                            echo '<script>
+                if ($respuesta == "ok") {
+                    echo '<script>
                                 Swal.fire({
-                                    title: "¡El usuario ha sido guardado correctamente!",
+                                    icon: "success",
+                                    title: "¡El proveedor ha sido guardado correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
                                 }).then(function(result){
                                     if(result.value){
-                                        window.location = "usuarios";
+                                        window.location = "proveedores";
                                     }
                                 });    
                             </script>';
-                        }else{
-                            echo '<script>
-                                Swal.fire({
-                                    title: "¡El usuario ha sido gardado correctamente!",
-                                    showConfirmButton: true,
-                                    confirmButtonText: "Cerrar"
-                                }).then(function(result){
-                                    if(result.value){
-                                        window.location = "login";
-                                    }
-                                });    
-                            </script>';
-                        }
-                    }
-                
+                }
+            } else {
+                echo '<script>
+                        Swal.fire({
+                            icon: "error",
+                            type: "error",
+                            title: "¡El nombre no puede ir vacio o llevar caracteres especiales!",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar"
+                        }).then(function(result){
+                            if(result.value){
+                                window.location = "proveedores";
+                            }
+                        });    
+                    </script>';
             }
-
-        }else{
-           /* echo "No existe la variable"; */
         }
-
     }
 
     /* ===========================================
-    MOSTRAR USUARIOS
+    MOSTRAR PROVEEDOR
     =========================================== */
 
-    static public function ctrMostrarUsuarios($item, $valor){
-        
-        $tabla = "usuario";
-        $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+    static public function ctrMostrarProveedor($item, $valor)
+    {
+
+        $tabla = "proveedor";
+        $respuesta = ModeloProveedores::mdlMostrarProveedores($tabla, $item, $valor);
 
         return $respuesta;
-
     }
 
-
     /* ===========================================
-    EDITAR DE USUARIOS
+    EDITAR DE PROVEEDOR
     =========================================== */
 
-    static public function ctrEditarUsuario(){
+    static public function ctrEditarProveedor()
+    {
 
-        if(isset($_POST["editarUsuario"])){
-            if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/', $_POST["editarNombre"])){
+        if (isset($_POST["editarNombre"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])) {
 
-                $tabla = "usuario";
+                $tabla = "proveedor";
 
-                if($_POST["editarPassword"] != ""){
-                    if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])){
-                        $encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-                    }else{
+                $datos = array(
+                    "id_proveedor" => $_POST["idProveedor"],
+                    "nombre_proveedor" => $_POST["editarNombre"],
+                    "telefono_proveedor" => $_POST["editarTelefono"],
+                    "correo_proveedor" => $_POST["editarCorreo"],
+                    "direccion_proveedor" => $_POST["editarDireccion"]
+                );
 
-                        echo '<script>
-                                Swal.fire({
-                                    type: "error",
-                                    title: "¡La contraseña no puede ir vacio o llevar caracteres especiales!",
-                                    showConfirmButton: true,
-                                    confirmButtonText: "Cerrar",
-                                }).then(function(result){
-                                    if(result.value){
-                                        window.location = "usuarios"
-                                    }
-                                })
-                                </script>';
 
-                        return;
+                $respuesta = ModeloProveedores::mdlEditarProveedor($tabla, $datos);
 
-                    }
-                }else{
-
-                    $encriptar = $_POST["passwordActual"];
-
-                }
-
-                $datos = array("nombre"=> $_POST["editarNombre"],
-                               "usuario"=> $_POST["editarUsuario"],
-                               "password"=> $encriptar,
-                               "perfil"=> $_POST["editarPerfil"]);
-                
-
-                $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
-
-                if($respuesta == "ok"){
+                if ($respuesta == "ok") {
 
                     echo '<script>
                             Swal.fire({
+                                icon: "success",
                                 type: "success",
                                 title: "¡El usuario ha sido editado correctamente!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
                             }).then(function(result){
                                 if(result.value){
-                                    window.location = "usuarios";
+                                    window.location = "proveedores";
                                 }
                             });    
                         </script>';
-
                 }
-
-            }else{
+            } else {
 
 
                 echo '<script>
                         Swal.fire({
+                            icon: "error",
                             type: "error",
-                            title: "¡El usuario no puede ir vacio o llevar caracteres especiales!",
+                            title: "¡El nombre del proveedor no puede ir vacio o llevar caracteres especiales!",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar"
                         }).then(function(result){
                             if(result.value){
-                                window.location = "usuarios";
+                                window.location = "proveedores";
                             }
                         });    
                     </script>';
-
             }
         }
-
     }
 
     /* ===========================================
-    BORRAR DE USUARIOS
+    BORRAR DE PROVEEDOR
     =========================================== */
 
-    static public function ctrBorrarUsuario(){
+    static public function ctrBorrarProveedor()
+    {
 
-        if(isset($_GET["idUsuario"])){
-            $tabla = "usuario";
-            $datos = $_GET["idUsuario"];
+        if (isset($_GET["idProveedor"])) {
+            $tabla = "proveedor";
+            $datos = $_GET["idProveedor"];
 
-            $respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
-            echo $respuesta;
-            if($respuesta == "ok"){
+            $respuesta = ModeloProveedores::mdlBorrarProveedor($tabla, $datos);
+         
+            if ($respuesta == "ok") {
                 echo '<script>
                         Swal.fire({
+                            icon: "success",
                             type: "success",
-                            title: "El usuario ha sido borrado correctamente",
+                            title: "El proveedor ha sido borrado correctamente",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false,
                         }).then(function(result){
                             if(result.value){
-                                window.location = "usuarios"
+                                window.location = "proveedores"
                             }
                         })
                         </script>';
             }
         }
-
     }
-
 }

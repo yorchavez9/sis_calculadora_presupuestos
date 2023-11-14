@@ -1,99 +1,36 @@
 <?php
 
-require_once "../controladores/usuarios.controlador.php";
-require_once "../modelos/usuarios.modelo.php";
+require_once "../controladores/proveedores.controlador.php";
+require_once "../modelos/proveedores.modelo.php";
 
-class AjaxUsuarios{
+class AjaxProveedor{
 
 	/*=============================================
-	EDITAR USUARIO
+	EDITAR PROVEEDOR
 	=============================================*/	
 
-	public $idUsuario;
+	public $idProveedor;
 
-	public function ajaxEditarUsuario(){
+	public function ajaxEditarProveedor(){
 
-		$item = "id";
-		$valor = $this->idUsuario;
+		$item = "id_proveedor";
+		$valor = $this->idProveedor;
 
-		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+        $respuesta = ControladorProveedores::ctrMostrarProveedor($item, $valor);
 
 		echo json_encode($respuesta);
 
 	}
 
-	/*=============================================
-	ACTIVAR USUARIO
-	=============================================*/	
-
-	public $activarUsuario;
-	public $activarId;
-
-
-	public function ajaxActivarUsuario(){
-
-		$tabla = "usuario";
-
-		$item1 = "estado";
-		$valor1 = $this->activarUsuario;
-
-		$item2 = "id";
-		$valor2 = $this->activarId;
-
-		$respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
-
-	}
-
-	/*=============================================
-	VALIDAR NO REPETIR USUARIO
-	=============================================*/	
-
-	public $validarUsuario;
-
-	public function ajaxValidarUsuario(){
-
-		$item = "usuario";
-		$valor = $this->validarUsuario;
-
-		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
-
-		echo json_encode($respuesta);
-
-	}
 }
 
 /*=============================================
 EDITAR USUARIO
 =============================================*/
-if(isset($_POST["idUsuario"])){
+if(isset($_POST["idProveedor"])){
 
-	$editar = new AjaxUsuarios();
-	$editar -> idUsuario = $_POST["idUsuario"];
-	$editar -> ajaxEditarUsuario();
-
-}
-
-/*=============================================
-ACTIVAR USUARIO
-=============================================*/	
-
-if(isset($_POST["activarUsuario"])){
-
-	$activarUsuario = new AjaxUsuarios();
-	$activarUsuario -> activarUsuario = $_POST["activarUsuario"];
-	$activarUsuario -> activarId = $_POST["activarId"];
-	$activarUsuario -> ajaxActivarUsuario();
-
-}
-
-/*=============================================
-VALIDAR NO REPETIR USUARIO
-=============================================*/
-
-if(isset( $_POST["validarUsuario"])){
-
-	$valUsuario = new AjaxUsuarios();
-	$valUsuario -> validarUsuario = $_POST["validarUsuario"];
-	$valUsuario -> ajaxValidarUsuario();
+	$editar = new AjaxProveedor();
+	$editar -> idProveedor = $_POST["idProveedor"];
+	$editar -> ajaxEditarProveedor();
 
 }

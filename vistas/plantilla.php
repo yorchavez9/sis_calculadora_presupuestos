@@ -62,7 +62,7 @@ session_start();
             if (
                 $_GET["ruta"] == "inicio" ||
                 $_GET["ruta"] == "usuarios" ||
-                $_GET["ruta"] == "presupuetos" ||
+                $_GET["ruta"] == "presupuestos" ||
                 $_GET["ruta"] == "proveedores" ||
                 $_GET["ruta"] == "materiales" ||
                 $_GET["ruta"] == "trabajadores" ||
@@ -89,7 +89,7 @@ session_start();
     <!-- script de validaciones -->
 
     <script src="vistas/js/js.usuarios.js"></script>
-    <script src="vistas/js/js.proveedor.js"></script>
+    <script src="vistas/js/proveedor.js"></script>
 
 
     <!-- container-scroller -->
