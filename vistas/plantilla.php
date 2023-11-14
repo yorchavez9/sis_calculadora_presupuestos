@@ -8,7 +8,7 @@ session_start();
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>P HOUSE E.I.R.L.</title>
@@ -122,8 +122,5 @@ session_start();
 
     <script src="vistas/estilos/loader/loader.js"></script>
 </body>
-
-
-<!-- Mirrored from demo.bootstrapdash.com/dashflat/template/demo/horizontal-default-light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Nov 2023 17:14:22 GMT -->
 
 </html>

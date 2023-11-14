@@ -80,9 +80,10 @@ create table material(
     id_proveedor int(11) not null,
     nombre_material varchar(200) not null,
     tipo_material varchar(150) not null,
-    cantidad_material int(11) not null,
-    precio_material float not null,
     marca_material varchar(150) not null,
+    cantidad_material int(11) not null,
+    precio_compra_material varchar(50) not null,
+    precio_venta_material varchar(50) not null,
     fecha_material timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     foreign key(id_proveedor) references proveedor(id_proveedor) on update cascade on delete cascade
 )engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
@@ -97,10 +98,10 @@ create table trabajador(
     telefono_trabajador varchar(12) not null,
     funcion_trabajador varchar(150) not null,
     tiempo_trab_trabajador int(11) not null,
-    sueldo_men_trabajador float not null,
-    sueldo_sem_trabajador float not null,
-    sueldo_dia_trabajador float not null,
-    sueldo_proyecto float not null,
+    sueldo_men_trabajador varchar(50) not null,
+    sueldo_sem_trabajador varchar(50) not null,
+    sueldo_dia_trabajador varchar(50) not null,
+    sueldo_proyecto varchar(50) not null,
     fecha_trabajador timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 )engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
@@ -111,7 +112,7 @@ create table pres_materiales(
     id_proyecto int(11) not null,
     id_material int(11) not null,
     cantidad_utilizada int(11) not null,
-    costo_total float not null,
+    costo_total varchar(50) not null,
     fecha_pres_materiales timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     foreign key(id_proyecto) references proyecto(id_proyecto) on update cascade on delete cascade,
     foreign key(id_material) references material(id_material) on update cascade on delete cascade
@@ -124,7 +125,7 @@ create table pres_trabajadores(
     id_proyecto int(11) not null,
     id_trabajador int(11) not null,
     tiempo_trabajo int(11) not null,
-    costo_total_trab float not null,
+    costo_total_trab varchar(50) not null,
     fecha_pres_traba timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     foreign key(id_proyecto) references proyecto(id_proyecto) on update cascade on delete cascade,
     foreign key(id_trabajador) references trabajador(id_trabajador) on update cascade on delete cascade
@@ -149,10 +150,10 @@ create table presupuesto(
     id_presu int(11) not null primary key auto_increment,
     id_pres_mat int(11) not null,
     id_pres_trab int(11) not null,
-    costo_total_trabajadores float not null,
-    costo_total_materiales float not null,
-    costo_licencia float not null,
-    costo_final float not null,
+    costo_total_trabajadores varchar(50) not null,
+    costo_total_materiales varchar(50) not null,
+    costo_licencia varchar(50) not null,
+    costo_final varchar(50) not null,
     fecha_presupuesto timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     foreign key(id_pres_mat) references pres_materiales(id_pres_mat) on update cascade on delete cascade,
     foreign key(id_pres_trab) references pres_trabajadores(id_pres_trab) on update cascade on delete cascade
