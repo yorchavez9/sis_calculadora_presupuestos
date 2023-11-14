@@ -40,13 +40,13 @@ create table empresa(
     fecha_empresa timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 )engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
-/* ===== CREANDO TABLA DE PROVEEDOR ===== */
 
 create table proveedor(
     id_proveedor int(11) not null primary key auto_increment,
     nombre_proveedor varchar(150) not null,
-    direccion_proveedor varchar(200) not null,
     telefono_proveedor varchar(12) not null,
+    correo_proveedor varchar(12) not null,
+    direccion_proveedor varchar(200) not null,
     fecha_proveedor timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 )engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 
