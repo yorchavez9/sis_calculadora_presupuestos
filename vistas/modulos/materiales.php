@@ -26,10 +26,12 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                     <tr>
                       <th>#</th>
                       <th>Proveedor</th>
-                      <th>Material</th>
-                      <th>Cantidad</th>
-                      <th>Precio</th>
+                      <th>Nombre</th>
+                      <th>Tipo</th>
                       <th>Marca</th>
+                      <th>Cantidad</th>
+                      <th>Precio compra</th>
+                      <th>Precio venta</th>
                       <th>Fecha</th>
                       <th>Acciones</th>
                     </tr>
@@ -39,22 +41,24 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                     $item = null;
                     $valor = null;
 
-                    $proveedor = ControladorProveedores::ctrMostrarProveedor($item, $valor);
+                    $materiales = ControladorMateriales::ctrMostrarMateriales($item, $valor);
 
-                    foreach ($proveedor as $key => $value) {
+                    foreach ($materiales as $key => $value) {
 
                       echo '<tr>
                               <td>' . ($key + 1) . '</td>
                               <td>' . $value["nombre_proveedor"] . '</td>
-                              <td>' . $value["telefono_proveedor"] . '</td>
-                              <td>' . $value["correo_proveedor"] . '</td>
-                              <td>' . $value["correo_proveedor"] . '</td>
-                              <td>' . $value["direccion_proveedor"] . '</td>
-                              <td>' . $value["fecha_proveedor"] . '</td>
+                              <td>' . $value["nombre_material"] . '</td>
+                              <td>' . $value["tipo_material"] . '</td>
+                              <td>' . $value["marca_material"] . '</td>
+                              <td>' . $value["cantidad_material"] . '</td>
+                              <td>' . $value["precio_compra_material"] . '</td>
+                              <td>' . $value["precio_venta_material"] . '</td>
+                              <td>' . $value["fecha_material"] . '</td>
                               <td>
                                 <div class="btn-group text-center">
-                                  <button class="btn mr-1 btn-warning btnEditarProveedor" idProveedor="' . $value["id_proveedor"] . '" data-toggle="modal" data-target="#mdlEditarProveedor" data-whatever="@getbootstrap"><i class="mdi mdi-pencil"></i></button>
-                                  <button class="btn btn-danger btnEliminarProveedor" idProveedor="' . $value["id_proveedor"] . '"><i class="mdi mdi-delete"></i></button>
+                                  <button class="btn mr-1 btn-warning btnEditarProveedor" idProveedor="' . $value["id_material"] . '" data-toggle="modal" data-target="#mdlEditarProveedor" data-whatever="@getbootstrap"><i class="mdi mdi-pencil"></i></button>
+                                  <button class="btn btn-danger btnEliminarProveedor" idProveedor="' . $value["id_material"] . '"><i class="mdi mdi-delete"></i></button>
                                 </div>
                               </td>
                               </tr>';
@@ -101,19 +105,19 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <div class="form-group">
             <label for="recipient-name">Nombre proveedor:</label>
             <select name="nuevoNombreProveedor" id="nuevoNombreProveedor" class="form-control">
-                <option value="">Seleccione proveedor</option>
-                <?php
-                $item = null;
-                $valor = null;
+              <option value="">Seleccione proveedor</option>
+              <?php
+              $item = null;
+              $valor = null;
 
-                $proveedor = ControladorProveedores::ctrMostrarProveedor($item, $valor);
-                foreach ($proveedor as $key => $value) {
-                    echo '<option value="'.$value["id_proveedor"].'">'.$value["nombre_proveedor"].'</option>';
-                }
-                ?>
+              $proveedor = ControladorProveedores::ctrMostrarProveedor($item, $valor);
+              foreach ($proveedor as $key => $value) {
+                echo '<option value="' . $value["id_proveedor"] . '">' . $value["nombre_proveedor"] . '</option>';
+              }
+              ?>
             </select>
           </div>
-          
+
           <!-- Entrada de nombre material-->
           <div class="form-group">
             <label for="recipient-name">Nombre del material:</label>
@@ -126,22 +130,28 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
             <input type="text" class="form-control" name="nuevoTipoM" placeholder="Ingrese el tipo" required>
           </div>
 
-          <!-- Entrada de cantidad de material -->
-          <div class="form-group">
-            <label for="message-text">Cantidad de material:</label>
-            <input type="text" class="form-control" name="nuevoCantidadM" placeholder="Ingrese la cantidad" required>
-          </div>
-
-          <!-- Entrada de precio de material -->
-          <div class="form-group">
-            <label for="message-text">Precio de material:</label>
-            <input type="text" class="form-control" name="nuevoPrecioM" placeholder="Ingrese le precio" required>
-          </div>
-
           <!-- Entrada de marca de material -->
           <div class="form-group">
             <label for="message-text">Marca de material:</label>
             <input type="text" class="form-control" name="nuevoMarcaM" placeholder="Ingresa la marca" required>
+          </div>
+
+          <!-- Entrada de cantidad de material -->
+          <div class="form-group">
+            <label for="message-text">Cantidad de material:</label>
+            <input type="number" class="form-control" name="nuevoCantidadM" placeholder="Ingrese la cantidad" required>
+          </div>
+
+          <!-- Entrada de precio de compra -->
+          <div class="form-group">
+            <label for="message-text">Precio compra material:</label>
+            <input type="number" class="form-control" name="nuevoPrecioCompraM" placeholder="Ingrese le precio" required>
+          </div>
+
+          <!-- Entrada de precio de venta -->
+          <div class="form-group">
+            <label for="message-text">Precio venta material:</label>
+            <input type="number" class="form-control" name="nuevoPrecioVentaM" placeholder="Ingrese le precio" required>
           </div>
 
           <!-- Botones de guardar y cerrar -->
@@ -153,8 +163,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Guardamos los datos del material -->
           <?php
 
-          /* $crearProveedor = new ControladorProveedores();
-          $crearProveedor->ctrCrearProveedor(); */
+          $crearMaterial = new ControladorMateriales();
+          $crearMaterial->ctrCrearMateriales();
 
           ?>
 
@@ -185,7 +195,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <div class="form-group">
             <input type="hidden" class="form-control" name="idProveedor" id="idProveedor" value="" required>
           </div>
-          
+
           <!-- Entrada de nombre -->
           <div class="form-group">
             <label for="recipient-name">Nombre:</label>
@@ -222,7 +232,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           /* $editarProveedor = new ControladorProveedores();
           $editarProveedor->ctrEditarProveedor(); */
 
-        
+
           ?>
 
         </form>
@@ -236,7 +246,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
     =========================================== -->
 
 <?php
-    
+
 /* $borrarProveedor = new ControladorProveedores ();
 $borrarProveedor->ctrBorrarProveedor();
  */

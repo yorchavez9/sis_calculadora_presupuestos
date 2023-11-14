@@ -20,9 +20,10 @@ class ControladorMateriales{
                     "id_proveedor" => $_POST["nuevoNombreProveedor"],
                     "nombre_material" => $_POST["nuevoNombreM"],
                     "tipo_material" => $_POST["nuevoTipoM"],
+                    "marca_material" => $_POST["nuevoMarcaM"],
                     "cantidad_material" => $_POST["nuevoCantidadM"],
-                    "precio_material" => $_POST["nuevoPrecioM"],
-                    "marca_material" => $_POST["nuevoMarcaM"]);
+                    "precio_compra_material" => $_POST["nuevoPrecioCompraM"],
+                    "precio_venta_material" => $_POST["nuevoPrecioVentaM"]);
 
                 $respuesta = ModeloMateriales::mdlIngresarMaterial($tabla, $datos);
 
@@ -65,8 +66,9 @@ class ControladorMateriales{
     static public function ctrMostrarMateriales($item, $valor)
     {
 
-        $tabla = "proveedor";
-        $respuesta = ModeloProveedores::mdlMostrarProveedores($tabla, $item, $valor);
+        $tablaP = "proveedor";
+        $tablaM = "material";
+        $respuesta = ModeloMateriales::mdlMostrarMateriales($tablaP, $tablaM, $item, $valor);
 
         return $respuesta;
     }
