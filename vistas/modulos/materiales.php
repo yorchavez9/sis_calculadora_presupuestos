@@ -30,8 +30,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                       <th>Tipo</th>
                       <th>Marca</th>
                       <th>Cantidad</th>
-                      <th>Precio compra</th>
-                      <th>Precio venta</th>
+                      <th>Precio U. compra</th>
+                      <th>Precio U. venta</th>
                       <th>Fecha</th>
                       <th>Acciones</th>
                     </tr>
@@ -57,8 +57,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                               <td>' . $value["fecha_material"] . '</td>
                               <td>
                                 <div class="btn-group text-center">
-                                  <button class="btn mr-1 btn-warning btnEditarProveedor" idProveedor="' . $value["id_material"] . '" data-toggle="modal" data-target="#mdlEditarProveedor" data-whatever="@getbootstrap"><i class="mdi mdi-pencil"></i></button>
-                                  <button class="btn btn-danger btnEliminarProveedor" idProveedor="' . $value["id_material"] . '"><i class="mdi mdi-delete"></i></button>
+                                  <button class="btn mr-1 btn-warning btnEditarMaterial" idMaterial="' . $value["id_material"] . '" data-toggle="modal" data-target="#mdlEditarMaterial" data-whatever="@getbootstrap"><i class="mdi mdi-pencil"></i></button>
+                                  <button class="btn btn-danger btnEliminarMaterial" idMaterial="' . $value["id_material"] . '"><i class="mdi mdi-delete"></i></button>
                                 </div>
                               </td>
                               </tr>';
@@ -179,7 +179,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
     MODAL EDITAR MATERIAL
     =========================================== -->
 
-<div class="modal fade" id="mdlEditarProveedor" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlEditarMaterial" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -193,31 +193,61 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
           <!-- Entrada de ID escondido -->
           <div class="form-group">
-            <input type="hidden" class="form-control" name="idProveedor" id="idProveedor" value="" required>
+            <input type="hidden" class="form-control" name="idMaterial" id="idMaterial" value="" required>
           </div>
 
-          <!-- Entrada de nombre -->
+
+          <!-- Entrada de nombre del proveedor -->
           <div class="form-group">
-            <label for="recipient-name">Nombre:</label>
-            <input type="text" class="form-control" name="editarNombre" id="editarNombre" value="" required>
+            <label for="recipient-name">Nombre proveedor:</label>
+            <select name="editarProveedor" class="form-control">
+              <option id="editarProveedor"></option>
+              <?php
+              $item = null;
+              $valor = null;
+
+              $proveedor = ControladorProveedores::ctrMostrarProveedor($item, $valor);
+              foreach ($proveedor as $key => $value) {
+                echo '<option value="' . $value["id_proveedor"] . '">' . $value["nombre_proveedor"] . '</option>';
+              }
+              ?>
+            </select>
           </div>
 
-          <!-- Entrada de telefono -->
+          <!-- Entrada de nombre del material -->
           <div class="form-group">
-            <label for="message-text">Teléfono:</label>
-            <input type="text" class="form-control" name="editarTelefono" id="editarTelefono" value="" required>
+            <label for="recipient-name">Nombre del material:</label>
+            <input type="text" class="form-control" name="editarNombreM" id="editarNombreM" value="" required>
           </div>
 
-          <!-- Entrada de correo -->
+          <!-- Entrada de tipo de material -->
           <div class="form-group">
-            <label for="message-text">Correo:</label>
-            <input type="text" class="form-control" name="editarCorreo" id="editarCorreo" value="" required>
+            <label for="message-text">Tipo de material:</label>
+            <input type="text" class="form-control" name="editarTipoM" id="editarTipoM" value="" required>
           </div>
 
-          <!-- Entrada de direccion -->
+          <!-- Entrada de marca de material -->
           <div class="form-group">
-            <label for="message-text">Dirección:</label>
-            <input type="text" class="form-control" name="editarDireccion" id="editarDireccion" value="" required>
+            <label for="message-text">Marca de material:</label>
+            <input type="text" class="form-control" name="editarMarcaM" id="editarMarcaM" value="" required>
+          </div>
+
+          <!-- Entrada de Cantidad de material -->
+          <div class="form-group">
+            <label for="message-text">Cantidad de material:</label>
+            <input type="number" class="form-control" name="editarCantidadM" id="editarCantidadM" value="" required>
+          </div>
+
+          <!-- Entrada de precio compra de material-->
+          <div class="form-group">
+            <label for="message-text">Precio compra del material:</label>
+            <input type="number" class="form-control" name="editarCompraM" id="editarCompraM" value="" required>
+          </div>
+
+          <!-- Entrada de precio venta de material -->
+          <div class="form-group">
+            <label for="message-text">Precio venta del material:</label>
+            <input type="number" class="form-control" name="editarVentaM" id="editarVentaM" value="" required>
           </div>
 
           <!-- Botones de guardar y cerrar -->
@@ -229,9 +259,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Guardamos los datos del usuario -->
           <?php
 
-          /* $editarProveedor = new ControladorProveedores();
-          $editarProveedor->ctrEditarProveedor(); */
-
+          $editarMaterial = new ControladorMateriales();
+          $editarMaterial->ctrEditarMateriales();
 
           ?>
 
@@ -247,7 +276,6 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
 <?php
 
-/* $borrarProveedor = new ControladorProveedores ();
-$borrarProveedor->ctrBorrarProveedor();
- */
+$borrarMaterial = new ControladorMateriales();
+$borrarMaterial->ctrBorrarMateriales();
 ?>

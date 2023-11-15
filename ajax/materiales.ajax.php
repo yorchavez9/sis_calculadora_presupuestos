@@ -1,22 +1,22 @@
 <?php
 
-require_once "../controladores/proveedores.controlador.php";
-require_once "../modelos/proveedores.modelo.php";
+require_once "../controladores/materiales.controladore.php";
+require_once "../modelos/materiales.modelo.php";
 
-class AjaxProveedor{
+class AjaxMaterial{
 
 	/*=============================================
-	EDITAR PROVEEDOR
+	EDITAR MATERIAL
 	=============================================*/	
 
-	public $idProveedor;
+	public $idMaterial;
 
-	public function ajaxEditarProveedor(){
+	public function ajaxEditarMaterial(){
 
-		$item = "id_proveedor";
-		$valor = $this->idProveedor;
+		$item = "id_material";
+		$valor = $this->idMaterial;
 
-        $respuesta = ControladorProveedores::ctrMostrarProveedor($item, $valor);
+		$respuesta = ControladorMateriales::ctrMostrarMateriales($item, $valor);
 
 		echo json_encode($respuesta);
 
@@ -25,12 +25,12 @@ class AjaxProveedor{
 }
 
 /*=============================================
-EDITAR USUARIO
+EDITAR MATERIAL
 =============================================*/
-if(isset($_POST["idProveedor"])){
+if(isset($_POST["idMaterial"])){
 
-	$editar = new AjaxProveedor();
-	$editar -> idProveedor = $_POST["idProveedor"];
-	$editar -> ajaxEditarProveedor();
+	$editar = new AjaxMaterial();
+	$editar -> idMaterial = $_POST["idMaterial"];
+	$editar -> ajaxEditarMaterial();
 
 }

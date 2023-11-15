@@ -80,21 +80,24 @@ class ControladorMateriales{
     static public function ctrEditarMateriales()
     {
 
-        if (isset($_POST["editarNombre"])) {
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])) {
+        if (isset($_POST["editarNombreM"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombreM"])) {
 
-                $tabla = "proveedor";
+                $tabla = "material";
 
                 $datos = array(
-                    "id_proveedor" => $_POST["idProveedor"],
-                    "nombre_proveedor" => $_POST["editarNombre"],
-                    "telefono_proveedor" => $_POST["editarTelefono"],
-                    "correo_proveedor" => $_POST["editarCorreo"],
-                    "direccion_proveedor" => $_POST["editarDireccion"]
+                    "id_material" => $_POST["idMaterial"],
+                    "id_proveedor" => $_POST["editarProveedor"],
+                    "nombre_material" => $_POST["editarNombreM"],
+                    "tipo_material" => $_POST["editarTipoM"],
+                    "marca_material" => $_POST["editarMarcaM"],
+                    "cantidad_material" => $_POST["editarCantidadM"],
+                    "precio_compra_material" => $_POST["editarCompraM"],
+                    "precio_venta_material" => $_POST["editarVentaM"]
                 );
 
 
-                $respuesta = ModeloProveedores::mdlEditarProveedor($tabla, $datos);
+                $respuesta = ModeloMateriales::mdlEditarmaterial($tabla, $datos);
 
                 if ($respuesta == "ok") {
 
@@ -102,12 +105,12 @@ class ControladorMateriales{
                             Swal.fire({
                                 icon: "success",
                                 type: "success",
-                                title: "¡El usuario ha sido editado correctamente!",
+                                title: "¡El material ha sido editado correctamente!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
                             }).then(function(result){
                                 if(result.value){
-                                    window.location = "proveedores";
+                                    window.location = "materiales";
                                 }
                             });    
                         </script>';
@@ -119,12 +122,12 @@ class ControladorMateriales{
                         Swal.fire({
                             icon: "error",
                             type: "error",
-                            title: "¡El nombre del proveedor no puede ir vacio o llevar caracteres especiales!",
+                            title: "¡El nombre del material no puede ir vacio o llevar caracteres especiales!",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar"
                         }).then(function(result){
                             if(result.value){
-                                window.location = "proveedores";
+                                window.location = "material";
                             }
                         });    
                     </script>';
@@ -139,24 +142,24 @@ class ControladorMateriales{
     static public function ctrBorrarMateriales()
     {
 
-        if (isset($_GET["idProveedor"])) {
-            $tabla = "proveedor";
-            $datos = $_GET["idProveedor"];
+        if (isset($_GET["idMaterial"])) {
+            $tabla = "material";
+            $datos = $_GET["idMaterial"];
 
-            $respuesta = ModeloProveedores::mdlBorrarProveedor($tabla, $datos);
+            $respuesta = ModeloMateriales::mdlBorrarMaterial($tabla, $datos);
          
             if ($respuesta == "ok") {
                 echo '<script>
                         Swal.fire({
                             icon: "success",
                             type: "success",
-                            title: "El proveedor ha sido borrado correctamente",
+                            title: "El material ha sido borrado correctamente",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false,
                         }).then(function(result){
                             if(result.value){
-                                window.location = "proveedores"
+                                window.location = "materiales"
                             }
                         })
                         </script>';
