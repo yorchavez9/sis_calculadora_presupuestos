@@ -91,6 +91,7 @@ session_start();
     <script src="vistas/js/js.usuarios.js"></script>
     <script src="vistas/js/proveedor.js"></script>
     <script src="vistas/js/script.materiales.js"></script>
+    <script src="vistas/js/js.trabajadores.js"></script>
 
 
     <!-- container-scroller -->

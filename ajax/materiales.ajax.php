@@ -1,6 +1,6 @@
 <?php
 
-require_once "../controladores/materiales.controladore.php";
+require_once "../controladores/materiales.controlador.php";
 require_once "../modelos/materiales.modelo.php";
 
 class AjaxMaterial{
