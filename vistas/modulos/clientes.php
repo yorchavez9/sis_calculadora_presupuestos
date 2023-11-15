@@ -21,14 +21,14 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <div class="row">
             <div class="col-12">
               <div class="table-responsive">
-                <table id="order-listing" class="table tablas_proveedor">
+                <table id="order-listing" class="table tabla_cliente">
                   <thead>
                     <tr>
                       <th>#</th>
                       <th>Nombre</th>
                       <th>Teléfono</th>
                       <th>Correo</th>
-                      <th>Dirección</th>
+                      <th>contacto emergencia</th>
                       <th>Fecha</th>
                       <th>Acciones</th>
                     </tr>
@@ -38,21 +38,21 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                     $item = null;
                     $valor = null;
 
-                    $proveedor = ControladorProveedores::ctrMostrarProveedor($item, $valor);
+                    $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
 
-                    foreach ($proveedor as $key => $value) {
+                    foreach ($clientes as $key => $value) {
 
                       echo '<tr>
                               <td>' . ($key + 1) . '</td>
-                              <td>' . $value["nombre_proveedor"] . '</td>
-                              <td>' . $value["telefono_proveedor"] . '</td>
-                              <td>' . $value["correo_proveedor"] . '</td>
-                              <td>' . $value["direccion_proveedor"] . '</td>
-                              <td>' . $value["fecha_proveedor"] . '</td>
+                              <td>' . $value["nombre_cliente"] . '</td>
+                              <td>' . $value["telefono_cliente"] . '</td>
+                              <td>' . $value["correo_cliente"] . '</td>
+                              <td>' . $value["contacto_em_cliente"] . '</td>
+                              <td>' . $value["fecha_cliente"] . '</td>
                               <td>
                                 <div class="btn-group text-center">
-                                  <button class="btn mr-1 btn-warning btnEditarProveedor" idProveedor="' . $value["id_proveedor"] . '" data-toggle="modal" data-target="#mdlEditarProveedor" data-whatever="@getbootstrap"><i class="mdi mdi-pencil"></i></button>
-                                  <button class="btn btn-danger btnEliminarProveedor" idProveedor="' . $value["id_proveedor"] . '"><i class="mdi mdi-delete"></i></button>
+                                  <button class="btn mr-1 btn-warning btnEditarCliente" idCliente="' . $value["id_cliente"] . '" data-toggle="modal" data-target="#mdlEditarCliente" data-whatever="@getbootstrap"><i class="mdi mdi-pencil"></i></button>
+                                  <button class="btn btn-danger btnEliminarCliente" idCliente="' . $value["id_cliente"] . '"><i class="mdi mdi-delete"></i></button>
                                 </div>
                               </td>
                               </tr>';
@@ -126,8 +126,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Guardamos los datos del cliente -->
           <?php
 
-          $crearProveedor = new ControladorProveedores();
-          $crearProveedor->ctrCrearProveedor();
+          $crearCliente = new ControladorClientes();
+          $crearCliente->ctrCrearCliente();
 
           ?>
 
@@ -142,11 +142,11 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
     MODAL EDITAR CLIENTE
     =========================================== -->
 
-<div class="modal fade" id="mdlEditarProveedor" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlEditarCliente" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Editar usuario</b></h4>
+        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Editar cliente</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -156,31 +156,31 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
           <!-- Entrada de ID escondido -->
           <div class="form-group">
-            <input type="hidden" class="form-control" name="idProveedor" id="idProveedor" value="" required>
+            <input type="hidden" class="form-control" name="idCliente" id="idCliente" value="" required>
           </div>
           
           <!-- Entrada de nombre -->
           <div class="form-group">
             <label for="recipient-name">Nombre:</label>
-            <input type="text" class="form-control" name="editarNombre" id="editarNombre" value="" required>
+            <input type="text" class="form-control" name="editarNombreC" id="editarNombreC" value="" required>
           </div>
 
           <!-- Entrada de telefono -->
           <div class="form-group">
             <label for="message-text">Teléfono:</label>
-            <input type="text" class="form-control" name="editarTelefono" id="editarTelefono" value="" required>
+            <input type="text" class="form-control" name="editarTelefonoC" id="editarTelefonoC" value="" required>
           </div>
 
           <!-- Entrada de correo -->
           <div class="form-group">
             <label for="message-text">Correo:</label>
-            <input type="text" class="form-control" name="editarCorreo" id="editarCorreo" value="" required>
+            <input type="text" class="form-control" name="editarCorreoC" id="editarCorreoC" value="" required>
           </div>
 
-          <!-- Entrada de direccion -->
+          <!-- Entrada de contacto de emergencia -->
           <div class="form-group">
-            <label for="message-text">Dirección:</label>
-            <input type="text" class="form-control" name="editarDireccion" id="editarDireccion" value="" required>
+            <label for="message-text">Contacto de emergencia:</label>
+            <input type="text" class="form-control" name="editarContactoC" id="editarContactoC" value="" required>
           </div>
 
           <!-- Botones de guardar y cerrar -->
@@ -192,8 +192,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Guardamos los datos del usuario -->
           <?php
 
-          $editarProveedor = new ControladorProveedores();
-          $editarProveedor->ctrEditarProveedor();
+          $editarCliente = new ControladorClientes();
+          $editarCliente->ctrEditarCliente();
 
         
           ?>
@@ -210,7 +210,6 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
 <?php
     
-/* $borrarProveedor = new ControladorProveedores ();
-$borrarProveedor->ctrBorrarProveedor();
- */
+$borrarCliente = new ControladorClientes();
+$borrarCliente->ctrBorrarCliente();
 ?>

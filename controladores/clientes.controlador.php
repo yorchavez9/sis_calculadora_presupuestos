@@ -1,40 +1,40 @@
 <?php
 
-class ControladorProveedores{
+class ControladorClientes{
 
 
     /* ===========================================
-    REGISTRO DE PROVEEDOR
+    REGISTRO DE CLIENTE
     =========================================== */
 
-    static public function ctrCrearProveedor()
+    static public function ctrCrearCliente()
     {
 
-        if (isset($_POST["nuevoNombre"])) {
+        if (isset($_POST["nuevoNombreC"])) {
 
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["nuevoNombre"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["nuevoNombreC"])) {
 
-                $tabla = "proveedor";
+                $tabla = "cliente";
 
                 $datos = array(
-                    "nombre_proveedor" => $_POST["nuevoNombre"],
-                    "telefono_proveedor" => $_POST["nuevoTelefono"],
-                    "correo_proveedor" => $_POST["nuevoCorreo"],
-                    "direccion_proveedor" => $_POST["nuevoDireccion"]
+                    "nombre_cliente" => $_POST["nuevoNombreC"],
+                    "telefono_cliente" => $_POST["nuevoTelefonoC"],
+                    "correo_cliente" => $_POST["nuevoCorreoC"],
+                    "contacto_em_cliente" => $_POST["nuevoContactoC"]
                 );
 
-                $respuesta = ModeloProveedores::mdlIngresarProveedor($tabla, $datos);
+                $respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
 
                 if ($respuesta == "ok") {
                     echo '<script>
                                 Swal.fire({
                                     icon: "success",
-                                    title: "¡El proveedor ha sido guardado correctamente!",
+                                    title: "¡El cliente ha sido guardado correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
                                 }).then(function(result){
                                     if(result.value){
-                                        window.location = "proveedores";
+                                        window.location = "clientes";
                                     }
                                 });    
                             </script>';
@@ -49,7 +49,7 @@ class ControladorProveedores{
                             confirmButtonText: "Cerrar"
                         }).then(function(result){
                             if(result.value){
-                                window.location = "proveedores";
+                                window.location = "clientes";
                             }
                         });    
                     </script>';
@@ -58,40 +58,40 @@ class ControladorProveedores{
     }
 
     /* ===========================================
-    MOSTRAR PROVEEDOR
+    MOSTRAR CLIENTE
     =========================================== */
 
-    static public function ctrMostrarProveedor($item, $valor)
+    static public function ctrMostrarClientes($item, $valor)
     {
 
-        $tabla = "proveedor";
-        $respuesta = ModeloProveedores::mdlMostrarProveedores($tabla, $item, $valor);
+        $tabla = "cliente";
+        $respuesta = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
 
         return $respuesta;
     }
 
     /* ===========================================
-    EDITAR DE PROVEEDOR
+    EDITAR DE CLIENTE
     =========================================== */
 
-    static public function ctrEditarProveedor()
+    static public function ctrEditarCliente()
     {
 
-        if (isset($_POST["editarNombre"])) {
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])) {
+        if (isset($_POST["editarNombreC"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["editarNombreC"])) {
 
-                $tabla = "proveedor";
+                $tabla = "cliente";
 
                 $datos = array(
-                    "id_proveedor" => $_POST["idProveedor"],
-                    "nombre_proveedor" => $_POST["editarNombre"],
-                    "telefono_proveedor" => $_POST["editarTelefono"],
-                    "correo_proveedor" => $_POST["editarCorreo"],
-                    "direccion_proveedor" => $_POST["editarDireccion"]
+                    "id_cliente" => $_POST["idCliente"],
+                    "nombre_cliente" => $_POST["editarNombreC"],
+                    "telefono_cliente" => $_POST["editarTelefonoC"],
+                    "correo_cliente" => $_POST["editarCorreoC"],
+                    "contacto_em_cliente" => $_POST["editarContactoC"]
                 );
 
 
-                $respuesta = ModeloProveedores::mdlEditarProveedor($tabla, $datos);
+                $respuesta = ModeloClientes::mdlEditarCliente($tabla, $datos);
 
                 if ($respuesta == "ok") {
 
@@ -99,12 +99,12 @@ class ControladorProveedores{
                             Swal.fire({
                                 icon: "success",
                                 type: "success",
-                                title: "¡El usuario ha sido editado correctamente!",
+                                title: "¡El cliente ha sido editado correctamente!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
                             }).then(function(result){
                                 if(result.value){
-                                    window.location = "proveedores";
+                                    window.location = "clientes";
                                 }
                             });    
                         </script>';
@@ -116,12 +116,12 @@ class ControladorProveedores{
                         Swal.fire({
                             icon: "error",
                             type: "error",
-                            title: "¡El nombre del proveedor no puede ir vacio o llevar caracteres especiales!",
+                            title: "¡El nombre del cliente no puede ir vacio o llevar caracteres especiales!",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar"
                         }).then(function(result){
                             if(result.value){
-                                window.location = "proveedores";
+                                window.location = "clientes";
                             }
                         });    
                     </script>';
@@ -130,30 +130,30 @@ class ControladorProveedores{
     }
 
     /* ===========================================
-    BORRAR DE PROVEEDOR
+    BORRAR DE CLIENTE
     =========================================== */
 
-    static public function ctrBorrarProveedor()
+    static public function ctrBorrarCliente()
     {
 
-        if (isset($_GET["idProveedor"])) {
-            $tabla = "proveedor";
-            $datos = $_GET["idProveedor"];
+        if (isset($_GET["idCliente"])) {
+            $tabla = "cliente";
+            $datos = $_GET["idCliente"];
 
-            $respuesta = ModeloProveedores::mdlBorrarProveedor($tabla, $datos);
+            $respuesta = ModeloClientes::mdlBorrarCliente($tabla, $datos);
          
             if ($respuesta == "ok") {
                 echo '<script>
                         Swal.fire({
                             icon: "success",
                             type: "success",
-                            title: "El proveedor ha sido borrado correctamente",
+                            title: "El cliente ha sido borrado correctamente",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false,
                         }).then(function(result){
                             if(result.value){
-                                window.location = "proveedores"
+                                window.location = "clientes"
                             }
                         })
                         </script>';

@@ -1,22 +1,22 @@
 <?php
 
-require_once "../controladores/proveedores.controlador.php";
-require_once "../modelos/proveedores.modelo.php";
+require_once "../controladores/clientes.controlador.php";
+require_once "../modelos/clientes.modelo.php";
 
-class AjaxProveedor{
+class AjaxCliente{
 
 	/*=============================================
 	EDITAR PROVEEDOR
 	=============================================*/	
 
-	public $idProveedor;
+	public $idCliente;
 
-	public function ajaxEditarProveedor(){
+	public function ajaxEditarCliente(){
 
-		$item = "id_proveedor";
-		$valor = $this->idProveedor;
+		$item = "id_cliente";
+		$valor = $this->idCliente;
 
-        $respuesta = ControladorProveedores::ctrMostrarProveedor($item, $valor);
+        $respuesta = ControladorClientes::ctrMostrarClientes($item, $valor);
 
 		echo json_encode($respuesta);
 
@@ -27,10 +27,10 @@ class AjaxProveedor{
 /*=============================================
 EDITAR USUARIO
 =============================================*/
-if(isset($_POST["idProveedor"])){
+if(isset($_POST["idCliente"])){
 
-	$editar = new AjaxProveedor();
-	$editar -> idProveedor = $_POST["idProveedor"];
-	$editar -> ajaxEditarProveedor();
+	$editar = new AjaxCliente();
+	$editar -> idCliente = $_POST["idCliente"];
+	$editar -> ajaxEditarCliente();
 
 }

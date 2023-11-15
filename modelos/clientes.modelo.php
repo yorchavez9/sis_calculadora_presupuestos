@@ -2,13 +2,13 @@
 
 require_once "conexion.php";
 
-class ModeloProveedores{
+class ModeloClientes{
 
     /* ===========================================
-    MOSTRAR PROVEDORES
+    MOSTRAR CLIENTES
     =========================================== */
 
-	static public function mdlMostrarProveedores($tabla, $item, $valor){
+	static public function mdlMostrarClientes($tabla, $item, $valor){
 
 		if($item != null){
 
@@ -35,17 +35,17 @@ class ModeloProveedores{
 	}
 
     /* ===========================================
-    REGISTRAR PROVEEDOR
+    REGISTRAR CLIENTE
     =========================================== */
 
-	static public function mdlIngresarProveedor($tabla, $datos){
+	static public function mdlIngresarCliente($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre_proveedor, telefono_proveedor, correo_proveedor, direccion_proveedor) VALUES (:nombre_proveedor, :telefono_proveedor, :correo_proveedor, :direccion_proveedor)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre_cliente, telefono_cliente, correo_cliente, contacto_em_cliente) VALUES (:nombre_cliente, :telefono_cliente, :correo_cliente, :contacto_em_cliente)");
 
-		$stmt->bindParam(":nombre_proveedor", $datos["nombre_proveedor"], PDO::PARAM_STR);
-		$stmt->bindParam(":telefono_proveedor", $datos["telefono_proveedor"], PDO::PARAM_STR);
-		$stmt->bindParam(":correo_proveedor", $datos["correo_proveedor"], PDO::PARAM_STR);
-		$stmt->bindParam(":direccion_proveedor", $datos["direccion_proveedor"], PDO::PARAM_STR);
+		$stmt->bindParam(":nombre_cliente", $datos["nombre_cliente"], PDO::PARAM_STR);
+		$stmt->bindParam(":telefono_cliente", $datos["telefono_cliente"], PDO::PARAM_STR);
+		$stmt->bindParam(":correo_cliente", $datos["correo_cliente"], PDO::PARAM_STR);
+		$stmt->bindParam(":contacto_em_cliente", $datos["contacto_em_cliente"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -63,17 +63,21 @@ class ModeloProveedores{
 	}
 
     /* ===========================================
-    EDITAR PROVEEDOR
+    EDITAR CLIENTE
     =========================================== */
 
-    static public function mdlEditarProveedor($tabla, $datos){
+    static public function mdlEditarCliente($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre_proveedor = :nombre_proveedor, telefono_proveedor = :telefono_proveedor, correo_proveedor = :correo_proveedor, direccion_proveedor = :direccion_proveedor WHERE id_proveedor = :id_proveedor");
-        $stmt->bindParam(":nombre_proveedor", $datos["nombre_proveedor"], PDO::PARAM_STR);
-        $stmt->bindParam(":telefono_proveedor", $datos["telefono_proveedor"], PDO::PARAM_STR);
-        $stmt->bindParam(":correo_proveedor", $datos["correo_proveedor"], PDO::PARAM_STR);
-        $stmt->bindParam(":direccion_proveedor", $datos["direccion_proveedor"], PDO::PARAM_STR);
-        $stmt->bindParam(":id_proveedor", $datos["id_proveedor"], PDO::PARAM_INT);
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET 
+        nombre_cliente = :nombre_cliente, 
+        telefono_cliente = :telefono_cliente, 
+        correo_cliente = :correo_cliente, 
+        contacto_em_cliente = :contacto_em_cliente WHERE id_cliente = :id_cliente");
+        $stmt->bindParam(":nombre_cliente", $datos["nombre_cliente"], PDO::PARAM_STR);
+        $stmt->bindParam(":telefono_cliente", $datos["telefono_cliente"], PDO::PARAM_STR);
+        $stmt->bindParam(":correo_cliente", $datos["correo_cliente"], PDO::PARAM_STR);
+        $stmt->bindParam(":contacto_em_cliente", $datos["contacto_em_cliente"], PDO::PARAM_STR);
+        $stmt->bindParam(":id_cliente", $datos["id_cliente"], PDO::PARAM_INT);
 
         if($stmt->execute()){
             return "ok";
@@ -87,13 +91,13 @@ class ModeloProveedores{
 
 
     /* ===========================================
-    BORRAR PROVEEDOR
+    BORRAR CLIENTE
     =========================================== */
 
-    static public function mdlBorrarProveedor($tabla, $datos){
+    static public function mdlBorrarCliente($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_proveedor = :id_proveedor");
-        $stmt->bindParam(":id_proveedor",$datos, PDO::PARAM_INT);
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_cliente = :id_cliente");
+        $stmt->bindParam(":id_cliente",$datos, PDO::PARAM_INT);
 
         if($stmt->execute()){
             return "ok";

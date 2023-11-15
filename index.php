@@ -8,7 +8,7 @@ require_once "controladores/proveedores.controlador.php";
 require_once "controladores/materiales.controlador.php";
 require_once "controladores/trabajadores.controlador.php";
 require_once "controladores/equipos.maquinas.controlador.php";
-require_once "controladores/clientes.controlador.php+";
+require_once "controladores/clientes.controlador.php";
 
 /*===== MODELOS =====*/
 require_once "modelos/usuarios.modelo.php";

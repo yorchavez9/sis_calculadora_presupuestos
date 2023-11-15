@@ -4,17 +4,17 @@
 EDITAR CLIENTE
 ======================================= */
 
-$(".tablas_proveedor").on("click", ".btnEditarProveedor", function(){
+$(".tabla_cliente").on("click", ".btnEditarCliente", function(){
 
 
-	var idProveedor = $(this).attr("idProveedor");
+	var idCliente = $(this).attr("idCliente");
 	
 	var datos = new FormData();
-	datos.append("idProveedor", idProveedor);
+	datos.append("idCliente", idCliente);
 
 	$.ajax({
 
-		url:"ajax/proveedores.ajax.php",
+		url:"ajax/clientes.ajax.php",
 		method: "POST",
 		data: datos,
 		cache: false,
@@ -23,11 +23,11 @@ $(".tablas_proveedor").on("click", ".btnEditarProveedor", function(){
 		dataType: "json",
 		success: function(respuesta){
 			
-			$("#idProveedor").val(respuesta["id_proveedor"]);
-			$("#editarNombre").val(respuesta["nombre_proveedor"]);
-			$("#editarTelefono").val(respuesta["telefono_proveedor"]);
-			$("#editarCorreo").val(respuesta["correo_proveedor"]);
-			$("#editarDireccion").val(respuesta["direccion_proveedor"]);
+			$("#idCliente").val(respuesta["id_cliente"]);
+			$("#editarNombreC").val(respuesta["nombre_cliente"]);
+			$("#editarTelefonoC").val(respuesta["telefono_cliente"]);
+			$("#editarCorreoC").val(respuesta["correo_cliente"]);
+			$("#editarContactoC").val(respuesta["contacto_em_cliente"]);
 
 		}
 
@@ -40,22 +40,22 @@ $(".tablas_proveedor").on("click", ".btnEditarProveedor", function(){
 ELIMINAR CLIENTE
 ======================================= */
 
-$(".tablas_proveedor").on("click",".btnEliminarProveedor", function(){
+$(".tabla_cliente").on("click",".btnEliminarCliente", function(){
     
-    var idProveedor = $(this).attr("idProveedor");
+    var idCliente = $(this).attr("idCliente");
 
     Swal.fire({
-        title: '¿Está seguro de borrar el proveedor?',
+        title: '¿Está seguro de borrar el cliente?',
         text: '¡Si no lo está puede cancelar la acción!',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#232BEB',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, borrar usuario'
+        confirmButtonText: 'Si, borrar cliente'
     }).then(function(result){
         if(result.value){
-            window.location = "index.php?ruta=proveedores&idProveedor="+idProveedor;
+            window.location = "index.php?ruta=clientes&idCliente="+idCliente;
         }
     })
 
