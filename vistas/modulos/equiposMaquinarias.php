@@ -21,18 +21,16 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <div class="row">
             <div class="col-12">
               <div class="table-responsive">
-                <table id="order-listing" class="table tabla_material">
+                <table id="order-listing" class="table tabla_EM">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Proveedor</th>
                       <th>Nombre</th>
                       <th>Tipo</th>
-                      <th>Marca</th>
                       <th>Cantidad</th>
-                      <th>Precio U. compra</th>
-                      <th>Precio U. venta</th>
-                      <th>Fecha</th>
+                      <th>Modelo</th>
+                      <th>Útimo uso</th>
+                      <th>Encargado</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -41,24 +39,22 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                     $item = null;
                     $valor = null;
 
-                    $materiales = ControladorMateriales::ctrMostrarMateriales($item, $valor);
+                    $equiposMaquinarias = ControladorEquiposMaquinarias::ctrMostrarEquiposMaquinarias($item, $valor);
 
-                    foreach ($materiales as $key => $value) {
+                    foreach ($equiposMaquinarias as $key => $value) {
 
                       echo '<tr>
                               <td>' . ($key + 1) . '</td>
-                              <td>' . $value["nombre_proveedor"] . '</td>
-                              <td>' . $value["nombre_material"] . '</td>
-                              <td>' . $value["tipo_material"] . '</td>
-                              <td>' . $value["marca_material"] . '</td>
-                              <td>' . $value["cantidad_material"] . '</td>
-                              <td>' . $value["precio_compra_material"] . '</td>
-                              <td>' . $value["precio_venta_material"] . '</td>
-                              <td>' . $value["fecha_material"] . '</td>
+                              <td>' . $value["nombre_em"] . '</td>
+                              <td>' . $value["tipo_em"] . '</td>
+                              <td>' . $value["cantidad_em"] . '</td>
+                              <td>' . $value["modelo_em"] . '</td>
+                              <td>' . $value["ultimo_uso_em"] . '</td>
+                              <td>' . $value["nombre_trabajador"] . '</td>
                               <td>
                                 <div class="btn-group text-center">
-                                  <button class="btn mr-1 btn-warning btnEditarMaterial" idMaterial="' . $value["id_material"] . '" data-toggle="modal" data-target="#mdlEditarMaterial" data-whatever="@getbootstrap"><i class="mdi mdi-pencil"></i></button>
-                                  <button class="btn btn-danger btnEliminarMaterial" idMaterial="' . $value["id_material"] . '"><i class="mdi mdi-delete"></i></button>
+                                  <button class="btn mr-1 btn-warning btnEditarEM" idEM="' . $value["id_em"] . '" data-toggle="modal" data-target="#mdlEditarEM" data-whatever="@getbootstrap"><i class="mdi mdi-pencil"></i></button>
+                                  <button class="btn btn-danger btnEliminarEM" idEM="' . $value["id_em"] . '"><i class="mdi mdi-delete"></i></button>
                                 </div>
                               </td>
                               </tr>';
@@ -86,7 +82,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
 
 <!-- ===========================================
-    MODAL NUEVO MATERIAL
+    MODAL NUEVO  EQUIPO Y MAQUINA
     =========================================== -->
 
 <div class="modal fade" id="mdlNuevoEquipoMaquina" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -101,57 +97,51 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
       <div class="modal-body">
         <form method="post" enctype="multipart/form-data">
 
-          <!-- Entrada de nombre del proveedor -->
+          <!-- Entrada de nombre del equipo o maquinarias-->
           <div class="form-group">
-            <label for="recipient-name">Nombre proveedor:</label>
-            <select name="nuevoNombreProveedor" id="nuevoNombreProveedor" class="form-control">
-              <option value="">Seleccione proveedor</option>
+            <label for="recipient-name">Nombre de equipo o máquina:</label>
+            <input type="text" class="form-control" name="nuevoNombreEM" placeholder="Ingrese el nombre" required>
+          </div>
+
+          <!-- Entrada de tipo de máquina -->
+          <div class="form-group">
+            <label for="message-text">Tipo de equipo o máquina:</label>
+            <input type="text" class="form-control" name="nuevoTipoEM" placeholder="Ingrese el tipo" required>
+          </div>
+
+          <!-- Entrada de cantidad  de equipo o maquinaria -->
+          <div class="form-group">
+            <label for="message-text">Cantidad de equipo o máquina:</label>
+            <input type="number" class="form-control" name="nuevoCantidadEM" placeholder="Ingresa la cantidad" required>
+          </div>
+
+          <!-- Entrada de modelo de equipo o maquinaria -->
+          <div class="form-group">
+            <label for="message-text">Modelo de equipo o máquina:</label>
+            <input type="text" class="form-control" name="nuevoModeloEM" placeholder="Ingrese el modelo" required>
+          </div>
+
+          <!-- Entrada de ultimo uso -->
+          <div class="form-group">
+            <label for="message-text">Útimo uso de equipo o máquina:</label>
+            <input type="date" class="form-control" name="nuevoUltimoUsoEM" placeholder="Ingrese el modelo" required>
+          </div>
+
+          <!-- Entrada de nombre del encargado -->
+          <div class="form-group">
+            <label for="recipient-name">Encargado:</label>
+            <select name="nuevoEncargadoEM" id="nuevoEncargadoEM" class="form-control">
+              <option value="">Seleccione el encargado</option>
               <?php
               $item = null;
               $valor = null;
 
-              $proveedor = ControladorProveedores::ctrMostrarProveedor($item, $valor);
-              foreach ($proveedor as $key => $value) {
-                echo '<option value="' . $value["id_proveedor"] . '">' . $value["nombre_proveedor"] . '</option>';
+              $trabajador = ControladorTrabajadores::ctrMostrarTrabajadores($item, $valor);
+              foreach ($trabajador as $key => $value) {
+                echo '<option value="' . $value["id_trabajador"] . '">' . $value["nombre_trabajador"] . ' | ' . $value["especialidad_trabajador"] . '</option>';
               }
               ?>
             </select>
-          </div>
-
-          <!-- Entrada de nombre material-->
-          <div class="form-group">
-            <label for="recipient-name">Nombre del material:</label>
-            <input type="text" class="form-control" name="nuevoNombreM" placeholder="Ingrese el el nombre" required>
-          </div>
-
-          <!-- Entrada de tipo de material -->
-          <div class="form-group">
-            <label for="message-text">Tipo de material:</label>
-            <input type="text" class="form-control" name="nuevoTipoM" placeholder="Ingrese el tipo" required>
-          </div>
-
-          <!-- Entrada de marca de material -->
-          <div class="form-group">
-            <label for="message-text">Marca de material:</label>
-            <input type="text" class="form-control" name="nuevoMarcaM" placeholder="Ingresa la marca" required>
-          </div>
-
-          <!-- Entrada de cantidad de material -->
-          <div class="form-group">
-            <label for="message-text">Cantidad de material:</label>
-            <input type="number" class="form-control" name="nuevoCantidadM" placeholder="Ingrese la cantidad" required>
-          </div>
-
-          <!-- Entrada de precio de compra -->
-          <div class="form-group">
-            <label for="message-text">Precio compra material:</label>
-            <input type="number" class="form-control" name="nuevoPrecioCompraM" placeholder="Ingrese le precio" required>
-          </div>
-
-          <!-- Entrada de precio de venta -->
-          <div class="form-group">
-            <label for="message-text">Precio venta material:</label>
-            <input type="number" class="form-control" name="nuevoPrecioVentaM" placeholder="Ingrese le precio" required>
           </div>
 
           <!-- Botones de guardar y cerrar -->
@@ -160,11 +150,11 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
             <button type="submit" class="btn btn-primary" style="margin-right: auto;">Guardar</button>
           </div>
 
-          <!-- Guardamos los datos del material -->
+          <!-- Guardamos los datos de equipo y materiales -->
           <?php
 
-          $crearMaterial = new ControladorMateriales();
-          $crearMaterial->ctrCrearMateriales();
+          $crearEquiposMaquinarias = new ControladorEquiposMaquinarias();
+          $crearEquiposMaquinarias->ctrCrearEquipoMaquinaria();
 
           ?>
 
@@ -176,14 +166,14 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
 
 <!-- ===========================================
-    MODAL EDITAR MATERIAL
+    MODAL EDITAR  EQUIPO Y MAQUINA
     =========================================== -->
 
-<div class="modal fade" id="mdlEditarMaterial" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlEditarEM" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Editar usuario</b></h4>
+        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Editar equipo o maquinaria</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -193,61 +183,54 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
           <!-- Entrada de ID escondido -->
           <div class="form-group">
-            <input type="hidden" class="form-control" name="idMaterial" id="idMaterial" value="" required>
+            <input type="hidden" class="form-control" name="idEM" id="idEM" value="" required>
           </div>
 
-
-          <!-- Entrada de nombre del proveedor -->
+          <!-- Entrada de nombre -->
           <div class="form-group">
-            <label for="recipient-name">Nombre proveedor:</label>
-            <select name="editarProveedor" class="form-control">
-              <option id="editarProveedor"></option>
+            <label for="recipient-name">Nombre equipo o maquinaria:</label>
+            <input type="text" class="form-control" name="editarNombreEM" id="editarNombreEM" value="" required>
+          </div>
+
+          <!-- Entrada de tipo -->
+          <div class="form-group">
+            <label for="message-text">Tipo equipo o maquinaria:</label>
+            <input type="text" class="form-control" name="editarTipoEM" id="editarTipoEM" value="" required>
+          </div>
+
+          <!-- Entrada de cantidad -->
+          <div class="form-group">
+            <label for="message-text">Cantidad equipo o maquinaria:</label>
+            <input type="number" class="form-control" name="editarCantidadEM" id="editarCantidadEM" value="" required>
+          </div>
+
+          <!-- Entrada de modelo-->
+          <div class="form-group">
+            <label for="message-text">Modelo equipo o maquinaria:</label>
+            <input type="text" class="form-control" name="editarModeloEM" id="editarModeloEM" value="" required>
+          </div>
+
+          <!-- Entrada de ulitmo uso-->
+          <div class="form-group">
+            <label for="message-text">Modelo equipo o maquinaria:</label>
+            <input type="text" class="form-control" name="editarUltimoUsoEM" id="editarUltimoUsoEM" value="" required>
+          </div>
+
+          <!-- Entrada del encargado -->
+          <div class="form-group">
+            <label for="recipient-name">Nombre encargado:</label>
+            <select name="editarTrabajadorEM" class="form-control">
+              <option id="editarTrabajadorEM"></option>
               <?php
               $item = null;
               $valor = null;
 
-              $proveedor = ControladorProveedores::ctrMostrarProveedor($item, $valor);
-              foreach ($proveedor as $key => $value) {
-                echo '<option value="' . $value["id_proveedor"] . '">' . $value["nombre_proveedor"] . '</option>';
+              $trabajador = ControladorTrabajadores::ctrMostrarTrabajadores($item, $valor);
+              foreach ($trabajador as $key => $value) {
+                echo '<option value="' . $value["id_trabajador"] . '">' . $value["nombre_trabajador"] . ' | '.$value["especialidad_trabajador"].'</option>';
               }
               ?>
             </select>
-          </div>
-
-          <!-- Entrada de nombre del material -->
-          <div class="form-group">
-            <label for="recipient-name">Nombre del material:</label>
-            <input type="text" class="form-control" name="editarNombreM" id="editarNombreM" value="" required>
-          </div>
-
-          <!-- Entrada de tipo de material -->
-          <div class="form-group">
-            <label for="message-text">Tipo de material:</label>
-            <input type="text" class="form-control" name="editarTipoM" id="editarTipoM" value="" required>
-          </div>
-
-          <!-- Entrada de marca de material -->
-          <div class="form-group">
-            <label for="message-text">Marca de material:</label>
-            <input type="text" class="form-control" name="editarMarcaM" id="editarMarcaM" value="" required>
-          </div>
-
-          <!-- Entrada de Cantidad de material -->
-          <div class="form-group">
-            <label for="message-text">Cantidad de material:</label>
-            <input type="number" class="form-control" name="editarCantidadM" id="editarCantidadM" value="" required>
-          </div>
-
-          <!-- Entrada de precio compra de material-->
-          <div class="form-group">
-            <label for="message-text">Precio compra del material:</label>
-            <input type="number" class="form-control" name="editarCompraM" id="editarCompraM" value="" required>
-          </div>
-
-          <!-- Entrada de precio venta de material -->
-          <div class="form-group">
-            <label for="message-text">Precio venta del material:</label>
-            <input type="number" class="form-control" name="editarVentaM" id="editarVentaM" value="" required>
           </div>
 
           <!-- Botones de guardar y cerrar -->
@@ -256,11 +239,11 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
             <button type="submit" class="btn btn-primary" style="margin-right: auto;">Modificar usuario</button>
           </div>
 
-          <!-- Guardamos los datos del usuario -->
+          <!-- Guardamos los datos del equipo o maquina -->
           <?php
 
-          $editarMaterial = new ControladorMateriales();
-          $editarMaterial->ctrEditarMateriales();
+          $editarEquipoMaquina = new ControladorEquiposMaquinarias();
+          $editarEquipoMaquina->ctrEditarEquipoMaterial();
 
           ?>
 
@@ -271,11 +254,11 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 </div>
 
 <!-- ===========================================
-    ELIMINAR USUARIO
+    ELIMINAR EQUIPO Y MAQUINA
     =========================================== -->
 
 <?php
 
-$borrarMaterial = new ControladorMateriales();
-$borrarMaterial->ctrBorrarMateriales();
+$borrarEM = new ControladorEquiposMaquinarias();
+$borrarEM->ctrBorrarEquipoMaquina();
 ?>
