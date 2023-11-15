@@ -21,7 +21,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <div class="row">
             <div class="col-12">
               <div class="table-responsive">
-                <table id="order-listing" class="table tablas_proveedor">
+                <table id="order-listing" class="table tabla_trabajador">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -240,31 +240,31 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Entrada de Tiempo de trabajo -->
           <div class="form-group">
             <label for="message-text">Tiempo de trabajo:</label>
-            <input type="text" class="form-control" name="editarTiempoT" id="editarTiempoT" value="" required>
+            <input type="number" class="form-control" name="editarTiempoT" id="editarTiempoT" value="" required>
           </div>
 
           <!-- Entrada de sueldo mensual -->
           <div class="form-group">
             <label for="message-text">Sueldo mensual:</label>
-            <input type="text" class="form-control" name="editarSueldoM" id="editarSueldoM" value="" required>
+            <input type="number" class="form-control" name="editarSueldoM" id="editarSueldoM" value="" required>
           </div>
 
           <!-- Entrada de sueldo semanal -->
           <div class="form-group">
             <label for="message-text">Sueldo semanal:</label>
-            <input type="text" class="form-control" name="editarSueldoS" id="editarSueldoS" value="" required>
+            <input type="number" class="form-control" name="editarSueldoS" id="editarSueldoS" value="" required>
           </div>
 
           <!-- Entrada de sueldo diario -->
           <div class="form-group">
             <label for="message-text">Sueldo diario:</label>
-            <input type="text" class="form-control" name="editarSueldoD" id="editarSueldoD" value="" required>
+            <input type="number" class="form-control" name="editarSueldoD" id="editarSueldoD" value="" required>
           </div>
 
           <!-- Entrada de sueldo pro proyecto -->
           <div class="form-group">
             <label for="message-text">Sueldo por proyecto:</label>
-            <input type="text" class="form-control" name="editarSueldoP" id="editarSueldoP" value="" required>
+            <input type="number" class="form-control" name="editarSueldoP" id="editarSueldoP" value="" required>
           </div>
 
           <!-- Botones de guardar y cerrar -->
@@ -273,12 +273,11 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
             <button type="submit" class="btn btn-primary" style="margin-right: auto;">Modificar usuario</button>
           </div>
 
-          <!-- Guardamos los datos del usuario -->
+          <!-- Editar los datos del trabajador -->
           <?php
 
-          /* $editarProveedor = new ControladorProveedores();
-          $editarProveedor->ctrEditarProveedor(); */
-
+          $editarTrabajador = new ControladorTrabajadores();
+          $editarTrabajador->ctrEditarTrabajador();
         
           ?>
 
@@ -294,7 +293,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
 <?php
     
-/* $borrarProveedor = new ControladorProveedores ();
-$borrarProveedor->ctrBorrarProveedor(); */
+$borrarTrabajador = new ControladorTrabajadores();
+$borrarTrabajador->ctrBorrarTrabajador();
 
 ?>

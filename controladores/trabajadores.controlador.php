@@ -83,21 +83,27 @@ class ControladorTrabajadores{
     static public function ctrEditarTrabajador()
     {
 
-        if (isset($_POST["editarNombre"])) {
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])) {
+        if (isset($_POST["editarNombreT"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombreT"])) {
 
-                $tabla = "proveedor";
+                $tabla = "trabajador";
 
                 $datos = array(
-                    "id_proveedor" => $_POST["idProveedor"],
-                    "nombre_proveedor" => $_POST["editarNombre"],
-                    "telefono_proveedor" => $_POST["editarTelefono"],
-                    "correo_proveedor" => $_POST["editarCorreo"],
-                    "direccion_proveedor" => $_POST["editarDireccion"]
+                    "id_trabajador" => $_POST["idTrabajador"],
+                    "nombre_trabajador" => $_POST["editarNombreT"],
+                    "especialidad_trabajador" => $_POST["editarEspecialidadT"],
+                    "dni_trabajador" => $_POST["editarDniT"],
+                    "telefono_trabajador" => $_POST["editarTelefonoT"],
+                    "funcion_trabajador" => $_POST["editarFuncionT"],
+                    "tiempo_trab_trabajador" => $_POST["editarTiempoT"],
+                    "sueldo_men_trabajador" => $_POST["editarSueldoM"],
+                    "sueldo_sem_trabajador" => $_POST["editarSueldoS"],
+                    "sueldo_dia_trabajador" => $_POST["editarSueldoD"],
+                    "sueldo_proyecto" => $_POST["editarSueldoP"],
                 );
 
 
-                $respuesta = ModeloProveedores::mdlEditarProveedor($tabla, $datos);
+                $respuesta = ModeloTrabajadores::mdlEditarTrabajador($tabla, $datos);
 
                 if ($respuesta == "ok") {
 
@@ -105,12 +111,12 @@ class ControladorTrabajadores{
                             Swal.fire({
                                 icon: "success",
                                 type: "success",
-                                title: "¡El usuario ha sido editado correctamente!",
+                                title: "¡El trabajador ha sido editado correctamente!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
                             }).then(function(result){
                                 if(result.value){
-                                    window.location = "proveedores";
+                                    window.location = "trabajadores";
                                 }
                             });    
                         </script>';
@@ -122,12 +128,12 @@ class ControladorTrabajadores{
                         Swal.fire({
                             icon: "error",
                             type: "error",
-                            title: "¡El nombre del proveedor no puede ir vacio o llevar caracteres especiales!",
+                            title: "¡El nombre del trabajador no puede ir vacio o llevar caracteres especiales!",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar"
                         }).then(function(result){
                             if(result.value){
-                                window.location = "proveedores";
+                                window.location = "trabajadores";
                             }
                         });    
                     </script>';
@@ -142,24 +148,24 @@ class ControladorTrabajadores{
     static public function ctrBorrarTrabajador()
     {
 
-        if (isset($_GET["idProveedor"])) {
-            $tabla = "proveedor";
-            $datos = $_GET["idProveedor"];
+        if (isset($_GET["idTrabajador"])) {
+            $tabla = "trabajador";
+            $datos = $_GET["idTrabajador"];
 
-            $respuesta = ModeloProveedores::mdlBorrarProveedor($tabla, $datos);
+            $respuesta = ModeloTrabajadores::mdlBorrarTrabajador($tabla, $datos);
          
             if ($respuesta == "ok") {
                 echo '<script>
                         Swal.fire({
                             icon: "success",
                             type: "success",
-                            title: "El proveedor ha sido borrado correctamente",
+                            title: "El trabajador ha sido borrado correctamente",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false,
                         }).then(function(result){
                             if(result.value){
-                                window.location = "proveedores"
+                                window.location = "trabajadores"
                             }
                         })
                         </script>';
