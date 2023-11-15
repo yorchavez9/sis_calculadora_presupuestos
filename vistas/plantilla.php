@@ -66,7 +66,7 @@ session_start();
                 $_GET["ruta"] == "proveedores" ||
                 $_GET["ruta"] == "materiales" ||
                 $_GET["ruta"] == "trabajadores" ||
-                $_GET["ruta"] == "equipos_maquinarias" ||
+                $_GET["ruta"] == "equiposMaquinarias" ||
                 $_GET["ruta"] == "clientes" ||
                 $_GET["ruta"] == "ver_presupuestos" ||
                 $_GET["ruta"] == "salir"
@@ -92,6 +92,7 @@ session_start();
     <script src="vistas/js/proveedor.js"></script>
     <script src="vistas/js/script.materiales.js"></script>
     <script src="vistas/js/trabajadores.js"></script>
+    <script src="vistas/js/js.equipos.maquinarias.js"></script>
 
 
     <!-- container-scroller -->

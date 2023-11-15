@@ -225,7 +225,7 @@
 
             <!-- Equipos y maquinarias -->
             <li class="nav-item">
-              <a href="equipos_maquinarias" class="nav-link">
+              <a href="equiposMaquinarias" class="nav-link">
                 <i class="mdi mdi-car mdi-24px text-primary"></i>
                 <span class="menu-title">Equipos y maquinarias</span>
                 <i class="menu-arrow"></i></a>
