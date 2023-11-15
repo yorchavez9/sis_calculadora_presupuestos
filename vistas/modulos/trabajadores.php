@@ -194,7 +194,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Editar usuario</b></h4>
+        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Editar trabajador</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -204,31 +204,67 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
           <!-- Entrada de ID escondido -->
           <div class="form-group">
-            <input type="hidden" class="form-control" name="idProveedor" id="idProveedor" value="" required>
+            <input type="hidden" class="form-control" name="idTrabajador" id="idTrabajador" value="" required>
           </div>
           
           <!-- Entrada de nombre -->
           <div class="form-group">
             <label for="recipient-name">Nombre:</label>
-            <input type="text" class="form-control" name="editarNombre" id="editarNombre" value="" required>
+            <input type="text" class="form-control" name="editarNombreT" id="editarNombreT" value="" required>
           </div>
 
-          <!-- Entrada de telefono -->
+          <!-- Entrada de especialidad -->
+          <div class="form-group">
+            <label for="message-text">Especialidad:</label>
+            <input type="text" class="form-control" name="editarEspecialidadT" id="editarEspecialidadT" value="" required>
+          </div>
+
+          <!-- Entrada de DNI -->
+          <div class="form-group">
+            <label for="message-text">DNI:</label>
+            <input type="text" class="form-control" name="editarDniT" id="editarDniT" value="" required>
+          </div>
+
+          <!-- Entrada de Teléfono -->
           <div class="form-group">
             <label for="message-text">Teléfono:</label>
-            <input type="text" class="form-control" name="editarTelefono" id="editarTelefono" value="" required>
+            <input type="text" class="form-control" name="editarTelefonoT" id="editarTelefonoT" value="" required>
           </div>
 
-          <!-- Entrada de correo -->
+          <!-- Entrada de Funcion -->
           <div class="form-group">
-            <label for="message-text">Correo:</label>
-            <input type="text" class="form-control" name="editarCorreo" id="editarCorreo" value="" required>
+            <label for="message-text">Funcion:</label>
+            <input type="text" class="form-control" name="editarFuncionT" id="editarFuncionT" value="" required>
           </div>
 
-          <!-- Entrada de direccion -->
+          <!-- Entrada de Tiempo de trabajo -->
           <div class="form-group">
-            <label for="message-text">Dirección:</label>
-            <input type="text" class="form-control" name="editarDireccion" id="editarDireccion" value="" required>
+            <label for="message-text">Tiempo de trabajo:</label>
+            <input type="text" class="form-control" name="editarTiempoT" id="editarTiempoT" value="" required>
+          </div>
+
+          <!-- Entrada de sueldo mensual -->
+          <div class="form-group">
+            <label for="message-text">Sueldo mensual:</label>
+            <input type="text" class="form-control" name="editarSueldoM" id="editarSueldoM" value="" required>
+          </div>
+
+          <!-- Entrada de sueldo semanal -->
+          <div class="form-group">
+            <label for="message-text">Sueldo semanal:</label>
+            <input type="text" class="form-control" name="editarSueldoS" id="editarSueldoS" value="" required>
+          </div>
+
+          <!-- Entrada de sueldo diario -->
+          <div class="form-group">
+            <label for="message-text">Sueldo diario:</label>
+            <input type="text" class="form-control" name="editarSueldoD" id="editarSueldoD" value="" required>
+          </div>
+
+          <!-- Entrada de sueldo pro proyecto -->
+          <div class="form-group">
+            <label for="message-text">Sueldo por proyecto:</label>
+            <input type="text" class="form-control" name="editarSueldoP" id="editarSueldoP" value="" required>
           </div>
 
           <!-- Botones de guardar y cerrar -->
