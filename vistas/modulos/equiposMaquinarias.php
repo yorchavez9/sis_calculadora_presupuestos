@@ -13,10 +13,10 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
       <div class="card">
         <div class="card-body">
           <div class="mb-3">
-            <h4><b>Administrar materiales</b></h4>
+            <h4><b>Administrar equipos y maquinarias</b></h4>
           </div>
           <div class="mb-3">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Nuevo material</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlNuevoEquipoMaquina" data-whatever="@getbootstrap">Nuevo equipo y máquina</button>
           </div>
           <div class="row">
             <div class="col-12">
@@ -89,7 +89,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
     MODAL NUEVO MATERIAL
     =========================================== -->
 
-<div class="modal fade" id="mdlMaterial" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlNuevoEquipoMaquina" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
