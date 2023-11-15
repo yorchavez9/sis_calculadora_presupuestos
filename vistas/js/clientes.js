@@ -1,7 +1,7 @@
 
 
 /* =======================================
-EDITAR PROVEEDOR
+EDITAR CLIENTE
 ======================================= */
 
 $(".tablas_proveedor").on("click", ".btnEditarProveedor", function(){
@@ -37,7 +37,7 @@ $(".tablas_proveedor").on("click", ".btnEditarProveedor", function(){
 
 
 /* =======================================
-ELIMINAR PROVEEDOR
+ELIMINAR CLIENTE
 ======================================= */
 
 $(".tablas_proveedor").on("click",".btnEliminarProveedor", function(){

@@ -7,8 +7,8 @@
       <nav class="navbar top-navbar col-lg-12 col-12 p-0">
         <div class="container">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="index.html"><img width="100" src="vistas/estilos/images/logo/logo-house.png" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="https://demo.bootstrapdash.com/dashflat/template/images/logo-mini.svg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo" href="index.html"><img width="100" src="vistas/estilos/images/logo/logo-house.png" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="https://demo.bootstrapdash.com/dashflat/template/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <ul class="navbar-nav mr-lg-2">
@@ -21,13 +21,13 @@
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-                    <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/mail.svg" alt="" class="nav-icon-title">
+                  <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/mail.svg" alt="" class="nav-icon-title">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
                   <p class="mb-0 font-weight-normal float-left dropdown-header">Mensajes</p>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                        <img src="../../images/faces/face4.jpg" alt="image" class="profile-pic">
+                      <img src="../../images/faces/face4.jpg" alt="image" class="profile-pic">
                     </div>
                     <div class="preview-item-content flex-grow">
                       <h6 class="preview-subject ellipsis font-weight-normal">David Grey
@@ -39,7 +39,7 @@
                   </a>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                        <img src="../../images/faces/face2.jpg" alt="image" class="profile-pic">
+                      <img src="../../images/faces/face2.jpg" alt="image" class="profile-pic">
                     </div>
                     <div class="preview-item-content flex-grow">
                       <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
@@ -51,7 +51,7 @@
                   </a>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                        <img src="../../images/faces/face3.jpg" alt="image" class="profile-pic">
+                      <img src="../../images/faces/face3.jpg" alt="image" class="profile-pic">
                     </div>
                     <div class="preview-item-content flex-grow">
                       <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
@@ -65,7 +65,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-                    <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/notification.svg" alt="" class="nav-icon-title">
+                  <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/notification.svg" alt="" class="nav-icon-title">
                   <span class="count-circle"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
@@ -113,30 +113,30 @@
               </li>
               <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown-navbar">
-                  <img src="vistas/estilos/images/faces/face28.png" alt="profile"/>
+                  <img src="vistas/estilos/images/faces/face28.png" alt="profile" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown flat-dropdown" aria-labelledby="profileDropdown-navbar">
                   <div class="flat-dropdown-header">
                     <div class="d-flex">
-                        <img src="vistas/estilos/images/faces/face28.png" alt="profile" class="profile-icon mr-2">
-                        <div>
-                          <span class="profile-name font-weight-bold">Cecelia Vargas</span>
-                          <p class="profile-designation">Administrador</p>
-                        </div>
+                      <img src="vistas/estilos/images/faces/face28.png" alt="profile" class="profile-icon mr-2">
+                      <div>
+                        <span class="profile-name font-weight-bold">Cecelia Vargas</span>
+                        <p class="profile-designation">Administrador</p>
+                      </div>
                     </div>
                   </div>
                   <div class="profile-dropdown-body">
                     <ul class="list-profile-items">
                       <li class="profile-item">
-                          <a href="salir" class="profile-dropdown-link">
-                            <div class="d-flex align-items-center">
-                              <i class="mdi mdi-power text-dark"></i>
-                              <div>
-                                <h5 class="item-title mt-0">Salir</h5>
-                              </div>
+                        <a href="salir" class="profile-dropdown-link">
+                          <div class="d-flex align-items-center">
+                            <i class="mdi mdi-power text-dark"></i>
+                            <div>
+                              <h5 class="item-title mt-0">Salir</h5>
                             </div>
-                          </a>
-                        </li>
+                          </div>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -170,86 +170,86 @@
             </li>
 
             <?php
-            if($_SESSION["perfil"] == "Administrador"){
-              ?>
+            if ($_SESSION["perfil"] == "Administrador") {
+            ?>
 
-            <!-- Usuarios -->
-            <li class="nav-item">
-              <a class="nav-link" href="usuarios">
-                <i class="mdi mdi-account mdi-24px text-primary"></i>
-                <span class="menu-title">Usuarios</span>
-              </a>
-            </li>
-              <?php
+              <!-- Usuarios -->
+              <li class="nav-item">
+                <a class="nav-link" href="usuarios">
+                  <i class="mdi mdi-account mdi-24px text-primary"></i>
+                  <span class="menu-title">Usuarios</span>
+                </a>
+              </li>
+            <?php
             }
             ?>
 
             <?php
-            if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Especial"){
-              ?>
+            if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Especial") {
+            ?>
 
-            <!-- Nuevo presupuesto -->
-            <li class="nav-item">
-              <a class="nav-link" href="presupuestos">
-                <i class="mdi mdi-file-powerpoint mdi-24px text-primary"></i>
-                <span class="menu-title">Presupuesto</span>
-              </a>
-            </li>
+              <!-- Nuevo presupuesto -->
+              <li class="nav-item">
+                <a class="nav-link" href="presupuestos">
+                  <i class="mdi mdi-file-powerpoint mdi-24px text-primary"></i>
+                  <span class="menu-title">Presupuesto</span>
+                </a>
+              </li>
 
-            <!-- Proveedores -->
-            <li class="nav-item">
-              <a href="proveedores" class="nav-link">
-                <i class="mdi mdi-home-modern mdi-24px text-primary"></i>
-                <span class="menu-title">Proveedores</span>
-                <i class="menu-arrow"></i>
-              </a>
-            </li> 
+              <!-- Clientes -->
+              <li class="nav-item">
+                <a href="clientes" class="nav-link">
+                  <i class="mdi mdi-account-multiple-outline mdi-24px text-primary"></i>
+                  <span class="menu-title">Clientes</span>
+                  <i class="menu-arrow"></i></a>
+              </li>
 
-            <!-- Materiales -->
-            <li class="nav-item">
-              <a href="materiales" class="nav-link">
-                <i class="mdi mdi-cube-unfolded mdi-24px text-primary"></i>
-                <span class="menu-title">Materiales</span>
-                <i class="menu-arrow"></i>
-              </a>
-            </li> 
-            
-            <!-- Trabajadores -->
-            <li class="nav-item">
-              <a href="trabajadores" class="nav-link">
-                <i class="mdi mdi-account-switch mdi-24px text-primary"></i>
-                <span class="menu-title">Trabajadores</span>
-                <i class="menu-arrow"></i></a>
-            </li>
+              <!-- Proveedores -->
+              <li class="nav-item">
+                <a href="proveedores" class="nav-link">
+                  <i class="mdi mdi-home-modern mdi-24px text-primary"></i>
+                  <span class="menu-title">Proveedores</span>
+                  <i class="menu-arrow"></i>
+                </a>
+              </li>
+
+              <!-- Materiales -->
+              <li class="nav-item">
+                <a href="materiales" class="nav-link">
+                  <i class="mdi mdi-cube-unfolded mdi-24px text-primary"></i>
+                  <span class="menu-title">Materiales</span>
+                  <i class="menu-arrow"></i>
+                </a>
+              </li>
+
+              <!-- Trabajadores -->
+              <li class="nav-item">
+                <a href="trabajadores" class="nav-link">
+                  <i class="mdi mdi-account-switch mdi-24px text-primary"></i>
+                  <span class="menu-title">Trabajadores</span>
+                  <i class="menu-arrow"></i></a>
+              </li>
 
 
-            <!-- Equipos y maquinarias -->
-            <li class="nav-item">
-              <a href="equiposMaquinarias" class="nav-link">
-                <i class="mdi mdi-car mdi-24px text-primary"></i>
-                <span class="menu-title">Equipos y maquinarias</span>
-                <i class="menu-arrow"></i></a>
-            </li>
+              <!-- Equipos y maquinarias -->
+              <li class="nav-item">
+                <a href="equiposMaquinarias" class="nav-link">
+                  <i class="mdi mdi-car mdi-24px text-primary"></i>
+                  <span class="menu-title">Equipos y maquinarias</span>
+                  <i class="menu-arrow"></i></a>
+              </li>
 
-            <!-- Clientes -->
-            <li class="nav-item">
-              <a href="clientes" class="nav-link">
-                <i class="mdi mdi-account-multiple-outline mdi-24px text-primary"></i>
-                <span class="menu-title">Clientes</span>
-                <i class="menu-arrow"></i></a>
-            </li>
-
-            <!-- Ver todos los presupuestos -->
-            <li class="nav-item">
-              <a href="ver_presupuestos" class="nav-link">
-                <i class="mdi mdi-eye mdi-24px text-primary"></i>
-                <span class="menu-title">Ver presupuestos</span>
-                <i class="menu-arrow"></i></a>
-            </li>
-              <?php
+              <!-- Ver todos los presupuestos -->
+              <li class="nav-item">
+                <a href="ver_presupuestos" class="nav-link">
+                  <i class="mdi mdi-eye mdi-24px text-primary"></i>
+                  <span class="menu-title">Ver presupuestos</span>
+                  <i class="menu-arrow"></i></a>
+              </li>
+            <?php
             }
             ?>
-            
+
           </ul>
         </div>
       </nav>

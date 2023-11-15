@@ -63,11 +63,11 @@ session_start();
                 $_GET["ruta"] == "inicio" ||
                 $_GET["ruta"] == "usuarios" ||
                 $_GET["ruta"] == "presupuestos" ||
+                $_GET["ruta"] == "clientes" ||
                 $_GET["ruta"] == "proveedores" ||
                 $_GET["ruta"] == "materiales" ||
                 $_GET["ruta"] == "trabajadores" ||
                 $_GET["ruta"] == "equiposMaquinarias" ||
-                $_GET["ruta"] == "clientes" ||
                 $_GET["ruta"] == "ver_presupuestos" ||
                 $_GET["ruta"] == "salir"
             ) {
@@ -93,6 +93,7 @@ session_start();
     <script src="vistas/js/script.materiales.js"></script>
     <script src="vistas/js/trabajadores.js"></script>
     <script src="vistas/js/equipos.maquinarias.js"></script>
+    <script src="vistas/js/clientes.js"></script>
 
 
     <!-- container-scroller -->
