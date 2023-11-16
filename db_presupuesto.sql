@@ -152,6 +152,7 @@ create table presupuesto(
     id_pres_trab int(11) not null,
     costo_total_trabajadores varchar(50) not null,
     costo_total_materiales varchar(50) not null,
+    porcentaje_ganancia varchar(50) not null,
     costo_licencia varchar(50) not null,
     costo_final varchar(50) not null,
     fecha_presupuesto timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
