@@ -16,17 +16,20 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
             <h4><b>Nuevo Presupuesto</b></h4>
           </div>
           <div class="row col-md-12">
-            <div class="mb-3 col-md-3">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Información del proyecto</button>
+            <div class="mb-3 col-md-2">
+              <button type="button" id="datosProyecto" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlProyecto" data-whatever="@getbootstrap">Datos del proyecto</button>
             </div>
-            <div class="mb-3 col-md-3">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Presupuesto de materiales</button>
+            <div class="mb-3 col-md-2">
+              <button type="button" id="presMaterial" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Materiales</button>
             </div>
-            <div class="mb-3 col-md-3">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Presupuesto de trabajadores</button>
+            <div class="mb-3 col-md-2">
+              <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Trabajadores</button>
             </div>
-            <div class="mb-3 col-md-3">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Resumen del presupuesto</button>
+            <div class="mb-3 col-md-2">
+              <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Metros de terreno</button>
+            </div>
+            <div class="mb-3 col-md-2">
+              <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Presupuesto</button>
             </div>
           </div>
           <div class="row">
@@ -85,26 +88,25 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
         </div>
       </div>
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:../../partials/_footer.html -->
+
     <?php
     include "vistas/modulos/footer.php";
     ?>
-    <!-- partial -->
+
   </div>
-  <!-- main-panel ends -->
+
 </div>
 
 
 <!-- ===========================================
-    MODAL NUEVO MATERIAL
+    MODAL DATOS DEL PROYECTO
     =========================================== -->
 
-<div class="modal fade" id="mdlMaterial" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="mdlProyecto" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style="margin-top: 30px;">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Nuevo proveedor</b></h4>
+        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Nuevo proyecto</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -112,57 +114,50 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
       <div class="modal-body">
         <form method="post" enctype="multipart/form-data">
 
-          <!-- Entrada de nombre del proveedor -->
-          <div class="form-group">
-            <label for="recipient-name">Nombre proveedor:</label>
-            <select name="nuevoNombreProveedor" id="nuevoNombreProveedor" class="form-control">
-              <option value="">Seleccione proveedor</option>
-              <?php
-              $item = null;
-              $valor = null;
+          <div class="row col-md-12">
+            <!-- Entrada de nombre del cliente -->
+            <div class="form-group col-md-3">
+              <label for="recipient-name">Nombre del cliente:</label>
+              <select name="nuevoNombreCliente" class="form-control">
+                <option value="">Seleccione proveedor</option>
+                <?php
+                $item = null;
+                $valor = null;
 
-              $proveedor = ControladorProveedores::ctrMostrarProveedor($item, $valor);
-              foreach ($proveedor as $key => $value) {
-                echo '<option value="' . $value["id_proveedor"] . '">' . $value["nombre_proveedor"] . '</option>';
-              }
-              ?>
-            </select>
+                $cliente = ControladorClientes::ctrMostrarClientes($item, $valor);
+                foreach ($cliente as $key => $value) {
+                  echo '<option value="' . $value["id_cliente"] . '">' . $value["nombre_cliente"] . '</option>';
+                }
+                ?>
+              </select>
+              <div class="mt-2">
+                <a href="clientes" class="btn btn-primary btn-sm">Nuevo Cliente</a>
+              </div>
+            </div>
+
+            <!-- Entrada de nombre del proyecto-->
+            <div class="form-group col-md-3">
+              <label for="recipient-name">Nombre del proyecto:</label>
+              <input type="text" class="form-control" name="nuevoNombreProyecto" placeholder="Ingrese el nombre del proyecto" required>
+            </div>
+
+            <!-- Entrada de ubicacion del proyecto -->
+            <div class="form-group col-md-3">
+              <label for="message-text">Ubicación del proyecto:</label>
+              <input type="text" class="form-control" name="nuevoUbicacionProyecto" placeholder="Ingrese la ubicación del proyecto" required>
+            </div>
+
+            <!-- Entrada de fecha del proyecto -->
+            <div class="form-group col-md-3">
+              <label for="message-text">Fecha del proyecto:</label>
+              <input type="date" class="form-control" name="nuevoFechaProyecto" placeholder="Ingrese la fecha" required>
+            </div>
           </div>
 
-          <!-- Entrada de nombre material-->
+          <!-- Entrada de descripcion de material -->
           <div class="form-group">
-            <label for="recipient-name">Nombre del material:</label>
-            <input type="text" class="form-control" name="nuevoNombreM" placeholder="Ingrese el el nombre" required>
-          </div>
-
-          <!-- Entrada de tipo de material -->
-          <div class="form-group">
-            <label for="message-text">Tipo de material:</label>
-            <input type="text" class="form-control" name="nuevoTipoM" placeholder="Ingrese el tipo" required>
-          </div>
-
-          <!-- Entrada de marca de material -->
-          <div class="form-group">
-            <label for="message-text">Marca de material:</label>
-            <input type="text" class="form-control" name="nuevoMarcaM" placeholder="Ingresa la marca" required>
-          </div>
-
-          <!-- Entrada de cantidad de material -->
-          <div class="form-group">
-            <label for="message-text">Cantidad de material:</label>
-            <input type="number" class="form-control" name="nuevoCantidadM" placeholder="Ingrese la cantidad" required>
-          </div>
-
-          <!-- Entrada de precio de compra -->
-          <div class="form-group">
-            <label for="message-text">Precio compra material:</label>
-            <input type="number" class="form-control" name="nuevoPrecioCompraM" placeholder="Ingrese le precio" required>
-          </div>
-
-          <!-- Entrada de precio de venta -->
-          <div class="form-group">
-            <label for="message-text">Precio venta material:</label>
-            <input type="number" class="form-control" name="nuevoPrecioVentaM" placeholder="Ingrese le precio" required>
+            <label for="message-text">Descripción del proyecto:</label>
+            <textarea name="descripcionProyecto" id="DescripcionProyecto"></textarea>
           </div>
 
           <!-- Botones de guardar y cerrar -->
@@ -174,8 +169,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Guardamos los datos del material -->
           <?php
 
-          $crearMaterial = new ControladorMateriales();
-          $crearMaterial->ctrCrearMateriales();
+            $crearProyecto = new ControladorProyecto();
+            $crearProyecto->ctrCrearProyecto();
 
           ?>
 
@@ -184,6 +179,120 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
     </div>
   </div>
 </div>
+
+
+
+<!-- ===========================================
+    MODAL PRESUPUESTO DE MATERIALES
+    =========================================== -->
+
+<div class="modal fade" id="mdlMaterial" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style="margin-top: 30px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Presupuesto material</b></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" enctype="multipart/form-data">
+
+          <div class="row col-md-12">
+            <!-- Entrada del proyecto -->
+            <div class="form-group col-md-3">
+              <label for="recipient-name">Nombre del cliente:</label>
+              <select name="nuevoNombreCliente" class="form-control">
+                <option value="">Seleccione proveedor</option>
+                <?php
+                $item = null;
+                $valor = null;
+
+                $cliente = ControladorClientes::ctrMostrarClientes($item, $valor);
+                foreach ($cliente as $key => $value) {
+                  echo '<option value="' . $value["id_cliente"] . '">' . $value["nombre_cliente"] . '</option>';
+                }
+                ?>
+              </select>
+              <div class="mt-2">
+                <a href="clientes" class="btn btn-primary btn-sm">Nuevo Cliente</a>
+              </div>
+            </div>
+
+            <!-- Entrada de material -->
+            <div class="form-group col-md-3">
+              <label for="recipient-name">Nombre del cliente:</label>
+              <select name="nuevoNombreCliente" class="form-control">
+                <option value="">Seleccione proveedor</option>
+                <?php
+                $item = null;
+                $valor = null;
+
+                $cliente = ControladorClientes::ctrMostrarClientes($item, $valor);
+                foreach ($cliente as $key => $value) {
+                  echo '<option value="' . $value["id_cliente"] . '">' . $value["nombre_cliente"] . '</option>';
+                }
+                ?>
+              </select>
+              <div class="mt-2">
+                <a href="clientes" class="btn btn-primary btn-sm">Nuevo Cliente</a>
+              </div>
+            </div>
+
+            <!-- Entrada de nombre del proyecto-->
+            <div class="form-group col-md-3">
+              <label for="recipient-name">Nombre del proyecto:</label>
+              <input type="text" class="form-control" name="nuevoNombreProyecto" placeholder="Ingrese el nombre del proyecto" required>
+            </div>
+
+            <!-- Entrada de ubicacion del proyecto -->
+            <div class="form-group col-md-3">
+              <label for="message-text">Ubicación del proyecto:</label>
+              <input type="text" class="form-control" name="nuevoUbicacionProyecto" placeholder="Ingrese la ubicación del proyecto" required>
+            </div>
+
+            <!-- Entrada de fecha del proyecto -->
+            <div class="form-group col-md-3">
+              <label for="message-text">Fecha del proyecto:</label>
+              <input type="date" class="form-control" name="nuevoFechaProyecto" placeholder="Ingrese la fecha" required>
+            </div>
+          </div>
+
+          <!-- Entrada de descripcion de material -->
+          <div class="form-group">
+            <label for="message-text">Descripción del proyecto:</label>
+            <textarea name="descripcionProyecto" id="DescripcionProyecto"></textarea>
+          </div>
+
+          <!-- Botones de guardar y cerrar -->
+          <div class="row col-md-auto">
+            <button type="button" class="btn btn-light mr-5" data-dismiss="modal" style="margin-left: auto;">Cerrar</button>
+            <button type="submit" class="btn btn-primary" style="margin-right: auto;">Guardar</button>
+          </div>
+
+          <!-- Guardamos los datos del material -->
+          <?php
+
+            $crearProyecto = new ControladorProyecto();
+            $crearProyecto->ctrCrearProyecto();
+
+          ?>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- ===========================================
@@ -270,8 +379,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Guardamos los datos del usuario -->
           <?php
 
-          $editarMaterial = new ControladorMateriales();
-          $editarMaterial->ctrEditarMateriales();
+          /*           $editarMaterial = new ControladorMateriales();
+          $editarMaterial->ctrEditarMateriales(); */
 
           ?>
 
@@ -287,6 +396,6 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
 <?php
 
-$borrarMaterial = new ControladorMateriales();
-$borrarMaterial->ctrBorrarMateriales();
+/* $borrarMaterial = new ControladorMateriales();
+$borrarMaterial->ctrBorrarMateriales(); */
 ?>

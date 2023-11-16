@@ -9,6 +9,7 @@ require_once "controladores/materiales.controlador.php";
 require_once "controladores/trabajadores.controlador.php";
 require_once "controladores/equipos.maquinas.controlador.php";
 require_once "controladores/clientes.controlador.php";
+require_once "controladores/proyectos.controladores.php";
 
 /*===== MODELOS =====*/
 require_once "modelos/usuarios.modelo.php";
@@ -17,6 +18,7 @@ require_once "modelos/materiales.modelo.php";
 require_once "modelos/trabajadores.modelo.php";
 require_once "modelos/equipos.maquinas.modelo.php";
 require_once "modelos/clientes.modelo.php";
+require_once "modelos/proyecto.modelo.php";
 
 /*===== INSTANCIA DE PLANTILLA =====*/
 
