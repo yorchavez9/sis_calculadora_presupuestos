@@ -32,21 +32,26 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
               <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Presupuesto</button>
             </div>
           </div>
+
+          <!-- ==================================
+          TABLA PRESUPUESTO DE MATERIALES
+          ================================== -->
+          <br><br>
+          <div class="mb-3">
+            <h4>Tabla de presupuesto de materiales</h4>
+          </div>
           <div class="row">
             <div class="col-12">
               <div class="table-responsive">
-                <table id="order-listing" class="table tabla_material">
+                <table id="order-listing" class="table tabla_pres_material">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Proveedor</th>
                       <th>Nombre</th>
-                      <th>Tipo</th>
-                      <th>Marca</th>
+                      <th>Precio Unitario</th>
                       <th>Cantidad</th>
-                      <th>Precio U. compra</th>
-                      <th>Precio U. venta</th>
-                      <th>Fecha</th>
+                      <th>Costo Total</th>
+                      <th>fecha_pres_materiales</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -55,24 +60,20 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                     $item = null;
                     $valor = null;
 
-                    $materiales = ControladorMateriales::ctrMostrarMateriales($item, $valor);
+                    $material = ControladorPresMateriales::ctrMostrarPresMaterial($item, $valor);
 
-                    foreach ($materiales as $key => $value) {
+                    foreach ($material as $key => $value) {
 
                       echo '<tr>
                               <td>' . ($key + 1) . '</td>
-                              <td>' . $value["nombre_proveedor"] . '</td>
                               <td>' . $value["nombre_material"] . '</td>
-                              <td>' . $value["tipo_material"] . '</td>
-                              <td>' . $value["marca_material"] . '</td>
-                              <td>' . $value["cantidad_material"] . '</td>
-                              <td>' . $value["precio_compra_material"] . '</td>
                               <td>' . $value["precio_venta_material"] . '</td>
-                              <td>' . $value["fecha_material"] . '</td>
+                              <td>' . $value["cantidad_utilizada"] . '</td>
+                              <td>' . $value["costo_total"] . '</td>
+                              <td>' . $value["fecha_pres_materiales"] . '</td>
                               <td>
                                 <div class="btn-group text-center">
-                                  <button class="btn mr-1 btn-warning btnEditarMaterial" idMaterial="' . $value["id_material"] . '" data-toggle="modal" data-target="#mdlEditarMaterial" data-whatever="@getbootstrap"><i class="mdi mdi-pencil"></i></button>
-                                  <button class="btn btn-danger btnEliminarMaterial" idMaterial="' . $value["id_material"] . '"><i class="mdi mdi-delete"></i></button>
+                                  <button class="btn btn-danger btnEliminarPresMaterial" idPresMaterial="' . $value["id_pres_mat"] . '"><i class="mdi mdi-delete"></i></button>
                                 </div>
                               </td>
                               </tr>';
@@ -85,6 +86,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
               </div>
             </div>
           </div>
+
+
         </div>
       </div>
     </div>
@@ -229,7 +232,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
             $ultimoProyecto = end($proyecto);
 
             if ($ultimoProyecto !== false) {
-                echo '<input type="hidden" value="'.$ultimoProyecto["id_proyecto"].'">';
+                echo '<input type="hidden" value="'.$ultimoProyecto["id_proyecto"].'" name="idProyectoM">';
             } else {
                 echo "No se encontraron resultados.";
             }
@@ -265,8 +268,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Guardamos los datos del material -->
           <?php
 
-          $crearProyecto = new ControladorProyecto();
-          $crearProyecto->ctrCrearProyecto();
+          $crearPresMaterial = new ControladorPresMateriales();
+          $crearPresMaterial->ctrCrearPresMaterial();
 
           ?>
 
@@ -383,11 +386,12 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 </div>
 
 <!-- ===========================================
-    ELIMINAR USUARIO
+    ELIMINAR PRESUPUESTO MATERIAL
     =========================================== -->
 
 <?php
 
-/* $borrarMaterial = new ControladorMateriales();
-$borrarMaterial->ctrBorrarMateriales(); */
+
+$borrarPresMaterial = new ControladorPresMateriales();
+$borrarPresMaterial->ctrBorrarPresMaterial();
 ?>
