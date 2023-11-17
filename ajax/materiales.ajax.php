@@ -10,11 +10,25 @@ class AjaxMaterial{
 	=============================================*/	
 
 	public $idMaterial;
+	
 
 	public function ajaxEditarMaterial(){
 
 		$item = "id_material";
 		$valor = $this->idMaterial;
+
+		$respuesta = ControladorMateriales::ctrMostrarMateriales($item, $valor);
+
+		echo json_encode($respuesta);
+
+	}
+
+	public $idMateriales;
+
+	public function ajaxMostrarMaterial(){
+
+		$item = "id_material";
+		$valor = $this->idMateriales;
 
 		$respuesta = ControladorMateriales::ctrMostrarMateriales($item, $valor);
 
@@ -32,5 +46,16 @@ if(isset($_POST["idMaterial"])){
 	$editar = new AjaxMaterial();
 	$editar -> idMaterial = $_POST["idMaterial"];
 	$editar -> ajaxEditarMaterial();
+
+}
+
+/*=============================================
+MOSTRAR MATERIAL
+=============================================*/
+if(isset($_POST["idMateriales"])){
+
+	$editar = new AjaxMaterial();
+	$editar -> idMateriales = $_POST["idMateriales"];
+	$editar -> ajaxMostrarMaterial();
 
 }

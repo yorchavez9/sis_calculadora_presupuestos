@@ -1,4 +1,35 @@
 
+
+/* =======================================
+SELECIONANDO MATERIAL
+======================================= */
+
+$("#idMateriales").change(function(){
+
+	var idMateriales = $("#idMateriales").val()
+	
+	var datos = new FormData();
+	datos.append("idMateriales", idMateriales);
+
+	$.ajax({
+
+		url:"ajax/materiales.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+			
+			$("#nuevoPrecioUnitarioM").val(respuesta["precio_venta_material"]);
+
+		}
+
+	});
+
+})
+
 /* =======================================
 EDITAR MATERIAL
 ======================================= */
@@ -64,3 +95,5 @@ $(".tabla_material").on("click",".btnEliminarMaterial", function(){
     })
 
 })
+
+

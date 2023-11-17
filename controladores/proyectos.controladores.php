@@ -75,9 +75,9 @@ class ControladorProyecto{
     static public function ctrMostrarProyectos($item, $valor)
     {
 
-        $tablaP = "proveedor";
-        $tablaM = "material";
-        $respuesta = ModeloMateriales::mdlMostrarMateriales($tablaP, $tablaM, $item, $valor);
+        $tablaC = "cliente";
+        $tablaP = "proyecto";
+        $respuesta = ModeloProyecto::mdlMostrarProyectos($tablaC, $tablaP, $item, $valor);
 
         return $respuesta;
     }

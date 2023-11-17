@@ -169,8 +169,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Guardamos los datos del material -->
           <?php
 
-            $crearProyecto = new ControladorProyecto();
-            $crearProyecto->ctrCrearProyecto();
+          $crearProyecto = new ControladorProyecto();
+          $crearProyecto->ctrCrearProyecto();
 
           ?>
 
@@ -190,7 +190,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
   <div class="modal-dialog modal-lg" role="document" style="margin-top: 30px;">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Presupuesto material</b></h4>
+        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Agregar material</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -198,83 +198,75 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
       <div class="modal-body">
         <form method="post" enctype="multipart/form-data">
 
-          <div class="row col-md-12">
-            <!-- Entrada del proyecto -->
-            <div class="form-group col-md-3">
-              <label for="recipient-name">Nombre del cliente:</label>
-              <select name="nuevoNombreCliente" class="form-control">
-                <option value="">Seleccione proveedor</option>
-                <?php
-                $item = null;
-                $valor = null;
 
-                $cliente = ControladorClientes::ctrMostrarClientes($item, $valor);
-                foreach ($cliente as $key => $value) {
-                  echo '<option value="' . $value["id_cliente"] . '">' . $value["nombre_cliente"] . '</option>';
-                }
-                ?>
-              </select>
-              <div class="mt-2">
-                <a href="clientes" class="btn btn-primary btn-sm">Nuevo Cliente</a>
-              </div>
-            </div>
+          <div class="row col-md-12">
 
             <!-- Entrada de material -->
             <div class="form-group col-md-3">
-              <label for="recipient-name">Nombre del cliente:</label>
-              <select name="nuevoNombreCliente" class="form-control">
-                <option value="">Seleccione proveedor</option>
+              <label for="recipient-name">Material:</label>
+              <select name="idMateriales" id="idMateriales" class="form-control">
+                <option value="">Seleccione material</option>
                 <?php
                 $item = null;
                 $valor = null;
 
-                $cliente = ControladorClientes::ctrMostrarClientes($item, $valor);
-                foreach ($cliente as $key => $value) {
-                  echo '<option value="' . $value["id_cliente"] . '">' . $value["nombre_cliente"] . '</option>';
+                $material = ControladorMateriales::ctrMostrarMateriales($item, $valor);
+                foreach ($material as $key => $value) {
+                  echo '<option value="' . $value["id_material"] . '">' . $value["nombre_material"] . '</option>';
                 }
                 ?>
               </select>
-              <div class="mt-2">
-                <a href="clientes" class="btn btn-primary btn-sm">Nuevo Cliente</a>
-              </div>
+            </div>
+
+            <!-- Entrada de ID proyecto-->
+            <div class="form-group">
+            <?php
+            $item = null;
+            $valor = null;
+
+            $proyecto = ControladorProyecto::ctrMostrarProyectos($item, $valor);
+
+            $ultimoProyecto = end($proyecto);
+
+            if ($ultimoProyecto !== false) {
+                echo '<input type="hidden" value="'.$ultimoProyecto["id_proyecto"].'">';
+            } else {
+                echo "No se encontraron resultados.";
+            }
+            ?>
             </div>
 
             <!-- Entrada de nombre del proyecto-->
             <div class="form-group col-md-3">
-              <label for="recipient-name">Nombre del proyecto:</label>
-              <input type="text" class="form-control" name="nuevoNombreProyecto" placeholder="Ingrese el nombre del proyecto" required>
+              <label for="recipient-name">Precio Unitario:</label>
+              <input type="text" class="form-control" id="nuevoPrecioUnitarioM" name="nuevoPrecioUnitarioM" oninput="calcularSuma()" readonly >
             </div>
 
-            <!-- Entrada de ubicacion del proyecto -->
+            <!-- Entrada de cantidad -->
             <div class="form-group col-md-3">
-              <label for="message-text">Ubicación del proyecto:</label>
-              <input type="text" class="form-control" name="nuevoUbicacionProyecto" placeholder="Ingrese la ubicación del proyecto" required>
+              <label for="message-text">Cantidad:</label>
+              <input type="number" class="form-control" id="nuevoCantidadM" name="nuevoCantidadM" oninput="calcularSuma()" required>
             </div>
 
-            <!-- Entrada de fecha del proyecto -->
+            <!-- Entrada de suma precio total -->
             <div class="form-group col-md-3">
-              <label for="message-text">Fecha del proyecto:</label>
-              <input type="date" class="form-control" name="nuevoFechaProyecto" placeholder="Ingrese la fecha" required>
+              <label for="message-text">Precio Total:</label>
+              <input type="text" class="form-control" id="resultadoSuma" name="resultadoSuma" placeholder="Precio Total" readonly >
             </div>
-          </div>
 
-          <!-- Entrada de descripcion de material -->
-          <div class="form-group">
-            <label for="message-text">Descripción del proyecto:</label>
-            <textarea name="descripcionProyecto" id="DescripcionProyecto"></textarea>
           </div>
 
           <!-- Botones de guardar y cerrar -->
           <div class="row col-md-auto">
             <button type="button" class="btn btn-light mr-5" data-dismiss="modal" style="margin-left: auto;">Cerrar</button>
-            <button type="submit" class="btn btn-primary" style="margin-right: auto;">Guardar</button>
+            <button type="submit" class="btn btn-primary" style="margin-right: auto;">Agregar</button>
           </div>
 
           <!-- Guardamos los datos del material -->
           <?php
 
-            $crearProyecto = new ControladorProyecto();
-            $crearProyecto->ctrCrearProyecto();
+          $crearProyecto = new ControladorProyecto();
+          $crearProyecto->ctrCrearProyecto();
 
           ?>
 

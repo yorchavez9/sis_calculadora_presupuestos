@@ -92,13 +92,14 @@ session_start();
 
     <!-- script de validaciones -->
 
-    <script src="vistas/js/js.usuarios.js"></script>
+    <script src="vistas/js/usuarios.js"></script>
     <script src="vistas/js/proveedor.js"></script>
-    <script src="vistas/js/script.materiales.js"></script>
+    <script src="vistas/js/materiales.js"></script>
     <script src="vistas/js/trabajadores.js"></script>
     <script src="vistas/js/equipos.maquinarias.js"></script>
     <script src="vistas/js/clientes.js"></script>
     <script src="vistas/js/proyectos.js"></script>
+    <script src="vistas/js/pres.material.js"></script>
 
 
     <!-- container-scroller -->
