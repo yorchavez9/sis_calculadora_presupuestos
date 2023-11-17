@@ -22,6 +22,19 @@ class AjaxTrabajador{
 
 	}
 
+	public $idTrabajadores;
+
+	public function ajaxMostrarTrabajador(){
+
+		$item = "id_trabajador";
+		$valor = $this->idTrabajadores;
+
+		$respuesta = ControladorTrabajadores::ctrMostrarTrabajadores($item, $valor);
+
+		echo json_encode($respuesta);
+
+	}
+
 }
 
 /*=============================================
@@ -32,5 +45,17 @@ if(isset($_POST["idTrabajador"])){
 	$editar = new AjaxTrabajador();
 	$editar -> idTrabajador = $_POST["idTrabajador"];
 	$editar -> ajaxEditarTrabajador();
+
+}
+
+
+/*=============================================
+MOSTRAR SUELDO TRABAJDOR
+=============================================*/
+if(isset($_POST["idTrabajadores"])){
+
+	$mostrar = new AjaxTrabajador();
+	$mostrar -> idTrabajadores = $_POST["idTrabajadores"];
+	$mostrar -> ajaxMostrarTrabajador();
 
 }

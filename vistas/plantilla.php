@@ -100,6 +100,7 @@ session_start();
     <script src="vistas/js/clientes.js"></script>
     <script src="vistas/js/proyectos.js"></script>
     <script src="vistas/js/pres.material.js"></script>
+    <script src="vistas/js/pres.trabajador.js"></script>
 
 
     <!-- container-scroller -->

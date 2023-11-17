@@ -6,7 +6,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 }
 ?>
 
-<!-- partial -->
+
+
 <div class="container-fluid page-body-wrapper">
   <div class="main-panel">
     <div class="content-wrapper">
@@ -23,7 +24,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
               <button type="button" id="presMaterial" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Materiales</button>
             </div>
             <div class="mb-3 col-md-2">
-              <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Trabajadores</button>
+              <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlTrabajadores" data-whatever="@getbootstrap">Trabajadores</button>
             </div>
             <div class="mb-3 col-md-2">
               <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Metros de terreno</button>
@@ -47,11 +48,11 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Nombre</th>
+                      <th>Material</th>
                       <th>Precio Unitario</th>
                       <th>Cantidad</th>
                       <th>Costo Total</th>
-                      <th>fecha_pres_materiales</th>
+                      <th>fecha</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -74,6 +75,63 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                               <td>
                                 <div class="btn-group text-center">
                                   <button class="btn btn-danger btnEliminarPresMaterial" idPresMaterial="' . $value["id_pres_mat"] . '"><i class="mdi mdi-delete"></i></button>
+                                </div>
+                              </td>
+                              </tr>';
+                    }
+                    ?>
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ==================================
+          TABLA PRESUPUESTO DE MATERIALES
+          ================================== -->
+          <br><br>
+          <div class="mb-3">
+            <h4>Tabla de presupuesto de trabajadores</h4>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="table-responsive">
+                <table id="order-listing" class="table tabla_pres_trabajador">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Trabajador</th>
+                      <th>Trabajo por</th>
+                      <th>Sueldo acordado</th>
+                      <th>Cantidad de tiempo</th>
+                      <th>Costo total</th>
+                      <th>fecha</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $item = null;
+                    $valor = null;
+
+                    $trabajador = ControladorPresTrabajadores::ctrMostrarPresTrabajador($item, $valor);
+
+                    foreach ($trabajador as $key => $value) {
+
+                      echo '<tr>
+                              <td>' . ($key + 1) . '</td>
+                              <td>' . $value["nombre_trabajador"] . '</td>
+                              <td>' . $value["tiempo_trabajo"] . '</td>
+                              <td>' . $value["sueldo_acordado"] . '</td>
+                              <td>' . $value["cantidad_tiempo"] . '</td>
+                              <td>' . $value["costo_total_trab"] . '</td>
+                              <td>' . $value["fecha_pres_traba"] . '</td>
+                              <td>
+                                <div class="btn-group text-center">
+                                  <button class="btn btn-danger btnEliminarPresTrabajador" idPresTrabajador="' . $value["id_pres_trab"] . '"><i class="mdi mdi-delete"></i></button>
                                 </div>
                               </td>
                               </tr>';
@@ -223,26 +281,26 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
             <!-- Entrada de ID proyecto-->
             <div class="form-group">
-            <?php
-            $item = null;
-            $valor = null;
+              <?php
+              $item = null;
+              $valor = null;
 
-            $proyecto = ControladorProyecto::ctrMostrarProyectos($item, $valor);
+              $proyecto = ControladorProyecto::ctrMostrarProyectos($item, $valor);
 
-            $ultimoProyecto = end($proyecto);
+              $ultimoProyecto = end($proyecto);
 
-            if ($ultimoProyecto !== false) {
-                echo '<input type="hidden" value="'.$ultimoProyecto["id_proyecto"].'" name="idProyectoM">';
-            } else {
+              if ($ultimoProyecto !== false) {
+                echo '<input type="hidden" value="' . $ultimoProyecto["id_proyecto"] . '" name="idProyectoM">';
+              } else {
                 echo "No se encontraron resultados.";
-            }
-            ?>
+              }
+              ?>
             </div>
 
             <!-- Entrada de nombre del proyecto-->
             <div class="form-group col-md-3">
               <label for="recipient-name">Precio Unitario:</label>
-              <input type="text" class="form-control" id="nuevoPrecioUnitarioM" name="nuevoPrecioUnitarioM" oninput="calcularSuma()" readonly >
+              <input type="text" class="form-control" id="nuevoPrecioUnitarioM" name="nuevoPrecioUnitarioM" oninput="calcularSuma()" readonly>
             </div>
 
             <!-- Entrada de cantidad -->
@@ -254,7 +312,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
             <!-- Entrada de suma precio total -->
             <div class="form-group col-md-3">
               <label for="message-text">Precio Total:</label>
-              <input type="text" class="form-control" id="resultadoSuma" name="resultadoSuma" placeholder="Precio Total" readonly >
+              <input type="text" class="form-control" id="resultadoSuma" name="resultadoSuma" placeholder="Precio Total" readonly>
             </div>
 
           </div>
@@ -281,24 +339,15 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
 
 
-
-
-
-
-
-
-
-
-
 <!-- ===========================================
-    MODAL EDITAR MATERIAL
+    MODAL PRESUPUESTO TRABAJADORES
     =========================================== -->
 
-<div class="modal fade" id="mdlEditarMaterial" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="mdlTrabajadores" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style="margin-top: 30px;">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Editar usuario</b></h4>
+        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Agregar trabajador</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -306,76 +355,87 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
       <div class="modal-body">
         <form method="post" enctype="multipart/form-data">
 
-          <!-- Entrada de ID escondido -->
-          <div class="form-group">
-            <input type="hidden" class="form-control" name="idMaterial" id="idMaterial" value="" required>
-          </div>
 
+          <div class="row col-md-12">
 
-          <!-- Entrada de nombre del proveedor -->
-          <div class="form-group">
-            <label for="recipient-name">Nombre proveedor:</label>
-            <select name="editarProveedor" class="form-control">
-              <option id="editarProveedor"></option>
+            <!-- Entrada de ID proyecto-->
+            <div class="form-group">
               <?php
               $item = null;
               $valor = null;
 
-              $proveedor = ControladorProveedores::ctrMostrarProveedor($item, $valor);
-              foreach ($proveedor as $key => $value) {
-                echo '<option value="' . $value["id_proveedor"] . '">' . $value["nombre_proveedor"] . '</option>';
+              $proyecto = ControladorProyecto::ctrMostrarProyectos($item, $valor);
+
+              $ultimoProyecto = end($proyecto);
+
+              if ($ultimoProyecto !== false) {
+                echo '<input type="hidden" value="' . $ultimoProyecto["id_proyecto"] . '" name="idProyectoT">';
+              } else {
+                echo "No se encontraron resultados.";
               }
               ?>
-            </select>
-          </div>
+            </div>
 
-          <!-- Entrada de nombre del material -->
-          <div class="form-group">
-            <label for="recipient-name">Nombre del material:</label>
-            <input type="text" class="form-control" name="editarNombreM" id="editarNombreM" value="" required>
-          </div>
+            <!-- Entrada del trabjador -->
+            <div class="form-group col-md-3">
+              <label for="recipient-name">Trabajador:</label>
+              <select name="idTrabajadores" id="idTrabajadores" class="form-control">
+                <option value="">Seleccione trabajador</option>
+                <?php
+                $item = null;
+                $valor = null;
 
-          <!-- Entrada de tipo de material -->
-          <div class="form-group">
-            <label for="message-text">Tipo de material:</label>
-            <input type="text" class="form-control" name="editarTipoM" id="editarTipoM" value="" required>
-          </div>
+                $trabajador = ControladorTrabajadores::ctrMostrarTrabajadores($item, $valor);
+                foreach ($trabajador as $key => $value) {
+                  echo '<option value="' . $value["id_trabajador"] . '">' . $value["nombre_trabajador"] . ' | ' . $value["especialidad_trabajador"] . '</option>';
+                }
+                ?>
+              </select>
+            </div>
 
-          <!-- Entrada de marca de material -->
-          <div class="form-group">
-            <label for="message-text">Marca de material:</label>
-            <input type="text" class="form-control" name="editarMarcaM" id="editarMarcaM" value="" required>
-          </div>
+            <!-- Entrada de cantidad -->
+            <div class="form-group col-md-3">
+              <label for="message-text">Tiempo:</label>
+              <select name="sueldoPorTiempo" id="sueldoPorTiempo" class="form-control">
+                <option value="">Seleccione el tiempo</option>
+                <option value="dia">Por día</option>
+                <option value="semana">Por semana</option>
+                <option value="mes">Por mes</option>
+                <option value="proyecto">Por proyecto</option>
+              </select>
+            </div>
 
-          <!-- Entrada de Cantidad de material -->
-          <div class="form-group">
-            <label for="message-text">Cantidad de material:</label>
-            <input type="number" class="form-control" name="editarCantidadM" id="editarCantidadM" value="" required>
-          </div>
+            <!-- Entrada de nombre del proyecto-->
+            <div class="form-group col-md-2">
+              <label for="recipient-name">Sueldo acordado:</label>
+              <input type="text" class="form-control" id="nuevoSueldoT" value="0.00" name="nuevoSueldoT" oninput="calcularSumaT()" readonly>
+            </div>
 
-          <!-- Entrada de precio compra de material-->
-          <div class="form-group">
-            <label for="message-text">Precio compra del material:</label>
-            <input type="number" class="form-control" name="editarCompraM" id="editarCompraM" value="" required>
-          </div>
+            <!-- Entrada de suma precio total -->
+            <div class="form-group col-md-2">
+              <label for="message-text">Cantidad de tiempo:</label>
+              <input type="number" class="form-control" id="nuevoCantidadTT" value="0" name="nuevoCantidadTT" oninput="calcularSumaT()" placeholder="Ingrese la cantidad de tiempo">
+            </div>
 
-          <!-- Entrada de precio venta de material -->
-          <div class="form-group">
-            <label for="message-text">Precio venta del material:</label>
-            <input type="number" class="form-control" name="editarVentaM" id="editarVentaM" value="" required>
+            <!-- Entrada de suma precio total -->
+            <div class="form-group col-md-2">
+              <label for="message-text">Precio Total:</label>
+              <input type="text" class="form-control" id="resultadoSumaT" name="resultadoSumaT" value="0.00" readonly>
+            </div>
+
           </div>
 
           <!-- Botones de guardar y cerrar -->
           <div class="row col-md-auto">
             <button type="button" class="btn btn-light mr-5" data-dismiss="modal" style="margin-left: auto;">Cerrar</button>
-            <button type="submit" class="btn btn-primary" style="margin-right: auto;">Modificar usuario</button>
+            <button type="submit" class="btn btn-primary" style="margin-right: auto;">Agregar</button>
           </div>
 
-          <!-- Guardamos los datos del usuario -->
+          <!-- Guardamos los datos del presupuesto del trabajdor -->
           <?php
 
-          /*           $editarMaterial = new ControladorMateriales();
-          $editarMaterial->ctrEditarMateriales(); */
+          $crearPresTrabajador = new ControladorPresTrabajadores();
+          $crearPresTrabajador->ctrCrearPresTrabajador();
 
           ?>
 
@@ -385,13 +445,21 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
   </div>
 </div>
 
+
+
+
 <!-- ===========================================
     ELIMINAR PRESUPUESTO MATERIAL
     =========================================== -->
-
 <?php
-
-
 $borrarPresMaterial = new ControladorPresMateriales();
 $borrarPresMaterial->ctrBorrarPresMaterial();
+?>
+
+<!-- ===========================================
+    ELIMINAR PRESUPUESTO TRABJADOR
+    =========================================== -->
+<?php
+$borrarPresTrabajador = new ControladorPresTrabajadores();
+$borrarPresTrabajador->ctrBorrarPresTrabajador();
 ?>
