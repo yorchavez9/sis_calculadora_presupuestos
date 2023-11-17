@@ -2,17 +2,17 @@
 
 require_once "conexion.php";
 
-class ModeloProveedores{
+class ModeloPresTerreno{
 
     /* ===========================================
-    MOSTRAR PROVEDORES
+    MOSTRAR PRESUPUESTO TERRENO
     =========================================== */
 
-	static public function mdlMostrarProveedores($tabla, $item, $valor){
+	static public function mdlMostrarPresTerreno($tablaP, $tablaT, $item, $valor){
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tablaP INNER JOIN $tablaT ON $tablaP.id_proyecto  = $tablaT.id_proyecto  WHERE $item = :$item");
 
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 
@@ -22,7 +22,7 @@ class ModeloProveedores{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tablaP INNER JOIN $tablaT ON $tablaP.id_proyecto  = $tablaT.id_proyecto ");
 
 			$stmt -> execute();
 
@@ -35,17 +35,26 @@ class ModeloProveedores{
 	}
 
     /* ===========================================
-    REGISTRAR PROVEEDOR
+    REGISTRAR PRESUPUESTO TERRENO
     =========================================== */
 
-	static public function mdlIngresarProveedor($tabla, $datos){
+	static public function mdlIngresarPresTerreno($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre_proveedor, telefono_proveedor, correo_proveedor, direccion_proveedor) VALUES (:nombre_proveedor, :telefono_proveedor, :correo_proveedor, :direccion_proveedor)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(
+                                                                id_proyecto, 
+                                                                medida, 
+                                                                precio,
+                                                                total) 
+                                                                VALUES (
+                                                                    :id_proyecto, 
+                                                                    :medida, 
+                                                                    :precio, 
+                                                                    :total)");
 
-		$stmt->bindParam(":nombre_proveedor", $datos["nombre_proveedor"], PDO::PARAM_STR);
-		$stmt->bindParam(":telefono_proveedor", $datos["telefono_proveedor"], PDO::PARAM_STR);
-		$stmt->bindParam(":correo_proveedor", $datos["correo_proveedor"], PDO::PARAM_STR);
-		$stmt->bindParam(":direccion_proveedor", $datos["direccion_proveedor"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_proyecto", $datos["id_proyecto"], PDO::PARAM_INT);
+		$stmt->bindParam(":medida", $datos["medida"], PDO::PARAM_STR);
+		$stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
+		$stmt->bindParam(":total", $datos["total"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -62,38 +71,15 @@ class ModeloProveedores{
 
 	}
 
-    /* ===========================================
-    EDITAR PROVEEDOR
-    =========================================== */
-
-    static public function mdlEditarProveedor($tabla, $datos){
-
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre_proveedor = :nombre_proveedor, telefono_proveedor = :telefono_proveedor, correo_proveedor = :correo_proveedor, direccion_proveedor = :direccion_proveedor WHERE id_proveedor = :id_proveedor");
-        $stmt->bindParam(":nombre_proveedor", $datos["nombre_proveedor"], PDO::PARAM_STR);
-        $stmt->bindParam(":telefono_proveedor", $datos["telefono_proveedor"], PDO::PARAM_STR);
-        $stmt->bindParam(":correo_proveedor", $datos["correo_proveedor"], PDO::PARAM_STR);
-        $stmt->bindParam(":direccion_proveedor", $datos["direccion_proveedor"], PDO::PARAM_STR);
-        $stmt->bindParam(":id_proveedor", $datos["id_proveedor"], PDO::PARAM_INT);
-
-        if($stmt->execute()){
-            return "ok";
-        }else{
-            return "error";
-        }
-
-        $stmt = null;
-
-    }
-
 
     /* ===========================================
-    BORRAR PROVEEDOR
+    BORRAR PRESUPUESTO TERRENO
     =========================================== */
 
-    static public function mdlBorrarProveedor($tabla, $datos){
+    static public function mdlBorrarPesTerreno($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_proveedor = :id_proveedor");
-        $stmt->bindParam(":id_proveedor",$datos, PDO::PARAM_INT);
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_pres_trab = :id_pres_trab");
+        $stmt->bindParam(":id_pres_trab",$datos, PDO::PARAM_INT);
 
         if($stmt->execute()){
             return "ok";

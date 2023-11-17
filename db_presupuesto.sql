@@ -137,9 +137,9 @@ create table pres_trabajadores(
 create table terreno(
     id_terreno int(11) not null primary key auto_increment,
     id_proyecto int(11) not null,
-    id_trabajador int(11) not null,
     medida varchar(50) not null,
     precio varchar(50) not null,
+    total varchar(50) not null;
     fecha_pres_traba timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     foreign key(id_proyecto) references proyecto(id_proyecto) on update cascade on delete cascade
 )engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
@@ -161,15 +161,11 @@ create table equipo_maqui(
 
 create table presupuesto(
     id_presu int(11) not null primary key auto_increment,
-    id_pres_mat int(11) not null,
-    id_pres_trab int(11) not null,
-    id_terreno int(11) not null,
+    id_proyecto int(11) not null,
     porcentaje_ganancia varchar(50) not null,
     costo_parcial varchar(50) not null,
     costo_final varchar(50) not null,
     fecha_presupuesto timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-    foreign key(id_pres_mat) references pres_materiales(id_pres_mat) on update cascade on delete cascade,
-    foreign key(id_pres_trab) references pres_trabajadores(id_pres_trab) on update cascade on delete cascade,
-    foreign key(id_terreno) references terreno(id_terreno) on update cascade on delete cascade
+    foreign key(id_proyecto) references proyecto(id_proyecto) on update cascade on delete cascade
 )engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;
 

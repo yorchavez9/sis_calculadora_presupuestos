@@ -1,8 +1,7 @@
 // Función para calcular la suma y mostrarla
 function calcularSuma() {
   // Obtener los valores de precio unitario y cantidad
-  var precioUnitario =
-    parseFloat(document.getElementById("nuevoPrecioUnitarioM").value) || 0;
+  var precioUnitario = parseFloat(document.getElementById("nuevoPrecioUnitarioM").value) || 0;
   var cantidad = parseInt(document.getElementById("nuevoCantidadM").value) || 0;
 
   // Calcular la suma
