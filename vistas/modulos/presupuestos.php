@@ -228,11 +228,12 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
         <form method="post" enctype="multipart/form-data">
 
           <div class="row col-md-12">
+            
             <!-- Entrada de nombre del cliente -->
             <div class="form-group col-md-3">
               <label for="recipient-name">Nombre del cliente:</label>
               <select name="nuevoNombreCliente" class="form-control">
-                <option value="">Seleccione proveedor</option>
+                <option value="">Seleccione cliente</option>
                 <?php
                 $item = null;
                 $valor = null;
@@ -576,7 +577,6 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 </div>
 
 
-
 <!-- ===========================================
     MODAL PRESUPUESTO RESUMEN
     =========================================== -->
@@ -621,7 +621,6 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                 if ($ultimoProyecto = $value["id_proyecto"]) {
                   $sumaCostos += floatval($value["costo_total"]);
                 }
-
               }
               echo '<input type="text" class="form-control" value="S/ ' . $sumaCostos . '" id="costoTotalMaterial" name="costoTotalMaterial" readonly>';
 

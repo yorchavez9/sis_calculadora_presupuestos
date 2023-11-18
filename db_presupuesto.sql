@@ -139,7 +139,7 @@ create table terreno(
     id_proyecto int(11) not null,
     medida varchar(50) not null,
     precio varchar(50) not null,
-    total varchar(50) not null;
+    total varchar(50) not null,
     fecha_pres_traba timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     foreign key(id_proyecto) references proyecto(id_proyecto) on update cascade on delete cascade
 )engine=InnoDB default charset=utf8 collate=utf8_spanish_ci;

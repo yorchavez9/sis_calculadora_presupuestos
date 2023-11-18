@@ -241,7 +241,7 @@
 
               <!-- Ver todos los presupuestos -->
               <li class="nav-item">
-                <a href="ver_presupuestos" class="nav-link">
+                <a href="verPresupuestos" class="nav-link">
                   <i class="mdi mdi-eye mdi-24px text-primary"></i>
                   <span class="menu-title">Ver presupuestos</span>
                   <i class="menu-arrow"></i></a>

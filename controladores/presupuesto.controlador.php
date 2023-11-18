@@ -34,7 +34,7 @@ class ControladorPresupuesto{
                                     confirmButtonText: "Cerrar"
                                 }).then(function(result){
                                     if(result.value){
-                                        window.location = "ver_presupuestos";
+                                        window.location = "verPresupuestos";
                                     }
                                 });    
                             </script>';
@@ -72,6 +72,24 @@ class ControladorPresupuesto{
     }
 
     /* ===========================================
+    MOSTRAR PRESUPUESTO 
+    =========================================== */
+
+    static public function ctrVerPresupuesto($item, $valor)
+    {
+
+        $tablaProyecto = "proyecto";
+        $tablaPresMaterial = "pres_materiales";
+        $tablaPresTrabajador = "pres_trabajadores";
+        $tablaCliente = "cliente";
+        $tablaTerreno = "terreno";
+        $tablaPresupuesto = "presupuesto";
+        $respuesta = ModeloPresupuesto::mdlVerPresupuesto($tablaProyecto, $tablaPresMaterial, $tablaPresTrabajador, $tablaCliente, $tablaTerreno, $tablaPresupuesto, $item, $valor);
+
+        return $respuesta;
+    }
+
+    /* ===========================================
     MOSTRAR PRESUPUESTO SUMAR PARCIAL
     =========================================== */
 
@@ -95,24 +113,24 @@ class ControladorPresupuesto{
     static public function ctrBorrarPresupuesto()
     {
 
-        if (isset($_GET["idPresTrabajador"])) {
-            $tabla = "pres_trabajadores";
-            $datos = $_GET["idPresTrabajador"];
+        if (isset($_GET["idPresupuesto"])) {
+            $tabla = "proyecto";
+            $datos = $_GET["idPresupuesto"];
 
-            $respuesta = ModeloPresTrabajador::mdlBorrarPesTrabajador($tabla, $datos);
+            $respuesta = ModeloPresupuesto::mdlBorrarPresupuesto($tabla, $datos);
          
             if ($respuesta == "ok") {
                 echo '<script>
                         Swal.fire({
                             icon: "success",
                             type: "success",
-                            title: "El trabajador ha sido borrado correctamente",
+                            title: "El presupuesto ha sido borrado correctamente",
                             showConfirmButton: true,
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false,
                         }).then(function(result){
                             if(result.value){
-                                window.location = "presupuestos"
+                                window.location = "verPresupuestos"
                             }
                         })
                         </script>';

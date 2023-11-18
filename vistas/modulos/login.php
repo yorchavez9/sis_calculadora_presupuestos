@@ -296,7 +296,6 @@ MODAL REGISTRAR USUARIOS
                                     <select class="form-control form-control-lg" name="nuevoPerfil">
                                         <option value="">Seleccionar perfil</option>
                                         <option value="Administrador">Administrador</option>
-                                        <option value="Especial">Especial</option>
                                     </select>
                                 </div>
 
