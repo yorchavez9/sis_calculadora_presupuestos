@@ -56,9 +56,9 @@ npm install```
 Base de datos: **db_presupuesto.sql**
 
 Cambiar el nombre de la base de datos **sis_presupuesto**: 
-<?php
 
-```php
+
+```<?php
 class Conexion{
     static public function conectar(){
         $link = new PDO("mysql:host=localhost;dbname=sis_presupuesto",
@@ -68,13 +68,79 @@ class Conexion{
         return $link;
     }
 }
+<?php
 ```
-###Vistas previas del sistema 
+### Vistas previas del sistema 
 
-Image:
 Inicio del sistema/parte cliente
 ![](guia-imagenes/1.png)
 
 > Inicio del sistema.
+
+
+Inicio de sesión del sistenma, primero tiene que registrarse
+![](guia-imagenes/2.png)
+
+> Inicio de sesión del sistenma, primero tiene que registrarse.
+
+
+Administrador de inicio del sistema
+![](guia-imagenes/3.png)
+
+> Administrador de inicio del sistema.
+
+
+Administrador de usuarios
+![](guia-imagenes/4.png)
+
+> Administrador de usuarios.
+
+
+Administrador de clientes
+![](guia-imagenes/5.png)
+
+> Administrador de clientes.
+
+
+Administrador de proveedores
+![](guia-imagenes/6.png)
+
+> Administrador de proveedores.
+
+
+Administrador de clientes
+![](guia-imagenes/7.png)
+
+> Administrador de clientes.
+
+
+Administrador de trabajadores
+![](guia-imagenes/8.png)
+
+> Administrador de trabajadores.
+
+
+Administrador de equipos
+![](guia-imagenes/9.png)
+
+> Administrador de equipos.
+
+
+Nuevo presupuesto
+![](guia-imagenes/13.png)
+
+> Nuevo presupuesto.
+
+Ver presupuestos
+![](guia-imagenes/10.png)
+
+> Ver presupuestos.
+
+
+Reporte
+![](guia-imagenes/12.png)
+
+> Reporte.
+
 
 
