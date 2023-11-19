@@ -13,13 +13,13 @@
 	# Encabezado y datos de la empresa #
 	$pdf->SetFont('Arial','B',16);
 	$pdf->SetTextColor(32,100,210);
-	$pdf->Cell(150,10,iconv("UTF-8", "ISO-8859-1",strtoupper("Nombre de empresa")),0,0,'L');
+	$pdf->Cell(150,10,iconv("UTF-8", "ISO-8859-1",strtoupper("P HOUSE E.I.R.L.")),0,0,'L');
 
 	$pdf->Ln(9);
 
 	$pdf->SetFont('Arial','',10);
 	$pdf->SetTextColor(39,39,51);
-	$pdf->Cell(150,9,iconv("UTF-8", "ISO-8859-1","RUC: 0000000000"),0,0,'L');
+	$pdf->Cell(150,9,iconv("UTF-8", "ISO-8859-1","RUC: 20555555555"),0,0,'L');
 
 	$pdf->Ln(5);
 
