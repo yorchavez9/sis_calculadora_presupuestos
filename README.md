@@ -69,12 +69,12 @@ class Conexion{
     }
 }
 ```
-###Images
+###Vistas previas del sistema 
 
 Image:
+Inicio del sistema/parte cliente
+![](guia-imagenes/1.png)
 
-![](https://pandao.github.io/editor.md/examples/images/4.jpg)
-
-> Follow your heart.
+> Inicio del sistema.
 
 
