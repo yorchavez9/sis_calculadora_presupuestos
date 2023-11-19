@@ -5,7 +5,16 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
     </script>';
 }
 ?>
+<?php
+$item = null;
+$valor = null;
 
+$proyecto = ControladorProyecto::ctrMostrarProyectos($item, $valor);
+
+$ultimoProyecto = end($proyecto);
+
+$idUltimoProyecto = $ultimoProyecto["id_proyecto"];
+?>
 
 
 <div class="container-fluid page-body-wrapper">
@@ -27,7 +36,9 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
               <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlTrabajadores" data-whatever="@getbootstrap">Trabajadores</button>
             </div>
             <div class="mb-3 col-md-2">
+              
               <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlTerreno" data-whatever="@getbootstrap">Metros de terreno</button>
+            
             </div>
             <div class="mb-3 col-md-2">
               <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlResumen" data-whatever="@getbootstrap">Presupuesto</button>
@@ -64,20 +75,22 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                     $material = ControladorPresMateriales::ctrMostrarPresMaterial($item, $valor);
 
                     foreach ($material as $key => $value) {
-
-                      echo '<tr>
-                              <td>' . ($key + 1) . '</td>
-                              <td>' . $value["nombre_material"] . '</td>
-                              <td>' . $value["precio_venta_material"] . '</td>
-                              <td>' . $value["cantidad_utilizada"] . '</td>
-                              <td>' . $value["costo_total"] . '</td>
-                              <td>' . $value["fecha_pres_materiales"] . '</td>
-                              <td>
-                                <div class="btn-group text-center">
-                                  <button class="btn btn-danger btnEliminarPresMaterial" idPresMaterial="' . $value["id_pres_mat"] . '"><i class="mdi mdi-delete"></i></button>
-                                </div>
-                              </td>
-                              </tr>';
+                      if($idUltimoProyecto == $value["id_proyecto"]){
+                        echo '<tr>
+                        <td>' . ($key + 1) . '</td>
+                        <td>' . $value["nombre_material"] . '</td>
+                        <td>' . $value["precio_venta_material"] . '</td>
+                        <td>' . $value["cantidad_utilizada"] . '</td>
+                        <td>' . $value["costo_total"] . '</td>
+                        <td>' . $value["fecha_pres_materiales"] . '</td>
+                        <td>
+                          <div class="btn-group text-center">
+                            <button class="btn btn-danger btnEliminarPresMaterial" idPresMaterial="' . $value["id_pres_mat"] . '"><i class="mdi mdi-delete"></i></button>
+                          </div>
+                        </td>
+                        </tr>';
+                      }
+                     
                     }
                     ?>
 
@@ -120,21 +133,23 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                     $trabajador = ControladorPresTrabajadores::ctrMostrarPresTrabajador($item, $valor);
 
                     foreach ($trabajador as $key => $value) {
-
-                      echo '<tr>
-                              <td>' . ($key + 1) . '</td>
-                              <td>' . $value["nombre_trabajador"] . '</td>
-                              <td>' . $value["tiempo_trabajo"] . '</td>
-                              <td>' . $value["sueldo_acordado"] . '</td>
-                              <td>' . $value["cantidad_tiempo"] . '</td>
-                              <td>' . $value["costo_total_trab"] . '</td>
-                              <td>' . $value["fecha_pres_traba"] . '</td>
-                              <td>
-                                <div class="btn-group text-center">
-                                  <button class="btn btn-danger btnEliminarPresTrabajador" idPresTrabajador="' . $value["id_pres_trab"] . '"><i class="mdi mdi-delete"></i></button>
-                                </div>
-                              </td>
-                              </tr>';
+                      if($idUltimoProyecto == $value["id_proyecto"]){
+                        echo '<tr>
+                        <td>' . ($key + 1) . '</td>
+                        <td>' . $value["nombre_trabajador"] . '</td>
+                        <td>' . $value["tiempo_trabajo"] . '</td>
+                        <td>' . $value["sueldo_acordado"] . '</td>
+                        <td>' . $value["cantidad_tiempo"] . '</td>
+                        <td>' . $value["costo_total_trab"] . '</td>
+                        <td>' . $value["fecha_pres_traba"] . '</td>
+                        <td>
+                          <div class="btn-group text-center">
+                            <button class="btn btn-danger btnEliminarPresTrabajador" idPresTrabajador="' . $value["id_pres_trab"] . '"><i class="mdi mdi-delete"></i></button>
+                          </div>
+                        </td>
+                        </tr>';
+                      }
+                      
                     }
                     ?>
 
@@ -174,7 +189,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                     $terreno = ControladorPresTerreno::ctrMostrarPresTerreno($item, $valor);
 
                     foreach ($terreno as $key => $value) {
-
+                      if($idUltimoProyecto == $value["id_proyecto"]){
                       echo '<tr>
                               <td>' . ($key + 1) . '</td>
                               <td>' . $value["nombre_proyecto"] . '</td>
@@ -187,6 +202,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                                 </div>
                               </td>
                               </tr>';
+                      }
                     }
                     ?>
 

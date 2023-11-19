@@ -17,8 +17,7 @@ session_start();
     <link rel="stylesheet" href="vistas/estilos/loader/loader.css">
     <link rel="shortcut icon" href="vistas/estilos/images/favicon.png" />
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.3.67/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.3.67/css/materialdesignicons.min.css">
 
     <link rel="stylesheet" href="vistas/estilos/vendors/feather/feather.css">
     <link rel="stylesheet" href="vistas/estilos/vendors/css/vendor.bundle.base.css">
@@ -34,7 +33,24 @@ session_start();
     <script src="vistas/alert/dist/sweetalert2.min.js"></script>
     <script src="vistas/estilos/jquery/jquery-3.7.1.min.js"></script>
 
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
+        /* Estilo para resaltar el enlace activo */
+        a:target {
+            color: red;
+        }
+
+        .descripcion-ampliada {
+            display: none;
+        }
+
+        #VerMenos{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,7 +60,7 @@ session_start();
     ================================= -->
 
     <?php
-    
+
     echo '<div id="loader-container">
             <div class="pixel-loader"></div>
         </div>';
@@ -139,33 +155,48 @@ session_start();
     <script src="vistas/estilos/loader/loader.js"></script>
 
     <script>
-    $('#DescripcionProyecto').summernote({
-        placeholder: 'Descripción del Proyecto',
-        tabsize: 2,
-        height: 150
-    });
+        $('#DescripcionProyecto').summernote({
+            placeholder: 'Descripción del Proyecto',
+            tabsize: 2,
+            height: 150
+        });
     </script>
 
     <script>
-    // Esperar a que la página se cargue completamente
-    document.addEventListener("DOMContentLoaded", function() {
-        // Obtener el estado de la clase desde localStorage
-        var btnClass = localStorage.getItem('btnClass');
+        // Esperar a que la página se cargue completamente
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtener el estado de la clase desde localStorage
+            var btnClass = localStorage.getItem('btnClass');
 
-        if (btnClass) {
-            // Aplicar la clase al botón
-            var datosProyectoBtn = document.getElementById('datosProyecto');
-            datosProyectoBtn.classList.add(btnClass);
+            if (btnClass) {
+                // Aplicar la clase al botón
+                var datosProyectoBtn = document.getElementById('datosProyecto');
+                datosProyectoBtn.classList.add(btnClass);
 
-            // Deshabilitar el botón
-            datosProyectoBtn.setAttribute("disabled", "disabled");
+                // Deshabilitar el botón
+                datosProyectoBtn.setAttribute("disabled", "disabled");
 
-            // Limpiar la información de localStorage después de aplicar la clase
-            localStorage.removeItem('btnClass');
-        }
-    });
+                // Limpiar la información de localStorage después de aplicar la clase
+                localStorage.removeItem('btnClass');
+            }
+        });
+        $("#VerMas").click(function(e) {
+            e.preventDefault();
+            $(".descripcion-ampliada").slideDown();
+            $("#VerMenos").show();
+            $(this).hide();
+        });
 
+        // Manejo del clic en "Ver menos"
+        $("#VerMenos").click(function(e) {
+            e.preventDefault();
+            $(".descripcion-ampliada").slideUp();
+            $("#VerMas").show();
+            $(this).hide();
+        });
     </script>
+
+
 </body>
 
 </html>

@@ -8,7 +8,7 @@
         <div class="container">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo" href="index.html"><img width="100" src="vistas/estilos/images/logo/logo-house.png" alt="logo" /></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="https://demo.bootstrapdash.com/dashflat/template/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="vistas/estilos/images/logo/logo-house.png" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <ul class="navbar-nav mr-lg-2">
@@ -19,109 +19,17 @@
               </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item dropdown">
-                <a class="nav-link  dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-                  <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/mail.svg" alt="" class="nav-icon-title">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                  <p class="mb-0 font-weight-normal float-left dropdown-header">Mensajes</p>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <img src="../../images/faces/face4.jpg" alt="image" class="profile-pic">
-                    </div>
-                    <div class="preview-item-content flex-grow">
-                      <h6 class="preview-subject ellipsis font-weight-normal">David Grey
-                      </h6>
-                      <p class="font-weight-light small-text text-muted mb-0">
-                        The meeting is cancelled
-                      </p>
-                    </div>
-                  </a>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <img src="../../images/faces/face2.jpg" alt="image" class="profile-pic">
-                    </div>
-                    <div class="preview-item-content flex-grow">
-                      <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
-                      </h6>
-                      <p class="font-weight-light small-text text-muted mb-0">
-                        New product launch
-                      </p>
-                    </div>
-                  </a>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <img src="../../images/faces/face3.jpg" alt="image" class="profile-pic">
-                    </div>
-                    <div class="preview-item-content flex-grow">
-                      <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
-                      </h6>
-                      <p class="font-weight-light small-text text-muted mb-0">
-                        Upcoming board meeting
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-                  <img src="https://demo.bootstrapdash.com/dashflat/template/images/sidebar/notification.svg" alt="" class="nav-icon-title">
-                  <span class="count-circle"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                  <p class="mb-0 font-weight-normal float-left dropdown-header">notificaciones</p>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-success">
-                        <i class="mdi mdi-information mx-0"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                      <p class="font-weight-light small-text mb-0 text-muted">
-                        Just now
-                      </p>
-                    </div>
-                  </a>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-warning">
-                        <i class="mdi mdi-settings mx-0"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <h6 class="preview-subject font-weight-normal">Configuración</h6>
-                      <p class="font-weight-light small-text mb-0 text-muted">
-                        Private message
-                      </p>
-                    </div>
-                  </a>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-info">
-                        <i class="mdi mdi-account-box mx-0"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                      <p class="font-weight-light small-text mb-0 text-muted">
-                        2 days ago
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </li>
               <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown-navbar">
-                  <img src="vistas/estilos/images/faces/face28.png" alt="profile" />
+                  <img src="vistas/img/usuario.png" alt="profile" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown flat-dropdown" aria-labelledby="profileDropdown-navbar">
                   <div class="flat-dropdown-header">
                     <div class="d-flex">
-                      <img src="vistas/estilos/images/faces/face28.png" alt="profile" class="profile-icon mr-2">
+                      <img src="vistas/img/usuario.png" alt="profile" class="profile-icon mr-2">
                       <div>
-                        <span class="profile-name font-weight-bold">Cecelia Vargas</span>
-                        <p class="profile-designation">Administrador</p>
+                        <span class="profile-name font-weight-bold"><?php echo $_SESSION["nombre"] ?></span>
+                        <p class="profile-designation"><?php echo $_SESSION["perfil"]?></p>
                       </div>
                     </div>
                   </div>
