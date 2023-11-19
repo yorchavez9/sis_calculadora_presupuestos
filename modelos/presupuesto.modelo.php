@@ -85,6 +85,8 @@ class ModeloPresupuesto{
 			$stmt = Conexion::conectar()->prepare("SELECT
                                                 $tablaProyecto.id_proyecto,
                                                 $tablaCliente.nombre_cliente,
+                                                $tablaCliente.telefono_cliente,
+                                                $tablaCliente.correo_cliente,
                                                 $tablaProyecto.nombre_proyecto,
                                                 $tablaProyecto.ubicacion_proyecto,
                                                 $tablaProyecto.fecha_proyecto,

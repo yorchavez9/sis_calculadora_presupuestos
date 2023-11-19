@@ -69,7 +69,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                               <td>
                                 <div class="btn-group text-center">
                                   <button class="btn mr-1 btn-primary btnVerPresupuesto" idProyecto="' . $value["id_proyecto"] . '" data-toggle="modal" data-target="#mdlVerPresupuesto" data-whatever="@getbootstrap"><i class="mdi mdi-eye"></i></button>
-                                  <button class="btn btn-info btnImprimirFactura" idProyecto="'.$value["id_proyecto"].'"><i class="mdi mdi-printer"></i></button>
+                                  <button class="btn btn-info btnImprimir" idProyecto="'.$value["id_proyecto"].'"><i class="mdi mdi-printer"></i></button>
                                   <button class="btn mr-1 btn-danger btnEliminarPresupuesto" idPresupuesto="' . $value["id_proyecto"] . '"><i class="mdi mdi-delete"></i></button>
                                 </div>
                               </td>
