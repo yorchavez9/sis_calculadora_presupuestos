@@ -33,15 +33,15 @@ $idUltimoProyecto = $ultimoProyecto["id_proyecto"];
               <button type="button" id="presMaterial" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlMaterial" data-whatever="@getbootstrap">Materiales</button>
             </div>
             <div class="mb-3 col-md-2">
-              <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlTrabajadores" data-whatever="@getbootstrap">Trabajadores</button>
+              <button type="button" id="presTrabajador" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlTrabajadores" data-whatever="@getbootstrap">Trabajadores</button>
             </div>
             <div class="mb-3 col-md-2">
               
-              <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlTerreno" data-whatever="@getbootstrap">Metros de terreno</button>
+              <button type="button" id="presTerreno" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlTerreno" data-whatever="@getbootstrap">Metros de terreno</button>
             
             </div>
             <div class="mb-3 col-md-2">
-              <button type="button" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlResumen" data-whatever="@getbootstrap">Presupuesto</button>
+              <button type="button" id="preupuestoF" style="width: 160px;" class="btn btn-primary" data-toggle="modal" data-target="#mdlResumen" data-whatever="@getbootstrap">Presupuesto</button>
             </div>
           </div>
 

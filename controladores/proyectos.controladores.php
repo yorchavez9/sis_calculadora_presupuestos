@@ -34,16 +34,6 @@ class ControladorProyecto{
                                 confirmButtonText: "Cerrar"
                             }).then(function(result) {
                                 if (result.value) {
-                                    // Deshabilitar el botón y cambiar la clase
-                                    var datosProyectoBtn = document.getElementById("datosProyecto");
-                                    datosProyectoBtn.classList.remove("btn-primary");
-                                    datosProyectoBtn.classList.add("btn-success");
-                                    datosProyectoBtn.setAttribute("disabled", "disabled");
-                                    
-                                    // Guardar el estado en localStorage
-                                    localStorage.setItem("btnClass", "btn-success");
-                            
-                                    // Redirigir a la nueva página
                                     window.location = "presupuestos";
                                 }
                             });                    

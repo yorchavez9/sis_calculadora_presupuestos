@@ -163,23 +163,7 @@ session_start();
     </script>
 
     <script>
-        // Esperar a que la página se cargue completamente
-        document.addEventListener("DOMContentLoaded", function() {
-            // Obtener el estado de la clase desde localStorage
-            var btnClass = localStorage.getItem('btnClass');
 
-            if (btnClass) {
-                // Aplicar la clase al botón
-                var datosProyectoBtn = document.getElementById('datosProyecto');
-                datosProyectoBtn.classList.add(btnClass);
-
-                // Deshabilitar el botón
-                datosProyectoBtn.setAttribute("disabled", "disabled");
-
-                // Limpiar la información de localStorage después de aplicar la clase
-                localStorage.removeItem('btnClass');
-            }
-        });
         $("#VerMas").click(function(e) {
             e.preventDefault();
             $(".descripcion-ampliada").slideDown();
