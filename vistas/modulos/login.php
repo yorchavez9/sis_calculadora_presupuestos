@@ -101,6 +101,9 @@ $totalMaquinas = count($maquinas);
                     </div>
                 </div>
             </div>
+            <div class="row col-md-12">
+                <img style="width: 30%;" src="vistas/img/proyectos/img.01.jpg" alt="">
+            </div>
         </section>
         <section class="mb-1">
             <div class="container">
