@@ -38,7 +38,7 @@ $totalMaquinas = count($maquinas);
                         <a class="nav-link" href="#proyectos">Proyectos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contactos">Contactos</a>
+                        <a class="nav-link" href="#contactoCliente">Contactos</a>
                     </li>
                 </ul>
                 <div class="form-inline">
@@ -147,14 +147,14 @@ $totalMaquinas = count($maquinas);
                         <div class="col-md-6">
                             <div class="card border-0 mb-3">
                                 <div class="card-body">
-                                    <?php 
-                                    
+                                    <?php
+
                                     $fechaOriginal = $value["fecha_proyecto"];
                                     setlocale(LC_TIME, 'es_PE.UTF-8'); // Establecer la configuración regional a español peruano
 
                                     $fechaFormateada = strftime('%d de %B del %Y', strtotime($fechaOriginal));
                                     ?>
-                                    <span class="text-muted small font-weight-bold d-inline-block mb-2"><?php echo $fechaFormateada?></span>
+                                    <span class="text-muted small font-weight-bold d-inline-block mb-2"><?php echo $fechaFormateada ?></span>
                                     <h3 class="font-weight-bold"><?php echo $value["nombre_proyecto"] ?></h3>
                                     <a href="#" id="VerMas">Ver más...</a>
                                     <div class="descripcion-ampliada">
@@ -173,15 +173,46 @@ $totalMaquinas = count($maquinas);
             </div>
         </section>
 
+        <section class="mb-4 container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h2><b>Contactos</b></h2>
+                        </div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="nuevoNombre" placeholder="Ingrese su nombre">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="nuevoApellido" placeholder="Ingrese su apellido">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="nuevoTelefono" placeholder="Ingrese su teléfono">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="nuevoCorreo" placeholder="Ingrese su correo">
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 </main>
 
-<div class="container pb-5">
+<div class="container">
     <footer class="lead-footer shadow px-5">
         <div class="row">
             <div class="col-lg-5 col-md-6">
                 <div class="footer-brand-wrapper"><img src="vistas/estilos/images/logo/logo-house.png" alt="logo white" width="100"></div>
-                <p class="pb-2 mb-4">Construimos sueños con calidad y experiencia. Confíe en P HOUSE E.I.R.L. para proyectos excepcionales y duraderos.</p>
+                <p class="pb-1 mb-4">Construimos sueños con calidad y experiencia. Confíe en P HOUSE E.I.R.L. para proyectos excepcionales y duraderos.</p>
             </div>
             <div class="col-lg-6 ml-md-auto">
                 <div class="row">
@@ -220,129 +251,118 @@ LOGIN
 MODAL INICIAR SESION
 ===================================== -->
 
-<div class="col-md-6 col-xl-4 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <div class="modal fade" id="iniciar_sesion" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="ModalLabel"><b>Iniciar Sessión</b></h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="pt-2" method="post" enctype="multipart/form-data">
+<div class="modal fade" id="iniciar_sesion" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="ModalLabel"><b>Iniciar Sessión</b></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="pt-2" method="post" enctype="multipart/form-data">
 
-                                <!-- ====================================
+                    <!-- ====================================
                                 INGRESANDO USUARIO
                                 ==================================== -->
-                                <div class="form-group">
-                                    <label for="Usuario">Usuario</label>
-                                    <input type="text" class="form-control form-control-lg" name="ingUsuario" placeholder="Usuario">
-                                </div>
+                    <div class="form-group">
+                        <label for="Usuario">Usuario</label>
+                        <input type="text" class="form-control form-control-lg" name="ingUsuario" placeholder="Usuario">
+                    </div>
 
-                                <!-- ====================================
+                    <!-- ====================================
                                 INGRESANDO CONTRASEÑA
                                 ==================================== -->
-                                <div class="form-group">
-                                    <label for="Usuario">Constraseña</label>
-                                    <input type="password" class="form-control form-control-lg" name="ingPassword" placeholder="Constraseña">
-                                </div>
+                    <div class="form-group">
+                        <label for="Usuario">Constraseña</label>
+                        <input type="password" class="form-control form-control-lg" name="ingPassword" placeholder="Constraseña">
+                    </div>
 
-                                <!-- ====================================
+                    <!-- ====================================
                                 BOTON DE INGRESAR
                                 ==================================== -->
-                                <div class="mt-3">
-                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Ingresar</button>
-                                </div>
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Ingresar</button>
+                    </div>
 
-                                <!-- ====================================
+                    <!-- ====================================
                                 CONTROLADOR INGRESO USUARIO
                                 ==================================== -->
 
-                                <?php
+                    <?php
 
-                                $login = new ControladorUsuarios();
-                                $login->ctrIngresoUsuario();
+                    $login = new ControladorUsuarios();
+                    $login->ctrIngresoUsuario();
 
-                                ?>
+                    ?>
 
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
+                </form>
             </div>
+
         </div>
     </div>
 </div>
 
 
+
 <!-- =====================================
 MODAL REGISTRAR USUARIOS
 ===================================== -->
-<div class="col-md-6 col-xl-4 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <div class="modal fade" id="registro_usuario" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="ModalLabel"><b>Registrarse</b></h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="pt-2" method="post" enctype="multipart/form-data">
+<div class="modal fade" id="registro_usuario" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="ModalLabel"><b>Registrarse</b></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="pt-2" method="post" enctype="multipart/form-data">
 
-                                <!-- ENTRADA DE NOMBRE -->
-                                <div class="form-group">
-                                    <label for="Usuario">Nombre</label>
-                                    <input type="text" class="form-control" name="nuevoNombre" placeholder="Ingresar nombre">
-                                </div>
+                    <!-- ENTRADA DE NOMBRE -->
+                    <div class="form-group">
+                        <label for="Usuario">Nombre</label>
+                        <input type="text" class="form-control" name="nuevoNombre" placeholder="Ingresar nombre">
+                    </div>
 
-                                <!-- ENTRADA DE USUARIO -->
-                                <div class="form-group">
-                                    <label for="Usuario">Usuario o correo</label>
-                                    <input type="text" class="form-control" name="nuevoUsuario" placeholder="Ingresar usuario o correo">
-                                </div>
+                    <!-- ENTRADA DE USUARIO -->
+                    <div class="form-group">
+                        <label for="Usuario">Usuario o correo</label>
+                        <input type="text" class="form-control" name="nuevoUsuario" placeholder="Ingresar usuario o correo">
+                    </div>
 
-                                <!-- ENTRADA DE CONTRASEÑA -->
-                                <div class="form-group">
-                                    <label for="Usuario">Constraseña</label>
-                                    <input type="password" class="form-control" name="nuevoPassword" placeholder="Ingresar constraseña">
-                                </div>
+                    <!-- ENTRADA DE CONTRASEÑA -->
+                    <div class="form-group">
+                        <label for="Usuario">Constraseña</label>
+                        <input type="password" class="form-control" name="nuevoPassword" placeholder="Ingresar constraseña">
+                    </div>
 
-                                <!-- ENTRADA DE PERFIL -->
-                                <div class="form-group">
-                                    <label for="Usuario">Constraseña</label>
-                                    <select class="form-control form-control-lg" name="nuevoPerfil">
-                                        <option value="">Seleccionar perfil</option>
-                                        <option value="Administrador">Administrador</option>
-                                    </select>
-                                </div>
+                    <!-- ENTRADA DE PERFIL -->
+                    <div class="form-group">
+                        <label for="Usuario">Constraseña</label>
+                        <select class="form-control form-control-lg" name="nuevoPerfil">
+                            <option value="">Seleccionar perfil</option>
+                            <option value="Administrador">Administrador</option>
+                        </select>
+                    </div>
 
-                                <!-- BOTON PARA GUARDAR -->
-                                <div class="mt-3">
-                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Registrar</button>
-                                </div>
+                    <!-- BOTON PARA GUARDAR -->
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Registrar</button>
+                    </div>
 
 
-                                <!-- ===============================
+                    <!-- ===============================
                                 REGISTRAMOS
                                 =============================== -->
-                                <?php
-                                $crearUsuario = new ControladorUsuarios();
-                                $crearUsuario->ctrCrearUsuario();
-                                ?>
+                    <?php
+                    $crearUsuario = new ControladorUsuarios();
+                    $crearUsuario->ctrCrearUsuario();
+                    ?>
 
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
