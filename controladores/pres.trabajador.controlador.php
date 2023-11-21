@@ -36,7 +36,9 @@ class ControladorPresTrabajadores{
                                     confirmButtonText: "Cerrar"
                                 }).then(function(result){
                                     if(result.value){
-                                        window.location = "presupuestos";
+                                        var palabra = "nuevoPresTrabajador";
+                                        
+                                        window.location = "presupuestos?palabra=" + palabra;
                                     }
                                 });    
                             </script>';

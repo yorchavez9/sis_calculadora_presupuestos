@@ -4,6 +4,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
         window.location = "inicio"
     </script>';
 }
+
 ?>
 <?php
 $item = null;
@@ -14,6 +15,7 @@ $proyecto = ControladorProyecto::ctrMostrarProyectos($item, $valor);
 $ultimoProyecto = end($proyecto);
 
 $idUltimoProyecto = $ultimoProyecto["id_proyecto"];
+
 ?>
 
 
@@ -49,10 +51,10 @@ $idUltimoProyecto = $ultimoProyecto["id_proyecto"];
           TABLA PRESUPUESTO DE MATERIALES
           ================================== -->
           <br><br>
+          <div class="row" id="contentMaterial" style="display: none;">
           <div class="mb-3">
             <h4>Tabla de presupuesto de materiales</h4>
           </div>
-          <div class="row">
             <div class="col-12">
               <div class="table-responsive">
                 <table id="order-listing" class="table tabla_pres_material">
@@ -106,10 +108,10 @@ $idUltimoProyecto = $ultimoProyecto["id_proyecto"];
           TABLA PRESUPUESTO DE MATERIALES
           ================================== -->
           <br><br>
+          <div class="row" id="contentTrabajador" style="display: none;">
           <div class="mb-3">
             <h4>Tabla de presupuesto de trabajadores</h4>
           </div>
-          <div class="row">
             <div class="col-12">
               <div class="table-responsive">
                 <table id="order-listing" class="table tabla_pres_trabajador">
@@ -164,10 +166,10 @@ $idUltimoProyecto = $ultimoProyecto["id_proyecto"];
           TABLA PRESUPUESTO DE TERRENO
           ================================== -->
           <br><br>
+          <div class="row" id="contentTerreno" style="display: none;">
           <div class="mb-3">
             <h4>Tabla de presupuesto de terreno</h4>
           </div>
-          <div class="row">
             <div class="col-12">
               <div class="table-responsive">
                 <table id="order-listing" class="table tabla_pres_trabajador">
@@ -756,3 +758,4 @@ $borrarPresMaterial->ctrBorrarPresMaterial();
 $borrarPresTrabajador = new ControladorPresTrabajadores();
 $borrarPresTrabajador->ctrBorrarPresTrabajador();
 ?>
+

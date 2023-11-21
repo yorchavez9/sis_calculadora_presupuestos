@@ -34,7 +34,9 @@ class ControladorPresTerreno{
                                     confirmButtonText: "Cerrar"
                                 }).then(function(result){
                                     if(result.value){
-                                        window.location = "presupuestos";
+                                        var palabra = "presTerreno";
+                                        
+                                        window.location = "presupuestos?palabra=" + palabra;
                                     }
                                 });    
                             </script>';

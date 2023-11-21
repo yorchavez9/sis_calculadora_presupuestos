@@ -47,7 +47,7 @@ session_start();
             display: none;
         }
 
-        #VerMenos{
+        #VerMenos {
             display: none;
         }
     </style>
@@ -163,6 +163,89 @@ session_start();
     </script>
 
     <script>
+
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var palabra = urlParams.get('palabra');
+
+        if (palabra == "nuevoProyecto" || palabra == "nuevoPresMaterial") {
+            document.getElementById("datosProyecto").classList.remove("btn-primary");
+            document.getElementById("datosProyecto").classList.add("btn-success");
+            document.getElementById("datosProyecto").disabled = true;
+
+            var miDiv = document.getElementById('contentTrabajador');
+            miDiv.style.display = 'none';
+            var miDiv = document.getElementById('contentTerreno');
+            miDiv.style.display = 'none';
+            var miDiv = document.getElementById('contentMaterial');
+            miDiv.style.display = 'block';
+
+        } else if (palabra == "nuevoPresTrabajador") {
+
+            document.getElementById("datosProyecto").classList.remove("btn-primary");
+            document.getElementById("datosProyecto").classList.add("btn-success");
+            document.getElementById("datosProyecto").disabled = true;
+
+            document.getElementById("presMaterial").classList.remove("btn-primary");
+            document.getElementById("presMaterial").classList.add("btn-success");
+            document.getElementById("presMaterial").disabled = true;
+
+
+            var miDiv = document.getElementById('contentMaterial');
+            miDiv.style.display = 'none';
+            var miDiv = document.getElementById('contentTerreno');
+            miDiv.style.display = 'none';
+            var miDiv = document.getElementById('contentTrabajador');
+            miDiv.style.display = 'block';
+
+        } else if (palabra == "presTerreno") {
+            document.getElementById("datosProyecto").classList.remove("btn-primary");
+            document.getElementById("datosProyecto").classList.add("btn-success");
+            document.getElementById("datosProyecto").disabled = true;
+
+            document.getElementById("presMaterial").classList.remove("btn-primary");
+            document.getElementById("presMaterial").classList.add("btn-success");
+            document.getElementById("presMaterial").disabled = true;
+
+            document.getElementById("presTrabajador").classList.remove("btn-primary");
+            document.getElementById("presTrabajador").classList.add("btn-success");
+            document.getElementById("presTrabajador").disabled = true;
+
+            document.getElementById("presTerreno").classList.remove("btn-primary");
+            document.getElementById("presTerreno").classList.add("btn-success");
+            document.getElementById("presTerreno").disabled = true;
+
+            var miDiv = document.getElementById('contentMaterial');
+            miDiv.style.display = 'none';
+            var miDiv = document.getElementById('contentTrabajador');
+            miDiv.style.display = 'none';
+            var miDiv = document.getElementById('contentTerreno');
+            miDiv.style.display = 'block';
+
+        } else if (palabra == "presPresupuesto") {
+            document.getElementById("datosProyecto").classList.remove("btn-primary");
+            document.getElementById("datosProyecto").classList.add("btn-success");
+            document.getElementById("datosProyecto").disabled = true;
+
+            document.getElementById("presMaterial").classList.remove("btn-primary");
+            document.getElementById("presMaterial").classList.add("btn-success");
+            document.getElementById("presMaterial").disabled = true;
+
+            document.getElementById("presTrabajador").classList.remove("btn-primary");
+            document.getElementById("presTrabajador").classList.add("btn-success");
+            document.getElementById("presTrabajador").disabled = true;
+
+            document.getElementById("presTerreno").classList.remove("btn-primary");
+            document.getElementById("presTerreno").classList.add("btn-success");
+            document.getElementById("presTerreno").disabled = true;
+
+            document.getElementById("preupuestoF").classList.remove("btn-primary");
+            document.getElementById("preupuestoF").classList.add("btn-success");
+            document.getElementById("preupuestoF").disabled = true;
+
+        }
+
+
 
         $("#VerMas").click(function(e) {
             e.preventDefault();

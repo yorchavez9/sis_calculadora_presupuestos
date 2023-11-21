@@ -34,7 +34,9 @@ class ControladorPresMateriales{
                                     confirmButtonText: "Cerrar"
                                 }).then(function(result){
                                     if(result.value){
-                                        window.location = "presupuestos";
+                                    var palabra = "nuevoPresMaterial";
+                                    
+                                    window.location = "presupuestos?palabra="+palabra;
                                     }
                                 });    
                             </script>';

@@ -34,7 +34,9 @@ class ControladorPresupuesto{
                                     confirmButtonText: "Cerrar"
                                 }).then(function(result){
                                     if(result.value){
-                                        window.location = "verPresupuestos";
+                                        var palabra = "presPresupuesto";
+                                        
+                                        window.location = "verPresupuestos?palabra=" + palabra;
                                     }
                                 });    
                             </script>';

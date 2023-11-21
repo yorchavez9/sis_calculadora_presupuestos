@@ -1,6 +1,7 @@
 <?php
 
-class ControladorProyecto{
+class ControladorProyecto
+{
 
 
     /* ===========================================
@@ -21,7 +22,8 @@ class ControladorProyecto{
                     "nombre_proyecto" => $_POST["nuevoNombreProyecto"],
                     "ubicacion_proyecto" => $_POST["nuevoUbicacionProyecto"],
                     "fecha_proyecto" => $_POST["nuevoFechaProyecto"],
-                    "descri_proyecto" => $_POST["descripcionProyecto"]);
+                    "descri_proyecto" => $_POST["descripcionProyecto"]
+                );
 
                 $respuesta = ModeloProyecto::mdlIngresarProyecto($tabla, $datos);
 
@@ -34,12 +36,18 @@ class ControladorProyecto{
                                 confirmButtonText: "Cerrar"
                             }).then(function(result) {
                                 if (result.value) {
-                                    window.location = "presupuestos";
+                                    // Obtener la palabra que quieres enviar al index
+                                    var palabra = "nuevoProyecto";
+                                    
+                                    // Redirigir a "presupuestos" con la palabra como parámetro
+                                    window.location = "presupuestos?palabra="+palabra;
                                 }
                             });                    
-                            
                         </script>';
                 }
+                
+                
+                
             } else {
                 echo '<script>
                         Swal.fire({
@@ -146,7 +154,7 @@ class ControladorProyecto{
             $datos = $_GET["idMaterial"];
 
             $respuesta = ModeloMateriales::mdlBorrarMaterial($tabla, $datos);
-         
+
             if ($respuesta == "ok") {
                 echo '<script>
                         Swal.fire({
