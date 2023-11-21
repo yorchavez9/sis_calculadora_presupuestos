@@ -154,6 +154,59 @@
                 </div>
               </div>
           </div>
+          <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="text-dark">Lista de contactos de clientes nuevos</h3>
+                    <div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="table-responsive">
+                          <table id="order-listing" class="table tablas_contacto">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Teléfono</th>
+                                <th>Correo</th>
+                                <th>Fecha</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              $item = null;
+                              $valor = null;
+
+                              $contacto = ControladorContactos::ctrMostrarContacto($item, $valor);
+
+                              foreach ($contacto as $key => $value) {
+
+                                echo '<tr>
+                                        <td>' . ($key + 1) . '</td>
+                                        <td>' . $value["nombre_contacto"] . '</td>
+                                        <td>' . $value["apellidos_contacto"] . '</td>
+                                        <td>' . $value["telefono_contacto"] . '</td>
+                                        <td>' . $value["correo_contacto"] . '</td>
+                                        <td>' . $value["fecha_contacto"] . '</td>
+                                        </tr>';
+                              }
+                              ?>
+
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->

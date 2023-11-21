@@ -81,6 +81,7 @@ session_start();
         if (isset($_GET["ruta"])) {
             if (
                 $_GET["ruta"] == "inicio" ||
+                $_GET["ruta"] == "contacto" ||
                 $_GET["ruta"] == "usuarios" ||
                 $_GET["ruta"] == "presupuestos" ||
                 $_GET["ruta"] == "clientes" ||
@@ -121,6 +122,7 @@ session_start();
     <script src="vistas/js/script.presupuesto.js"></script>
     <script src="vistas/js/ver.presupuesto.js"></script>
     <script src="vistas/js/imprimir.js"></script>
+    <script src="vistas/js/contacto.cliente.js"></script>
 
 
     <!-- container-scroller -->

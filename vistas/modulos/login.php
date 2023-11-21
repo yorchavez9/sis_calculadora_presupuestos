@@ -183,20 +183,27 @@ $totalMaquinas = count($maquinas);
                         <div class="card-body">
                             <form method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="nuevoNombre" placeholder="Ingrese su nombre">
+                                    <input type="text" class="form-control" name="nuevoNombreCl" placeholder="Ingrese su nombre">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="nuevoApellido" placeholder="Ingrese su apellido">
+                                    <input type="text" class="form-control" name="nuevoApellidoCl" placeholder="Ingrese su apellido">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="nuevoTelefono" placeholder="Ingrese su teléfono">
+                                    <input type="text" class="form-control" name="nuevoTelefonoCl" placeholder="Ingrese su teléfono">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="nuevoCorreo" placeholder="Ingrese su correo">
+                                    <input type="email" class="form-control" name="nuevoCorreoCl" placeholder="Ingrese su correo">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary btn-block">Enviar</button>
                                 </div>
+                                <?php
+                                /* Guardar contacto */
+
+                                $nuevoContacto = new ControladorContactos();
+                                $nuevoContacto->ctrCrearContacto();
+                                
+                                ?>
                             </form>
                         </div>
                     </div>
