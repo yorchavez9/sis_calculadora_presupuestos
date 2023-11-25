@@ -64,7 +64,10 @@ $totalMaquinas = count($maquinas);
     <div class="landing-sass-header-content bg-dark">
         <div class="container">
             <h1 class="text-center font-weight-bold pt-5 pb-30px mb-0 text-white">Proyectos de calidad <br>Cambiando vidas</h1>
-            <div class="text-center mb-5 "><button class="btn btn-light mr-3">Ver mas...</button><button class="btn btn-outline-light">Contactos</button></div>
+            <div class="text-center mb-5 ">
+                <a class="btn btn-light mr-3" href="#proyectos">Ver mas...</a>
+                <a class="btn btn-outline-light" href="#contactoCliente">Contactos</a>
+            </div>
         </div>
     </div>
     <div class="text-center landing-sass-header-img-wrapper"><img src="vistas/estilos/images/dash/dash_3.png" alt="header-img" class="img-fluid" width="707px"></div>
@@ -176,7 +179,7 @@ $totalMaquinas = count($maquinas);
             </div>
         </section>
 
-        <section class="mb-4 container">
+        <section id="contactoCliente" class="mb-4 container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-6">
                     <div class="card">
@@ -205,7 +208,7 @@ $totalMaquinas = count($maquinas);
 
                                 $nuevoContacto = new ControladorContactos();
                                 $nuevoContacto->ctrCrearContacto();
-                                
+
                                 ?>
                             </form>
                         </div>
