@@ -16,7 +16,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
             <h4><b>Administrar clientes</b></h4>
           </div>
           <div class="mb-3">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlNuevoCliente" data-whatever="@getbootstrap">Nuevo proveedor</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlNuevoCliente" data-whatever="@getbootstrap">Nuevo cliente</button>
           </div>
           <div class="row">
             <div class="col-12">
