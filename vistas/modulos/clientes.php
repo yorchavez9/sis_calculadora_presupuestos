@@ -78,7 +78,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
 
 <!-- ===========================================
-    MODAL NUEVO PROVEEDOR
+    MODAL NUEVO CLIENTE
     =========================================== -->
 
 <div class="modal fade" id="mdlNuevoCliente" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -93,10 +93,27 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
       <div class="modal-body">
         <form method="post" enctype="multipart/form-data">
 
+          <!-- Entrada de DNI -->
+          <div class="row">
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="dni" id="dni" placeholder="Ingrese el DNI del cliente" required>
+
+            </div>
+            <div class="col-md-4">
+              <a href="#" id="consultar" class="btn btn-primary text-center " style="height: 40px;">Consultar Cliente</a>
+            </div>
+          </div>
+          <br>
+          <div class="text-center">
+            <div id="loader" class="spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+
           <!-- Entrada de nombre -->
           <div class="form-group">
             <label for="recipient-name">Nombre:</label>
-            <input type="text" class="form-control" name="nuevoNombreC" placeholder="Ingrese el nombre" required>
+            <input type="text" class="form-control" id="nuevoNombreC" value="" name="nuevoNombreC" placeholder="Nombre del clinte" readonly>
           </div>
 
           <!-- Entrada de Telefono -->
@@ -158,7 +175,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <div class="form-group">
             <input type="hidden" class="form-control" name="idCliente" id="idCliente" value="" required>
           </div>
-          
+
           <!-- Entrada de nombre -->
           <div class="form-group">
             <label for="recipient-name">Nombre:</label>
@@ -195,7 +212,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           $editarCliente = new ControladorClientes();
           $editarCliente->ctrEditarCliente();
 
-        
+
           ?>
 
         </form>
@@ -209,7 +226,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
     =========================================== -->
 
 <?php
-    
+
 $borrarCliente = new ControladorClientes();
 $borrarCliente->ctrBorrarCliente();
 ?>

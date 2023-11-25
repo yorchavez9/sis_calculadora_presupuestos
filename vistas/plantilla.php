@@ -50,6 +50,9 @@ session_start();
         #VerMenos {
             display: none;
         }
+        #loader {
+            display: none;
+        }
     </style>
 </head>
 
@@ -123,6 +126,7 @@ session_start();
     <script src="vistas/js/ver.presupuesto.js"></script>
     <script src="vistas/js/imprimir.js"></script>
     <script src="vistas/js/contacto.cliente.js"></script>
+    <script src="vistas/js/dni.js"></script>
 
 
     <!-- container-scroller -->
