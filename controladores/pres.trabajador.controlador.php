@@ -100,7 +100,7 @@ class ControladorPresTrabajadores{
                             closeOnConfirm: false,
                         }).then(function(result){
                             if(result.value){
-                                window.location = "presupuestos"
+                                window.location = "presupuestos?palabra=nuevoPresTrabajador"
                             }
                         })
                         </script>';

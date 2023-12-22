@@ -31,7 +31,7 @@ class ControladorProyecto
                     echo '<script>
                             Swal.fire({
                                 icon: "success",
-                                title: "¡El material ha sido guardado correctamente!",
+                                title: "¡Datos guardados correctamente!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
                             }).then(function(result) {

@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador") {
   echo '<script>
         window.location = "inicio"
@@ -14,7 +17,9 @@ $proyecto = ControladorProyecto::ctrMostrarProyectos($item, $valor);
 
 $ultimoProyecto = end($proyecto);
 
-$idUltimoProyecto = $ultimoProyecto["id_proyecto"];
+if($ultimoProyecto == true){
+  $idUltimoProyecto = $ultimoProyecto["id_proyecto"];
+}
 
 ?>
 
@@ -172,7 +177,7 @@ $idUltimoProyecto = $ultimoProyecto["id_proyecto"];
           </div>
             <div class="col-12">
               <div class="table-responsive">
-                <table id="order-listing" class="table tabla_pres_trabajador">
+                <table id="order-listing" class="table tabla_pres_terreno">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -180,7 +185,6 @@ $idUltimoProyecto = $ultimoProyecto["id_proyecto"];
                       <th>Metros cuadrados</th>
                       <th>Precio por metro cuadrado</th>
                       <th>Precio total</th>
-                      <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -198,11 +202,6 @@ $idUltimoProyecto = $ultimoProyecto["id_proyecto"];
                               <td>' . $value["medida"] . ' m cuadrados</td>
                               <td> S/ ' . $value["precio"] . '</td>
                               <td> S/ ' . $value["total"] . '</td>
-                              <td>
-                                <div class="btn-group text-center">
-                                  <button class="btn btn-danger btnEliminarPresTerreno" idPresTerreno="' . $value["id_terreno"] . '"><i class="mdi mdi-delete"></i></button>
-                                </div>
-                              </td>
                               </tr>';
                       }
                     }
@@ -753,6 +752,14 @@ $borrarPresMaterial->ctrBorrarPresMaterial();
 
 <!-- ===========================================
     ELIMINAR PRESUPUESTO TRABJADOR
+    =========================================== -->
+<?php
+$borrarPresTrabajador = new ControladorPresTrabajadores();
+$borrarPresTrabajador->ctrBorrarPresTrabajador();
+?>
+
+<!-- ===========================================
+    ELIMINAR PRESUPUESTO 
     =========================================== -->
 <?php
 $borrarPresTrabajador = new ControladorPresTrabajadores();

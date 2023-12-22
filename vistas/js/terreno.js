@@ -10,3 +10,5 @@ function calcularSumaTerreno() {
     // Mostrar la suma en el campo de resultado
     document.getElementById("resultadoTerreno").value = suma.toFixed(2);
   }
+
+

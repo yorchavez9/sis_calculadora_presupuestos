@@ -98,7 +98,7 @@ class ControladorPresMateriales{
                             closeOnConfirm: false,
                         }).then(function(result){
                             if(result.value){
-                                window.location = "presupuestos"
+                                window.location = "presupuestos?palabra=nuevoPresMaterial"
                             }
                         })
                         </script>';
