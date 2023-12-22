@@ -282,14 +282,14 @@ MODAL INICIAR SESION
                 </button>
             </div>
             <div class="modal-body">
-                <form class="pt-2" method="post" enctype="multipart/form-data">
+                <form class="pt-2" method="post" id="form_inicio_session" enctype="multipart/form-data">
 
                     <!-- ====================================
                                 INGRESANDO USUARIO
                                 ==================================== -->
                     <div class="form-group">
                         <label for="Usuario">Usuario</label>
-                        <input type="text" class="form-control form-control-lg" name="ingUsuario" placeholder="Usuario">
+                        <input type="text" class="form-control form-control-lg" id="ingUsuario" name="ingUsuario" placeholder="Usuario">
                     </div>
 
                     <!-- ====================================
@@ -297,14 +297,14 @@ MODAL INICIAR SESION
                                 ==================================== -->
                     <div class="form-group">
                         <label for="Usuario">Constraseña</label>
-                        <input type="password" class="form-control form-control-lg" name="ingPassword" placeholder="Constraseña">
+                        <input type="password" class="form-control form-control-lg" id="ingPassword"  name="ingPassword" placeholder="Constraseña">
                     </div>
 
                     <!-- ====================================
                                 BOTON DE INGRESAR
                                 ==================================== -->
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Ingresar</button>
+                        <button type="submit" id="btn_ingresar" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Ingresar</button>
                     </div>
 
                     <!-- ====================================
@@ -340,30 +340,30 @@ MODAL REGISTRAR USUARIOS
                 </button>
             </div>
             <div class="modal-body">
-                <form class="pt-2" method="post" enctype="multipart/form-data">
+                <form class="pt-2" method="post" id="form_registrase" enctype="multipart/form-data">
 
                     <!-- ENTRADA DE NOMBRE -->
                     <div class="form-group">
                         <label for="Usuario">Nombre</label>
-                        <input type="text" class="form-control" name="nuevoNombre" placeholder="Ingresar nombre">
+                        <input type="text" class="form-control" id="nuevoNombre" name="nuevoNombre" placeholder="Ingresar nombre" >
                     </div>
 
                     <!-- ENTRADA DE USUARIO -->
                     <div class="form-group">
                         <label for="Usuario">Usuario o correo</label>
-                        <input type="text" class="form-control" name="nuevoUsuario" placeholder="Ingresar usuario o correo">
+                        <input type="text" class="form-control"  id="nuevoUsuario" name="nuevoUsuario" placeholder="Ingresar usuario o correo" >
                     </div>
 
                     <!-- ENTRADA DE CONTRASEÑA -->
                     <div class="form-group">
                         <label for="Usuario">Constraseña</label>
-                        <input type="password" class="form-control" name="nuevoPassword" placeholder="Ingresar constraseña">
+                        <input type="password" class="form-control" id="nuevoPassword" name="nuevoPassword" placeholder="Ingresar constraseña" >
                     </div>
 
                     <!-- ENTRADA DE PERFIL -->
                     <div class="form-group">
                         <label for="Usuario">Constraseña</label>
-                        <select class="form-control form-control-lg" name="nuevoPerfil">
+                        <select class="form-control form-control-lg" id="nuevoPerfil" name="nuevoPerfil" >
                             <option value="">Seleccionar perfil</option>
                             <option value="Administrador">Administrador</option>
                         </select>
@@ -371,7 +371,7 @@ MODAL REGISTRAR USUARIOS
 
                     <!-- BOTON PARA GUARDAR -->
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Registrar</button>
+                        <button type="submit" id="registrarse" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Registrar</button>
                     </div>
 
 

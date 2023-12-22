@@ -112,6 +112,7 @@ session_start();
 
     <!-- script de validaciones -->
 
+    <script src="vistas/js/login.js"></script>
     <script src="vistas/js/usuarios.js"></script>
     <script src="vistas/js/proveedor.js"></script>
     <script src="vistas/js/materiales.js"></script>
