@@ -52,8 +52,8 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
                               <td>' . $value["tipo_material"] . '</td>
                               <td>' . $value["marca_material"] . '</td>
                               <td>' . $value["cantidad_material"] . '</td>
-                              <td>' . $value["precio_compra_material"] . '</td>
-                              <td>' . $value["precio_venta_material"] . '</td>
+                              <td>S/ ' . $value["precio_compra_material"] . '</td>
+                              <td>S/ ' . $value["precio_venta_material"] . '</td>
                               <td>' . $value["fecha_material"] . '</td>
                               <td>
                                 <div class="btn-group text-center">
@@ -93,7 +93,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Nuevo proveedor</b></h4>
+        <h4 style="margin-left: auto;" class="modal-title" id="ModalLabel"><b>Nuevo material</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -103,7 +103,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
           <!-- Entrada de nombre del proveedor -->
           <div class="form-group">
-            <label for="recipient-name">Nombre proveedor:</label>
+            <label for="recipient-name">Nombre proveedor:*</label>
             <select name="nuevoNombreProveedor" id="nuevoNombreProveedor" class="form-control">
               <option value="">Seleccione proveedor</option>
               <?php
@@ -120,38 +120,38 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
           <!-- Entrada de nombre material-->
           <div class="form-group">
-            <label for="recipient-name">Nombre del material:</label>
+            <label for="recipient-name">Nombre del material:*</label>
             <input type="text" class="form-control" name="nuevoNombreM" placeholder="Ingrese el el nombre" required>
           </div>
 
           <!-- Entrada de tipo de material -->
           <div class="form-group">
             <label for="message-text">Tipo de material:</label>
-            <input type="text" class="form-control" name="nuevoTipoM" placeholder="Ingrese el tipo" required>
+            <input type="text" class="form-control" name="nuevoTipoM" placeholder="Ingrese el tipo">
           </div>
 
           <!-- Entrada de marca de material -->
           <div class="form-group">
             <label for="message-text">Marca de material:</label>
-            <input type="text" class="form-control" name="nuevoMarcaM" placeholder="Ingresa la marca" required>
+            <input type="text" class="form-control" name="nuevoMarcaM" placeholder="Ingresa la marca">
           </div>
 
           <!-- Entrada de cantidad de material -->
           <div class="form-group">
-            <label for="message-text">Cantidad de material:</label>
+            <label for="message-text">Cantidad de material:*</label>
             <input type="number" class="form-control" name="nuevoCantidadM" placeholder="Ingrese la cantidad" required>
           </div>
 
           <!-- Entrada de precio de compra -->
           <div class="form-group">
-            <label for="message-text">Precio compra material:</label>
-            <input type="number" class="form-control" name="nuevoPrecioCompraM" placeholder="Ingrese le precio" required>
+            <label for="message-text">Precio compra material:*</label>
+            <input type="number" class="form-control" name="nuevoPrecioCompraM" placeholder="Ingrese le precio" step="any" required>
           </div>
 
           <!-- Entrada de precio de venta -->
           <div class="form-group">
-            <label for="message-text">Precio venta material:</label>
-            <input type="number" class="form-control" name="nuevoPrecioVentaM" placeholder="Ingrese le precio" required>
+            <label for="message-text">Precio venta material:*</label>
+            <input type="number" class="form-control" name="nuevoPrecioVentaM" placeholder="Ingrese le precio" step="any" required>
           </div>
 
           <!-- Botones de guardar y cerrar -->
@@ -223,13 +223,13 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Entrada de tipo de material -->
           <div class="form-group">
             <label for="message-text">Tipo de material:</label>
-            <input type="text" class="form-control" name="editarTipoM" id="editarTipoM" value="" required>
+            <input type="text" class="form-control" name="editarTipoM" id="editarTipoM" value="" >
           </div>
 
           <!-- Entrada de marca de material -->
           <div class="form-group">
             <label for="message-text">Marca de material:</label>
-            <input type="text" class="form-control" name="editarMarcaM" id="editarMarcaM" value="" required>
+            <input type="text" class="form-control" name="editarMarcaM" id="editarMarcaM" value="" >
           </div>
 
           <!-- Entrada de Cantidad de material -->
@@ -241,13 +241,13 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
           <!-- Entrada de precio compra de material-->
           <div class="form-group">
             <label for="message-text">Precio compra del material:</label>
-            <input type="number" class="form-control" name="editarCompraM" id="editarCompraM" value="" required>
+            <input type="number" class="form-control" name="editarCompraM" id="editarCompraM" value="" step="any" required>
           </div>
 
           <!-- Entrada de precio venta de material -->
           <div class="form-group">
             <label for="message-text">Precio venta del material:</label>
-            <input type="number" class="form-control" name="editarVentaM" id="editarVentaM" value="" required>
+            <input type="number" class="form-control" name="editarVentaM" id="editarVentaM" value="" step="any" required>
           </div>
 
           <!-- Botones de guardar y cerrar -->

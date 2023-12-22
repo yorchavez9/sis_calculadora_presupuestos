@@ -54,7 +54,7 @@ class ControladorUsuarios{
 						if($ultimoLogin == "ok"){
 
 							echo '<script>
-                            var textoParaLeer = "Hola Jorge Bienvenido al sistema de presupuestos";
+                            var textoParaLeer = "Hola Bienvenido al sistema de presupuestos";
 
                             // Verificar si la API de síntesis de voz es compatible con el navegador
                             if ("speechSynthesis" in window) {
@@ -64,6 +64,9 @@ class ControladorUsuarios{
                                 // Configurar el texto a leer
                                 voz.text = textoParaLeer;
                                 voz.lang = "es-ES"; // Configurar el idioma
+
+                                // Ajustar la velocidad (un valor más bajo hace que sea más lento)
+                                voz.rate = 0.6;
 
                                 // Iniciar la síntesis de voz
                                 synth.speak(voz);

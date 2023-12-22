@@ -137,7 +137,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
           <!-- Entrada de tiempo de trabajo -->
           <div class="form-group">
-            <label for="message-text">Tiempo de trabajo:</label>
+            <label for="message-text">Tiempo de trabajo (semana | meses | años):</label>
             <input type="number" class="form-control" name="nuevoTiempoTrabajo" placeholder="Ingrese el tiempo de trabajo" required>
           </div>
 

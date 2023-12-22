@@ -25,6 +25,8 @@ $("#nuevoUsuario").change(function(){
                 $("#nuevoUsuario").parent().after('<div class="alert alert-warning">Este usuario existe en la base de datos</div>');
                 $("#nuevoUsuario").val("");
             }
+
+            
         }
     })
 

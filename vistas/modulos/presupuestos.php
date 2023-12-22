@@ -562,13 +562,13 @@ if($ultimoProyecto == true){
             <!-- Entrada de suma precio total -->
             <div class="form-group col-md-4">
               <label for="message-text">Precio (Metro cuadrado):</label>
-              <input type="number" class="form-control" id="nuevoTerrenoPMC" value="0" name="nuevoTerrenoPMC" oninput="calcularSumaTerreno()">
+              <input type="number" class="form-control" id="nuevoTerrenoPMC" value="0" step="any" name="nuevoTerrenoPMC" oninput="calcularSumaTerreno()">
             </div>
 
             <!-- Entrada de suma precio total -->
             <div class="form-group col-md-4">
               <label for="message-text">Precio Total:</label>
-              <input type="text" class="form-control" id="resultadoTerreno" name="resultadoTerreno" value="0.00" readonly>
+              <input type="text" class="form-control" id="resultadoTerreno" name="resultadoTerreno" step="any" value="0.00" readonly>
             </div>
 
           </div>

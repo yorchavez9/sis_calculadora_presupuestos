@@ -12,7 +12,7 @@ class ControladorMateriales{
 
         if (isset($_POST["nuevoNombreM"])) {
 
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["nuevoNombreM"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. \/]+$/', $_POST["nuevoNombreM"])) {
 
                 $tabla = "material";
 

@@ -122,7 +122,7 @@ session_start();
     <script src="vistas/js/proyectos.js"></script>
     <script src="vistas/js/pres.material.js"></script>
     <script src="vistas/js/pres.trabajador.js"></script>
-    <script src="vistas/js/terreno.js"></script>
+    <script src="vistas/js/script.terreno.js"></script>
     <script src="vistas/js/script.presupuesto.js"></script>
     <script src="vistas/js/ver.presupuesto.js"></script>
     <script src="vistas/js/imprimir.js"></script>

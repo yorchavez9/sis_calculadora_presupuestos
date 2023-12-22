@@ -7,6 +7,10 @@ require_once "../modelos/presupuesto.modelo.php";
 # Incluyendo librerias necesarias #
 require "./code128.php";
 
+function formatearPrecio($pres) {
+	return number_format($pres, 2, '.', ',');
+}
+
 $idProyecto = isset($_GET['codigo']) ? $_GET['codigo'] : '';
 
 $item = null;
@@ -128,18 +132,24 @@ $pdf->SetTextColor(39, 39, 51);
 
 
 
-/*----------  Detalles de la tabla  ----------*/
+/*---------- Detalles de la tabla ----------*/
 foreach ($presupuesto as $key => $value) {
-	if ($idProyecto == $value["id_proyecto"]) {
-		$pdf->Cell(149, 7, iconv("UTF-8", "ISO-8859-1", "Precio total de materiales"), 'L', 0, 0);
-		$pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "S/ ".$value["suma_costo_total_materiales"]), 'LR', 0, 'C');
-		$pdf->Ln(7);
-		$pdf->Cell(149, 7, iconv("UTF-8", "ISO-8859-1", "Precio total de trabajadores"), 'L', 0, 0);
-		$pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "S/ ".$value["suma_costo_total_trabajadores"]), 'LR', 0, 'C');
-		$pdf->Ln(7);
-		$pdf->Cell(149, 7, iconv("UTF-8", "ISO-8859-1", "Precio de terreno (metros cuadrados)"), 'L', 0, 0);
-		$pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "S/ ".$value["suma_total_terreno"]), 'LR', 0, 'C');
-	}
+    if ($idProyecto == $value["id_proyecto"]) {
+        // Función para formatear los precios
+
+        $precioMateriales = formatearPrecio($value["suma_costo_total_materiales"]);
+        $precioTrabajadores = formatearPrecio($value["suma_costo_total_trabajadores"]);
+        $precioTerreno = formatearPrecio($value["suma_total_terreno"]);
+
+        $pdf->Cell(149, 7, iconv("UTF-8", "ISO-8859-1", "Precio total de materiales"), 'L', 0, 0);
+        $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "S/ " . $precioMateriales), 'LR', 0, 'C');
+        $pdf->Ln(7);
+        $pdf->Cell(149, 7, iconv("UTF-8", "ISO-8859-1", "Precio total de trabajadores"), 'L', 0, 0);
+        $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "S/ " . $precioTrabajadores), 'LR', 0, 'C');
+        $pdf->Ln(7);
+        $pdf->Cell(149, 7, iconv("UTF-8", "ISO-8859-1", "Precio de terreno (metros cuadrados)"), 'L', 0, 0);
+        $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "S/ " . $precioTerreno), 'LR', 0, 'C');
+    }
 }
 
 
@@ -155,11 +165,31 @@ $pdf->SetFont('Arial', 'B', 9);
 $pdf->Cell(100, 7, iconv("UTF-8", "ISO-8859-1", ''), 'T', 0, 'C');
 $pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", ''), 'T', 0, 'C');
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "SUBTOTAL"), 'T', 0, 'C');
-foreach ($presupuesto as $key => $value) {
-	if ($idProyecto == $value["id_proyecto"]) {
-		$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", $value["costo_parcial"]), 'T', 0, 'C');
-	}
+
+// Función para separar números, convertir en float y formatear
+function separarConvertirFormatear($cadena) {
+    // Utilizar expresión regular para extraer solo los dígitos
+    preg_match_all('/\d+/', $cadena, $coincidencias);
+
+    // Obtener un solo número uniendo los dígitos encontrados
+    $numero = implode('', $coincidencias[0]);
+
+    // Convertir a número flotante y formatear
+    return number_format(floatval($numero), 2, '.', ',');
 }
+
+// Uso de la función
+foreach ($presupuesto as $key => $value) {
+    if ($idProyecto == $value["id_proyecto"]) {
+        // Obtener, convertir y formatear el número
+        $costoParcialFormateado = separarConvertirFormatear($value["costo_parcial"]);
+
+        // Mostrar el número formateado
+        $pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "S/ " . $costoParcialFormateado), 'T', 0, 'C');
+    }
+}
+
+
 
 $pdf->Ln(7);
 
@@ -180,11 +210,33 @@ $pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 
 
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "TOTAL A PAGAR"), 'T', 0, 'C');
-foreach ($presupuesto as $key => $value) {
-	if ($idProyecto == $value["id_proyecto"]) {
-		$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", $value["costo_final"]), 'T', 0, 'C');
-	}
+// Función para quitar los dos últimos caracteres, separar números y formatear
+function quitarSepararFormatear($cadena) {
+    // Quitar los dos últimos caracteres
+    $cadenaSinUltimosDos = substr($cadena, 0, -2);
+
+    // Utilizar expresión regular para extraer solo los dígitos
+    preg_match_all('/\d+/', $cadenaSinUltimosDos, $coincidencias);
+
+    // Obtener un solo número uniendo los dígitos encontrados
+    $numero = implode('', $coincidencias[0]);
+
+    // Devolver el número formateado
+    return number_format(floatval($numero), 2, '.', ',');
 }
+
+// Uso de la función
+foreach ($presupuesto as $key => $value) {
+    if ($idProyecto == $value["id_proyecto"]) {
+        // Obtener y formatear el número
+        $costoFinalFormateado = quitarSepararFormatear($value["costo_final"]);
+
+        // Mostrar el número formateado
+        $pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "S/ " . $costoFinalFormateado), 'T', 0, 'C');
+    }
+}
+
+
 
 
 
