@@ -6,6 +6,11 @@ class Conexion{
                         "root",
                         "");
         $link->exec("set names utf8");
-        return $link;
+        if(!$link){
+            return "No se realizo la conexion a la base de datos";
+        }else{
+            return $link;
+        }
+        
     }
 }

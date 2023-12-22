@@ -105,7 +105,18 @@ $totalMaquinas = count($maquinas);
                 </div>
             </div>
             <div class="row col-md-12">
-                <img style="width: 30%;" src="vistas/img/proyectos/img.01.jpg" alt="">
+                <div class="col-md-3">
+                    <img width="100%" height="200px" src="vistas/img/proyectos/img.01.jpg" alt="">
+                </div>
+                <div class="col-md-3">
+                    <img width="100%" height="200px" src="vistas/img/proyectos/img.02.jpg" alt="">
+                </div>
+                <div class="col-md-3">
+                    <img width="100%" height="200px" src="vistas/img/proyectos/img.03.jpg" alt="">
+                </div>
+                <div class="col-md-3">
+                    <img width="100%" height="200px" src="vistas/img/proyectos/img.04.jpg" alt="">
+                </div>
             </div>
         </section>
         <section class="mb-1">
@@ -173,8 +184,6 @@ $totalMaquinas = count($maquinas);
                     <?php
                     }
                     ?>
-
-
                 </div>
             </div>
         </section>
@@ -216,7 +225,6 @@ $totalMaquinas = count($maquinas);
                 </div>
             </div>
         </section>
-
     </div>
 </main>
 
