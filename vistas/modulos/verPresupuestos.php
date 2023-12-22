@@ -156,7 +156,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
           <div class="row col-md-12">
             <div class="col-md-6">
-              <label for=""><b>Presupuesto total de materiales:</b></label>
+              <label for=""><b>Presupuesto total de trabajadores:</b></label>
             </div>
             <div class="col-md-6">
               <h5 id="presupuestoTrabajadores"></h5></b>
@@ -196,7 +196,7 @@ if ($_SESSION["perfil"] != "Especial" && $_SESSION["perfil"] != "Administrador")
 
           <div class="row col-md-12">
             <div class="col-md-6">
-              <label for=""><b>Presupuesto de costo parcial:</b></label>
+              <label for=""><b>Presupuesto de final:</b></label>
             </div>
             <div class="col-md-6">
               <h5 id="presupuestoFinal"></h5></b>
