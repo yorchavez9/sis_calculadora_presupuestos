@@ -54,7 +54,24 @@ class ControladorUsuarios{
 						if($ultimoLogin == "ok"){
 
 							echo '<script>
+                            var textoParaLeer = "Hola Jorge Bienvenido al sistema de presupuestos";
 
+                            // Verificar si la API de síntesis de voz es compatible con el navegador
+                            if ("speechSynthesis" in window) {
+                                var synth = window.speechSynthesis;
+                                var voz = new SpeechSynthesisUtterance();
+
+                                // Configurar el texto a leer
+                                voz.text = textoParaLeer;
+                                voz.lang = "es-ES"; // Configurar el idioma
+
+                                // Iniciar la síntesis de voz
+                                synth.speak(voz);
+                            } else {
+                                // La API no es compatible con el navegador
+                                console.log("La síntesis de voz no es compatible con este navegador.");
+}
+                            
 								window.location = "inicio";
 
 							</script>';

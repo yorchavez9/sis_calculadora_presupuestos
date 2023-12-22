@@ -304,7 +304,7 @@ MODAL INICIAR SESION
                                 BOTON DE INGRESAR
                                 ==================================== -->
                     <div class="mt-3">
-                        <button type="submit" id="btn_ingresar" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Ingresar</button>
+                        <button type="submit" id="btn_ingresar"  class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Ingresar</button>
                     </div>
 
                     <!-- ====================================
