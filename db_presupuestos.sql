@@ -1,7 +1,7 @@
 /* ===== CREANDO LA BASE DE DARTOS ===== */
 
-create database if not exists sis_presupuesto default character set latin1 collate latin1_swedish_ci;
-use sis_presupuesto;
+create database if not exists sis_presupuestos default character set latin1 collate latin1_swedish_ci;
+use sis_presupuestos;
 
 /* ===== CREANDO TABLA DE USUARIOS ===== */
 
