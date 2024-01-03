@@ -25,7 +25,7 @@
               <div class="row">
                 <div class="col-sm-12 pr-0">
                   <div class="d-lg-flex">
-                    <h3 class="text-dark font-weight-bold mb-0 mr-5">Hola <?php echo $_SESSION["nombre"] ?>, Bienvenido al Sistema</h3>
+                    <h3 class="text-dark font-weight-bold mb-0 mr-5">Hola <?php echo $_SESSION["nombre"] ?>, bienvenido al Sistema😎</h3>
                   </div>
                 </div>
               </div>
